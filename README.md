@@ -1,7 +1,7 @@
-# 🌴 Annes Birthday Quiz
+# Annes Birthday Quiz
 
-Ein Pubquiz für Annes Geburtstag im mallorquinischen Design – als einzelne HTML-Datei,
-komplett offline lauffähig, ohne Installation und ohne Internetverbindung.
+Ein Pubquiz zum Geburtstag – als einzelne HTML-Datei, komplett offline lauffähig,
+ohne Installation und ohne Internetverbindung.
 
 **Starten:** `index.html` doppelklicken (Chrome, Firefox, Safari oder Edge).
 
@@ -9,30 +9,39 @@ komplett offline lauffähig, ohne Installation und ohne Internetverbindung.
 
 ## Ablauf für den Quizmaster
 
-1. **Startseite:** Gruppennamen eintragen (2–8 Gruppen). Optional
-   „🖨️ Antwortzettel drucken“ – druckt für **jede Gruppe einen eigenen Zettel** mit allen
-   Fragen und Antwortmöglichkeiten (ohne Lösungen).
-2. **„🎉 Quiz starten“** – die erste Frage erscheint und **der Timer startet automatisch**.
-3. **Letzte 5 Sekunden:** Der Timer wackelt, färbt sich rot und piept jede Sekunde eine Stufe
-   höher. Bei 0 ertönt ein Gong und „⏰ Zeit um – Stifte weg!“ erscheint.
-   **Der Timer deckt nichts auf.**
-4. **„🔓 Antwort aufdecken“** klicken – erst dann kommt die Auflösung, mit einer zum Fragetyp
-   passenden Animation.
-5. Punkte vergeben: Der Punktestand liegt in einer **ein- und ausklappbaren Seitenleiste**.
-   Auf- und zuklappen über den Knopf **🏆 Punkte** in der Kopfzeile oder mit der Taste `S`;
+1. **Startseite:** Gruppennamen eintragen (2 bis 8 Gruppen). Über „Antwortzettel drucken“
+   bekommt jede Gruppe einen eigenen Zettel mit allen Fragen und Antwortmöglichkeiten –
+   ohne Lösungen.
+2. **„Quiz starten“** – vor jeder Runde erscheint eine Rundentafel mit Titel und Einleitung.
+   Weiter mit „Runde beginnen“.
+3. **Frage:** Die Uhr startet automatisch. In den letzten fünf Sekunden wackelt sie,
+   färbt sich golden und piept jede Sekunde eine Stufe höher. Bei null ertönt ein Gong
+   und „Zeit um – Stifte weg“ erscheint. **Die Uhr deckt nichts auf.**
+4. **„Antwort aufdecken“** klicken – erst dann kommt die Auflösung, mit einer zum
+   Fragetyp passenden Darstellung.
+5. **Punkte:** Der Punktestand liegt in einer ein- und ausklappbaren Seitenleiste.
+   Auf- und zuklappen über den Knopf **Punktestand** in der Kopfzeile oder mit der Taste `S`;
    dann `+` / `−` pro Gruppe. Ob die Leiste offen ist, merkt sich die App.
-6. Am Ende „🏁 Endstand“ → Siegertreppchen mit Konfetti.
+6. Am Ende „Endstand“ → Siegertreppchen mit Konfetti.
 
 Punktestand, Fortschritt und der Zustand der Punkteleiste werden im Browser gespeichert –
 ein versehentliches Neuladen kostet also keine Punkte.
 
 ### Layout
 
-Die Anwendung ist auf **eine Bildschirmhöhe ohne Scrollen** ausgelegt: Start-, Quiz- und
-Endbildschirm passen jeweils komplett ins Fenster. Ab 1920×1080 liegen alle 27 Fragen
-samt Auflösung auf einem Bild; bei 1440×900 scrollen zwei besonders dichte Fragen
-(die Reihenfolge- und die Heckenfrage) noch um wenige Zentimeter innerhalb der Karte –
-die Seite selbst bleibt immer stehen.
+Die Anwendung ist auf **eine Bildschirmhöhe ohne Scrollen** ausgelegt. Die Seite selbst
+scrollt nie – auf keiner geprüften Auflösung, auch nicht mit acht Gruppen und
+aufgedeckter Antwort. Gemessen mit offener Punkteleiste:
+
+| Auflösung | Ergebnis |
+|---|---|
+| 1920 × 1080 | alle 25 Fragen vollständig im Bild |
+| 1600 × 1000 | alle 25 Fragen vollständig im Bild |
+| 1440 × 900 | vollständig; nur die Heckenfrage braucht 15 px innerhalb der Karte – mit geschlossener Punkteleiste auch das nicht |
+| 1280 × 800 | die dichtesten Fragen scrollen bis zu 117 px innerhalb der Karte |
+
+Für den Beamer ist also alles ab 1440 × 900 sauber. Gescrollt wird im Zweifel nur
+innerhalb der Fragenkarte, nie die Seite.
 
 Damit das aufgeht, passiert beim Aufdecken zweierlei: die Fotos schrumpfen auf
 Briefmarkengröße und die verworfenen Antwortoptionen klappen zusammen. Die richtige
@@ -42,10 +51,10 @@ Antwort bleibt groß.
 
 | Taste | Funktion |
 |---|---|
-| `→` / `←` | nächste / vorherige Frage |
+| `→` / `←` | vor / zurück |
 | `Leertaste` | Antwort aufdecken |
-| `P` | Timer pausieren / fortsetzen |
-| `R` | Timer neu starten |
+| `P` | Uhr pausieren / fortsetzen |
+| `R` | Uhr neu starten |
 | `S` | Punkteleiste ein-/ausklappen |
 | `F` | Vollbild an/aus |
 
@@ -53,53 +62,70 @@ Antwort bleibt groß.
 
 ## Fotos einfügen
 
-Elf Fragen arbeiten mit Fotos. Solange kein Bild vorhanden ist, zeigt die App einen
-Platzhalter mit dem erwarteten Dateinamen. Lege die Bilder einfach in einen Ordner
-`bilder/` neben `index.html` – sie erscheinen dann automatisch:
+Neun Bilder gehören ins Quiz. Solange keines vorhanden ist, zeigt die App einen
+Platzhalter mit dem erwarteten Dateinamen. Lege die Bilder in einen Ordner `bilder/`
+neben `index.html` – sie erscheinen dann automatisch.
+
+Die Dateinamen sind bewusst neutral gehalten, damit der Platzhalter während des Spiels
+nichts verrät. Was auf welches Bild gehört, steht nur hier:
 
 | Datei | Motiv |
 |---|---|
-| `bilder/kirche-huelsenbusch.jpg` | Ev. Kirche Hülsenbusch |
-| `bilder/schloss-gimborn.jpg` | Schloss Gimborn |
-| `bilder/stadtwerke-bensberg.jpg` | Stadtwerke Bensberg |
-| `bilder/hecke-a.jpg` · `hecke-b.jpg` · `hecke-c.jpg` | die drei Hecken zur Auswahl |
-| `bilder/lavendel-a.jpg` | Lavandula angustifolia (echter Lavendel) |
-| `bilder/lavendel-b.jpg` | Lavandula intermedia (Lavandin) |
-| `bilder/kathedrale-santiago.jpg` | Kathedrale von Santiago de Compostela |
+| `bilder/kirche-a.jpg` | Kirche in Hülsenbusch |
+| `bilder/kirche-b.jpg` | Kirche in Gimborn |
+| `bilder/kirche-c.jpg` | Kirche in Lindlar |
+| `bilder/kirche-d.jpg` | Kirche in Frielingsdorf |
+| `bilder/gebaeude.jpg` | Stadtwerke Bensberg |
+| `bilder/hecke-a.jpg` … `hecke-d.jpg` | die vier Hecken zur Auswahl |
+| `bilder/baguette.jpg` | umgedrehtes Baguette auf einem Tisch |
+| `bilder/lavendel-a.jpg` | echter Lavendel (Lavandula angustifolia) |
+| `bilder/lavendel-b.jpg` | Lavandin (Lavandula intermedia) |
+| `bilder/bauwerk.jpg` | Kathedrale von Santiago de Compostela |
+
+---
+
+## Die sechs Runden
+
+| Runde | Titel | Fragen |
+|---|---|---|
+| I | Oberberg und das Bergische Land | 5 |
+| II | Frankreich | 7 |
+| III | Der Jakobsweg | 3 |
+| IV | Mallorca | 4 |
+| V | Schätzen und Knobeln | 5 |
+| VI | Der 12. August 1966 | 1 |
+
+25 Fragen insgesamt.
 
 ---
 
 ## Fragen anpassen
 
-Alle Fragen stehen gebündelt im `QUESTIONS`-Array am Anfang des `<script>`-Blocks in
-`index.html`. Jede Frage hat einen `type`, der die Auflösungs-Animation bestimmt:
+Runden stehen im `ROUNDS`-Array, alle Fragen im `QUESTIONS`-Array am Anfang des
+`<script>`-Blocks in `index.html`. Jede Frage hat einen `type`, der die Darstellung der
+Auflösung bestimmt:
 
-| `type` | Animation beim Aufdecken |
+| `type` | Auflösung |
 |---|---|
-| `single` | richtige Option leuchtet golden auf, Strahlenkranz |
-| `truefalse` | Gummistempel „WAHR“/„FALSCH“ schlägt ein |
-| `estimate` | Zahl zählt als Odometer hoch |
-| `photo` | Kartennadel fällt, Ortsname tippt sich Buchstabe für Buchstabe |
+| `single` | die richtige Option leuchtet auf, die übrigen klappen zusammen; Siegel mit Strahlenkranz |
+| `truefalse` | Stempel „Wahr“ oder „Falsch“ schlägt ein |
+| `estimate` | die Zahl zählt hoch – und wird bewusst nur dort genannt |
+| `photo` | ein Bild, ein Ort |
+| `places` | mehrere Bilder, je ein Ort, nacheinander eingeblendet |
 | `order` | Balkendiagramm sortiert sich der Größe nach |
-| `math` | Rechenweg erscheint Zeile für Zeile |
+| `math` | Rechenweg Zeile für Zeile |
 | `open` | keine richtige Antwort – Live-Auszählung mit Zählbalken |
 
-`time` legt die Sekunden für den Timer fest, `answer` die Überschrift der Auflösung und
-`fact` den Hintergrundtext.
+`time` legt die Sekunden für die Uhr fest, `answer` die Überschrift der Auflösung,
+`fact` den Hintergrundtext. `correctImg` hebt beim Aufdecken zusätzlich das richtige
+Foto hervor. `sheetLines` erzeugt auf dem Antwortzettel mehrere beschriftete Zeilen
+statt einer.
 
-> **Hinweis zur Hecken-Frage:** Welche Hecke wirklich auf Walks Grundstück wächst, weiß nur
-> die Familie. Aktuell ist die Rotbuchenhecke als richtig hinterlegt (`correct: 2`) – bei
-> Bedarf einfach den Index anpassen.
+> **Zur Heckenfrage:** Welche Hecke wirklich auf Walks Grundstück wächst, weiß nur die
+> Familie. Hinterlegt ist derzeit Hecke C (`correct: 2`, `correctImg: 2`). Zum Ändern
+> beide Werte auf denselben Index setzen – A ist 0, D ist 3.
 
----
-
-## Runden
-
-1. **Oberberg & Heimat** – Kreisname, drei Fotorätsel, Einwohner-Reihenfolge, Hecken
-2. **Bonjour la France** – Mont Blanc, Grenzen, Eiffelturm, Baguette, Lavendel, Valensole
-3. **Buen Camino** – Jakobsweg-Mythen, längste Route, Kathedrale
-4. **¡Viva Mallorca!** – Balearen, Ensaïmada, Hierbas, Puig Major, La Seu
-5. **Schätzen & Knobeln** – Geburtsmonate, Hirsche, Wein & Oliven, Schritte, Pommes vs. Pizza
-6. **Das Geburtstagskind** – der 12.08.1966
-
-27 Fragen insgesamt.
+> **Zur Jakobsweg-Frage:** Als wahre Aussage ist die Hundert-Kilometer-Regel für die
+> Compostela hinterlegt; sie ist über das Pilgerbüro in Santiago belegt. Die früher
+> naheliegende Antwort „im Grab liegt der Apostel Jakobus“ ist bewusst nicht die Lösung –
+> das ist Überlieferung, kein gesicherter Befund, und steht so auch im Erklärtext.
