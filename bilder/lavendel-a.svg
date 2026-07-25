@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img"
+     aria-label="Schematische Zeichnung: echter Lavendel mit je einer unverzweigten Blütenähre pro Stiel">
+  <defs>
+    <linearGradient id="skyA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6EEDF"/>
+      <stop offset="1" stop-color="#EADFC8"/>
+    </linearGradient>
+    <linearGradient id="blossomA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8E79C9"/>
+      <stop offset="1" stop-color="#6A57A4"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#skyA)"/>
+
+  <!-- drei Stiele, jeder mit genau EINER Ähre: Kennzeichen von Lavandula angustifolia -->
+  <g stroke="#6E8B4A" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M120 285 C118 230 121 195 122 168"/>
+    <path d="M200 290 C199 225 201 180 200 148"/>
+    <path d="M280 285 C282 232 279 197 278 172"/>
+  </g>
+
+  <!-- Blätter -->
+  <g fill="#7E9A5C">
+    <ellipse cx="106" cy="252" rx="17" ry="5" transform="rotate(-22 106 252)"/>
+    <ellipse cx="136" cy="262" rx="16" ry="5" transform="rotate(20 136 262)"/>
+    <ellipse cx="184" cy="258" rx="18" ry="5" transform="rotate(-18 184 258)"/>
+    <ellipse cx="217" cy="268" rx="17" ry="5" transform="rotate(22 217 268)"/>
+    <ellipse cx="264" cy="252" rx="17" ry="5" transform="rotate(-20 264 252)"/>
+    <ellipse cx="294" cy="263" rx="16" ry="5" transform="rotate(19 294 263)"/>
+  </g>
+
+  <!-- Ähren: kompakt, dicht, unverzweigt -->
+  <g fill="url(#blossomA)">
+    <ellipse cx="122" cy="140" rx="11" ry="31"/>
+    <ellipse cx="200" cy="118" rx="12" ry="35"/>
+    <ellipse cx="278" cy="144" rx="11" ry="30"/>
+  </g>
+  <g fill="#A891DA" opacity=".85">
+    <ellipse cx="119" cy="128" rx="6" ry="5"/><ellipse cx="125" cy="146" rx="6" ry="5"/>
+    <ellipse cx="120" cy="160" rx="5" ry="4"/>
+    <ellipse cx="197" cy="104" rx="6" ry="5"/><ellipse cx="204" cy="124" rx="6" ry="5"/>
+    <ellipse cx="198" cy="142" rx="5" ry="4"/>
+    <ellipse cx="275" cy="132" rx="6" ry="5"/><ellipse cx="281" cy="150" rx="6" ry="5"/>
+    <ellipse cx="276" cy="164" rx="5" ry="4"/>
+  </g>
+
+  <text x="200" y="34" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#8B98A1">
+    Schematische Zeichnung
+  </text>
+</svg>

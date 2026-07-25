@@ -1261,14 +1261,30 @@ function renderDots(){
     d.appendChild(el);
   });
 }
+/* Der in den Fragen hinterlegte Dateiname wird zuerst versucht; danach dieselbe
+   Datei mit anderer Endung. So genügt es, das Foto in bilder/ abzulegen – egal
+   ob die Kamera .jpeg, .png oder .webp geliefert hat. Ein echtes Foto ersetzt
+   damit automatisch eine hinterlegte Zeichnung. */
+const IMG_EXTS = ["jpg","jpeg","png","webp","svg"];
+function imgCandidates(src){
+  if(src.startsWith("data:")) return [src];   /* eingebettetes Bild, keine Varianten */
+  const base = src.replace(/\.[a-z0-9]+$/i, "");
+  return [src, ...IMG_EXTS.map(e=> base+"."+e).filter(u=> u !== src)];
+}
+function nextImg(el){
+  const rest = (el.dataset.rest || "").split("|").filter(Boolean);
+  if(rest.length){ el.dataset.rest = rest.slice(1).join("|"); el.src = rest[0]; }
+  else el.remove();
+}
 function photoHTML(img, i){
-  const src = img.src ? esc(img.src) : "";
+  const cands = img.src ? imgCandidates(img.src) : [];
   return `<div class="photo" data-img="${i}">
     <div class="frame">
-      ${src ? `<img src="${src}" alt="${esc(img.hint||"")}" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">` : ""}
+      ${cands.length ? `<img src="${esc(cands[0])}" data-rest="${esc(cands.slice(1).join("|"))}"
+           alt="${esc(img.hint||"")}" onload="this.parentNode.classList.add('has-img')" onerror="nextImg(this)">` : ""}
       <div class="ph">
         <span class="mark"></span>
-        ${src ? `<code>${src}</code>` : esc(img.hint || "Foto einfügen")}
+        ${cands.length ? `<code>${esc(cands[0])}</code>` : esc(img.hint || "Foto einfügen")}
       </div>
     </div>
     ${img.cap ? `<div class="cap">${esc(img.cap)}</div>` : ""}

@@ -62,12 +62,16 @@ Antwort bleibt groß.
 
 ## Fotos einfügen
 
-Neun Bilder gehören ins Quiz. Solange keines vorhanden ist, zeigt die App einen
-Platzhalter mit dem erwarteten Dateinamen. Lege die Bilder in einen Ordner `bilder/`
-neben `index.html` – sie erscheinen dann automatisch.
+Dreizehn Bilder gehören ins Quiz. Solange eines fehlt, zeigt die App einen Platzhalter
+mit dem erwarteten Dateinamen. Lege die Bilder in den Ordner `bilder/` neben
+`index.html` – sie erscheinen dann automatisch.
+
+**Die Endung ist egal.** Die App probiert nacheinander `.jpg`, `.jpeg`, `.png`, `.webp`
+und `.svg`; es zählt nur der Name vor dem Punkt. Zuschneiden ist auch nicht nötig,
+die App schneidet selbst auf 4:3.
 
 Die Dateinamen sind bewusst neutral gehalten, damit der Platzhalter während des Spiels
-nichts verrät. Was auf welches Bild gehört, steht nur hier:
+nichts verrät. Was auf welches Bild gehört, steht nur hier und in `bilder/LIESMICH.md`:
 
 | Datei | Motiv |
 |---|---|
@@ -78,9 +82,15 @@ nichts verrät. Was auf welches Bild gehört, steht nur hier:
 | `bilder/gebaeude.jpg` | Stadtwerke Bensberg |
 | `bilder/hecke-a.jpg` … `hecke-d.jpg` | die vier Hecken zur Auswahl |
 | `bilder/baguette.jpg` | umgedrehtes Baguette auf einem Tisch |
-| `bilder/lavendel-a.jpg` | echter Lavendel (Lavandula angustifolia) |
-| `bilder/lavendel-b.jpg` | Lavandin (Lavandula intermedia) |
+| `bilder/lavendel-a.*` | echter Lavendel (Lavandula angustifolia) — **Zeichnung liegt bei** |
+| `bilder/lavendel-b.*` | Lavandin (Lavandula × intermedia) — **Zeichnung liegt bei** |
 | `bilder/bauwerk.jpg` | Kathedrale von Santiago de Compostela |
+
+Für die Lavendelfrage liegen `bilder/lavendel-a.svg` und `-b.svg` bereits im Repo:
+zwei **schematische Zeichnungen**, im Bild auch so beschriftet. Sie zeigen genau das
+Merkmal, um das es geht – ein einzelner unverzweigter Blütenstiel beim echten Lavendel,
+ein oben dreifach verzweigter beim Lavandin. Damit ist die Frage sofort spielbar.
+Ein echtes Foto als `lavendel-a.jpg` hat Vorrang und ersetzt die Zeichnung automatisch.
 
 ---
 
