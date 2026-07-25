@@ -18,11 +18,25 @@ komplett offline lauffähig, ohne Installation und ohne Internetverbindung.
    **Der Timer deckt nichts auf.**
 4. **„🔓 Antwort aufdecken“** klicken – erst dann kommt die Auflösung, mit einer zum Fragetyp
    passenden Animation.
-5. Punkte über `+` / `−` in der Punktetafel vergeben.
+5. Punkte vergeben: Der Punktestand liegt in einer **ein- und ausklappbaren Seitenleiste**.
+   Auf- und zuklappen über den Knopf **🏆 Punkte** in der Kopfzeile oder mit der Taste `S`;
+   dann `+` / `−` pro Gruppe. Ob die Leiste offen ist, merkt sich die App.
 6. Am Ende „🏁 Endstand“ → Siegertreppchen mit Konfetti.
 
-Punktestand und Fortschritt werden im Browser gespeichert – ein versehentliches Neuladen
-kostet also keine Punkte.
+Punktestand, Fortschritt und der Zustand der Punkteleiste werden im Browser gespeichert –
+ein versehentliches Neuladen kostet also keine Punkte.
+
+### Layout
+
+Die Anwendung ist auf **eine Bildschirmhöhe ohne Scrollen** ausgelegt: Start-, Quiz- und
+Endbildschirm passen jeweils komplett ins Fenster. Ab 1920×1080 liegen alle 27 Fragen
+samt Auflösung auf einem Bild; bei 1440×900 scrollen zwei besonders dichte Fragen
+(die Reihenfolge- und die Heckenfrage) noch um wenige Zentimeter innerhalb der Karte –
+die Seite selbst bleibt immer stehen.
+
+Damit das aufgeht, passiert beim Aufdecken zweierlei: die Fotos schrumpfen auf
+Briefmarkengröße und die verworfenen Antwortoptionen klappen zusammen. Die richtige
+Antwort bleibt groß.
 
 ### Tastenkürzel
 
@@ -32,6 +46,7 @@ kostet also keine Punkte.
 | `Leertaste` | Antwort aufdecken |
 | `P` | Timer pausieren / fortsetzen |
 | `R` | Timer neu starten |
+| `S` | Punkteleiste ein-/ausklappen |
 | `F` | Vollbild an/aus |
 
 ---
