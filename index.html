@@ -10,6 +10,8 @@
    Farbwelt: Meerblau, Türkis, Sand, Terrakotta, Sonnengelb
    ============================================================ */
 :root{
+  /* Bewusst einfarbige Sonnen-Optik – kein Dark Mode, sonst kippt die Mallorca-Stimmung */
+  color-scheme:light;
   --sea-deep:#04364A;
   --sea:#0A7EA4;
   --sea-light:#189AB4;
@@ -1452,8 +1454,11 @@ document.addEventListener("keydown", e=>{
   if(e.key.toLowerCase() === "p"){ timerToggle(); }
   if(e.key.toLowerCase() === "r"){ timerStart(QUESTIONS[state.index].time || 60); }
   if(e.key.toLowerCase() === "f"){
-    if(!document.fullscreenElement) document.documentElement.requestFullscreen?.();
-    else document.exitFullscreen?.();
+    /* In eingebetteten Ansichten kann Vollbild gesperrt sein – dann still ignorieren */
+    try{
+      if(!document.fullscreenElement) document.documentElement.requestFullscreen?.().catch(()=>{});
+      else document.exitFullscreen?.().catch(()=>{});
+    }catch(err){}
   }
 });
 
