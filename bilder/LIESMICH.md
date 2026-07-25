@@ -50,10 +50,14 @@ Bei Weitergabe gehört der Nachweis dazu; für den privaten Quizabend genügt di
 | Datei | Quelle (Commons) | Autor | Lizenz |
 |---|---|---|---|
 | `kirche-a.jpg` | [Ev Kirche Huelsenbusch.jpg](https://commons.wikimedia.org/wiki/File:Ev_Kirche_Huelsenbusch.jpg) | Sebastian Hirsch | CC BY-SA 3.0 |
-| `kirche-b.jpg` | [Kath. Kirche Pastoratsstraße Gimborn (Marienheide).jpg](https://commons.wikimedia.org/wiki/File:Kath._Kirche_Pastoratsstra%C3%9Fe_Gimborn_(Marienheide).jpg) | DiAuras | CC BY-SA 4.0 |
-| `kirche-c.jpg` | [St. Severin (Lindlar) (01).jpg](https://commons.wikimedia.org/wiki/File:St._Severin_(Lindlar)_(01).jpg) | Chris06 | CC BY-SA 4.0 |
+| `kirche-b.jpg` | [Kath. Kirche und Schloss Gimborn (Marienheide).jpg](https://commons.wikimedia.org/wiki/File:Kath._Kirche_und_Schloss_Gimborn_(Marienheide).jpg) | DiAuras | CC BY-SA 4.0 |
+| `kirche-c.jpg` | [St. Severin (Lindlar) (2).jpg](https://commons.wikimedia.org/wiki/File:St._Severin_(Lindlar)_(2).jpg) | Chris06 | CC BY-SA 4.0 |
 | `kirche-d.jpg` | [Lindlar Frielingsdorf - Sankt Apollinaris 01 ies.jpg](https://commons.wikimedia.org/wiki/File:Lindlar_Frielingsdorf_-_Sankt_Apollinaris_01_ies.jpg) | Frank Vincentz | CC BY-SA 3.0 |
-| `bauwerk.jpg` | [Santiago cathedral 2021.jpg](https://commons.wikimedia.org/wiki/File:Santiago_cathedral_2021.jpg) | Fernando | CC BY-SA 4.0 |
+| `bauwerk.jpg` | [Santiago Compostela Cathedral 2023 – View from Alameda Park.jpg](https://commons.wikimedia.org/wiki/File:Santiago_Compostela_Cathedral_2023_-_View_from_Alameda_Park.jpg) | Fernando Pascullo | CC BY-SA 4.0 |
+
+Alle Fotos sind bewusst Querformate: die App beschneidet auf 4:3, und bei
+Hochformaten bliebe sonst nur die Turmspitze übrig. Das gilt auch für eigene
+Fotos (Hecken, Stadtwerke): am besten quer fotografieren.
 
 ## Achtung bei den vier Kirchen
 
