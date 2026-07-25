@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img"
+     aria-label="Schematische Zeichnung: ein umgedrehtes Baguette liegt auf einem Holztisch, die flache Unterseite zeigt nach oben">
+  <defs>
+    <linearGradient id="wandB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6EEDF"/>
+      <stop offset="1" stop-color="#EADFC8"/>
+    </linearGradient>
+    <linearGradient id="tischB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B98A5C"/>
+      <stop offset="1" stop-color="#9E7048"/>
+    </linearGradient>
+    <linearGradient id="krusteB" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#B97E3E"/>
+      <stop offset="1" stop-color="#D9A968"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#wandB)"/>
+
+  <!-- Tischplatte mit Brettfugen -->
+  <rect x="0" y="170" width="400" height="130" fill="url(#tischB)"/>
+  <g stroke="#8A6240" stroke-width="2" opacity=".6">
+    <line x1="0" y1="212" x2="400" y2="206"/>
+    <line x1="0" y1="256" x2="400" y2="252"/>
+  </g>
+
+  <!-- Schatten -->
+  <ellipse cx="200" cy="196" rx="150" ry="14" fill="#6E4E31" opacity=".35"/>
+
+  <!-- Baguette, umgedreht: Kruste mit Einschnitten unten, flache helle Unterseite oben -->
+  <g>
+    <path d="M52 178 C60 200 120 210 200 210 C280 210 340 200 348 178
+             C340 156 280 146 200 146 C120 146 60 156 52 178 Z"
+          fill="url(#krusteB)" stroke="#9A652E" stroke-width="3"/>
+    <!-- flache, blasse Unterseite zeigt nach oben -->
+    <path d="M66 172 C90 160 140 154 200 154 C260 154 310 160 334 172
+             C310 166 260 162 200 162 C140 162 90 166 66 172 Z"
+          fill="#EED9AE"/>
+    <!-- Mehlstaub auf der Unterseite -->
+    <g fill="#F8EED3" opacity=".9">
+      <circle cx="150" cy="161" r="3"/><circle cx="196" cy="158" r="2.4"/>
+      <circle cx="243" cy="161" r="3"/><circle cx="286" cy="166" r="2.2"/>
+      <circle cx="118" cy="165" r="2.2"/>
+    </g>
+    <!-- die typischen schrägen Einschnitte – nach unten gedreht -->
+    <g stroke="#8A5526" stroke-width="4" stroke-linecap="round" fill="none" opacity=".85">
+      <path d="M105 200 C115 205 127 206 137 203"/>
+      <path d="M158 205 C168 210 180 210 190 207"/>
+      <path d="M212 207 C222 211 234 211 244 208"/>
+      <path d="M265 204 C275 208 287 207 296 203"/>
+    </g>
+  </g>
+
+  <!-- Mehl auf dem Tisch -->
+  <g fill="#F1E4C4" opacity=".8">
+    <circle cx="88" cy="214" r="3"/><circle cx="318" cy="212" r="2.6"/>
+    <circle cx="336" cy="222" r="2"/>
+  </g>
+
+  <text x="200" y="34" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#8B98A1">
+    Schematische Zeichnung
+  </text>
+</svg>

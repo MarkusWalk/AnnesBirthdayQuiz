@@ -62,9 +62,12 @@ Antwort bleibt groß.
 
 ## Fotos einfügen
 
-Dreizehn Bilder gehören ins Quiz. Solange eines fehlt, zeigt die App einen Platzhalter
-mit dem erwarteten Dateinamen. Lege die Bilder in den Ordner `bilder/` neben
-`index.html` – sie erscheinen dann automatisch.
+Dreizehn Bilder gehören ins Quiz; **acht liegen bereits im Repo** (vier Kirchen,
+Santiago-Kathedrale, zwei Lavendel-Zeichnungen, Baguette-Zeichnung). Es fehlen nur
+noch die vier Heckenfotos und die Stadtwerke Bensberg – Motive, die es nur als
+eigenes Foto gibt. Solange eines fehlt, zeigt die App einen Platzhalter mit dem
+erwarteten Dateinamen. Lege die Bilder in den Ordner `bilder/` neben `index.html` –
+sie erscheinen dann automatisch.
 
 **Die Endung ist egal.** Die App probiert nacheinander `.jpg`, `.jpeg`, `.png`, `.webp`
 und `.svg`; es zählt nur der Name vor dem Punkt. Zuschneiden ist auch nicht nötig,
@@ -73,18 +76,21 @@ die App schneidet selbst auf 4:3.
 Die Dateinamen sind bewusst neutral gehalten, damit der Platzhalter während des Spiels
 nichts verrät. Was auf welches Bild gehört, steht nur hier und in `bilder/LIESMICH.md`:
 
-| Datei | Motiv |
-|---|---|
-| `bilder/kirche-a.jpg` | Kirche in Hülsenbusch |
-| `bilder/kirche-b.jpg` | Kirche in Gimborn |
-| `bilder/kirche-c.jpg` | Kirche in Lindlar |
-| `bilder/kirche-d.jpg` | Kirche in Frielingsdorf |
-| `bilder/gebaeude.jpg` | Stadtwerke Bensberg |
-| `bilder/hecke-a.jpg` … `hecke-d.jpg` | die vier Hecken zur Auswahl |
-| `bilder/baguette.jpg` | umgedrehtes Baguette auf einem Tisch |
-| `bilder/lavendel-a.*` | echter Lavendel (Lavandula angustifolia) — **Zeichnung liegt bei** |
-| `bilder/lavendel-b.*` | Lavandin (Lavandula × intermedia) — **Zeichnung liegt bei** |
-| `bilder/bauwerk.jpg` | Kathedrale von Santiago de Compostela |
+| Datei | Motiv | Status |
+|---|---|---|
+| `bilder/kirche-a.jpg` | Kirche in Hülsenbusch | liegt bei (Wikimedia) |
+| `bilder/kirche-b.jpg` | Kirche in Gimborn | liegt bei (Wikimedia) |
+| `bilder/kirche-c.jpg` | Kirche in Lindlar | liegt bei (Wikimedia) |
+| `bilder/kirche-d.jpg` | Kirche in Frielingsdorf | liegt bei (Wikimedia) |
+| `bilder/gebaeude.jpg` | Stadtwerke Bensberg | **fehlt** – eigenes Foto nötig |
+| `bilder/hecke-a.jpg` … `hecke-d.jpg` | die vier Hecken zur Auswahl | **fehlen** – eigene Fotos nötig |
+| `bilder/baguette.*` | umgedrehtes Baguette auf einem Tisch | Zeichnung liegt bei |
+| `bilder/lavendel-a.*` | echter Lavendel (Lavandula angustifolia) | Zeichnung liegt bei |
+| `bilder/lavendel-b.*` | Lavandin (Lavandula × intermedia) | Zeichnung liegt bei |
+| `bilder/bauwerk.jpg` | Kathedrale von Santiago de Compostela | liegt bei (Wikimedia) |
+
+Die Herkunfts- und Lizenzangaben zu den fünf Wikimedia-Fotos stehen in
+`bilder/LIESMICH.md`.
 
 Für die Lavendelfrage liegen `bilder/lavendel-a.svg` und `-b.svg` bereits im Repo:
 zwei **schematische Zeichnungen**, im Bild auch so beschriftet. Sie zeigen genau das
