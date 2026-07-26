@@ -156,6 +156,7 @@ Auflösung. Verfügbare Arten:
 | `herbs` | Zutatenwolke mit Sortenkarten |
 | `botafumeiro` | schwingendes Pendel mit Kennzahlen |
 | `lavendel` | botanischer Vergleich der beiden Lavendelarten |
+| `birthday` | Geburtstagskarte zum Finale, mit Konfetti |
 
 Bei Schätzfragen erscheint die Grafik erst, nachdem die Zahl hochgezählt hat –
 sonst stünde die Lösung schon vorher da.

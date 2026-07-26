@@ -440,6 +440,7 @@ body.quiz-mode{overflow:hidden}
 .tally-col{text-align:center; min-width:118px}
 .tally-bar{width:100%; background:rgba(255,255,255,.11); border-radius:8px; height:96px; display:flex; align-items:flex-end; overflow:hidden}
 .tally-fill{width:100%; border-radius:8px 8px 0 0; transition:height .55s cubic-bezier(.2,1.2,.4,1); height:5px}
+.tally-emoji{font-size:30px; line-height:1; margin-bottom:8px; animation:popIn .5s cubic-bezier(.2,1.5,.4,1) both}
 .tally-num{font-family:var(--serif); font-size:25px; margin-top:7px; font-variant-numeric:tabular-nums}
 .tally-lbl{margin-top:2px; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.78)}
 .tally-ctrl{display:flex; gap:5px; justify-content:center; margin-top:8px}
@@ -460,10 +461,12 @@ body.quiz-mode{overflow:hidden}
 .viz .rank-row.hl .rank-pos{color:#fff; border-right-color:rgba(255,255,255,.5)}
 
 /* Monats-Säulen */
-.cols{display:flex; gap:5px; align-items:flex-end; height:110px; max-width:560px}
-.cols .col{flex:1; display:flex; flex-direction:column; justify-content:flex-end; gap:5px; text-align:center}
+.cols{display:flex; gap:5px; align-items:flex-end; max-width:560px}
+.cols .col{flex:1; display:flex; flex-direction:column; justify-content:flex-end; gap:6px; text-align:center; min-width:0}
+/* Höhe kommt in Pixeln aus renderViz – eine Prozenthöhe hätte hier keinen
+   Bezugsrahmen, weil die Spalte durch align-items:flex-end ihre Inhaltshöhe behält. */
 .cols .col i{display:block; border-radius:4px 4px 0 0; background:rgba(255,255,255,.22);
-  height:calc(var(--h) * 1%); transform:scaleY(0); transform-origin:bottom;
+  transform:scaleY(0); transform-origin:bottom;
   animation:colGrow .55s cubic-bezier(.2,.9,.3,1) both}
 .cols .col.hl i{background:linear-gradient(180deg,var(--gold-light),var(--gold));
   box-shadow:0 0 18px rgba(232,195,122,.45)}
@@ -699,6 +702,28 @@ body.quiz-mode{overflow:hidden}
   border-radius:11px; padding:10px 14px; animation:riseIn .5s both}
 .herb-kinds b{display:block; font-family:var(--serif); font-size:16px; color:var(--gold-light); margin-bottom:2px}
 .herb-kinds span{font-size:12px; color:rgba(255,255,255,.78); line-height:1.4}
+
+/* Geburtstagskarte zum Finale */
+.bday{display:grid; grid-template-columns:1fr 1fr; gap:12px; max-width:660px}
+@media(max-width:680px){.bday{grid-template-columns:1fr}}
+.bday .half{border-radius:14px; padding:15px 18px; border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.08); animation:riseIn .6s both}
+.bday .half .where{font-size:10.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(255,255,255,.58); margin-bottom:8px}
+.bday .half .what{font-family:var(--serif); font-size:clamp(18px,2.2vw,23px); line-height:1.24; color:#fff}
+.bday .half .sub{font-size:12.5px; line-height:1.45; color:rgba(255,255,255,.78); margin-top:7px}
+.bday .half.star{border-color:var(--gold-light); box-shadow:0 0 0 2px rgba(232,195,122,.2);
+  background:linear-gradient(155deg,rgba(217,168,78,.32),rgba(232,195,122,.12))}
+.bday .half.star .where,.bday .half.star .what{color:var(--gold-light)}
+.bday .half.star .date{font-family:var(--serif); font-size:clamp(23px,2.9vw,31px); color:#fff;
+  margin-top:9px; letter-spacing:-.01em}
+.bday .band{grid-column:1/-1; display:flex; align-items:center; justify-content:center; gap:15px;
+  border-top:1px solid rgba(255,255,255,.2); margin-top:4px; padding-top:16px;
+  animation:riseIn .7s 1.15s both}
+.bday .band .cake{font-size:34px; line-height:1; animation:cakeBob 2.6s 1.6s ease-in-out infinite}
+@keyframes cakeBob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-8px) rotate(4deg)}}
+.bday .band .txt{font-family:var(--serif); font-style:italic; font-size:clamp(20px,2.6vw,29px);
+  color:var(--gold-light); text-wrap:balance}
 
 /* Konfetti aus Papierschnipseln */
 .confetti{position:fixed; z-index:60; pointer-events:none; will-change:transform,opacity; border-radius:1px}
@@ -1294,10 +1319,10 @@ const QUESTIONS = [
   correct:0,
   answer:"Im Juli",
   fact:"Der Juli ist in Deutschland seit einigen Jahren der geburtenstärkste Monat; früher lag der September vorn. Anne hält es mit dem August.",
-  viz:{kind:"columns", cap:"Geburten je Monat, relativ", items:[
-    {name:"Jan", value:92},{name:"Feb", value:88},{name:"Mär", value:96},{name:"Apr", value:93},
-    {name:"Mai", value:97},{name:"Jun", value:98},{name:"Jul", value:105, hl:true},{name:"Aug", value:103},
-    {name:"Sep", value:102},{name:"Okt", value:98},{name:"Nov", value:91},{name:"Dez", value:93}
+  viz:{kind:"columns", cap:"Geburten je Monat · Index, 100 = Durchschnitt", items:[
+    {name:"Jan", value:96},{name:"Feb", value:92},{name:"Mär", value:99},{name:"Apr", value:96},
+    {name:"Mai", value:100},{name:"Jun", value:101},{name:"Jul", value:108, hl:true},{name:"Aug", value:106},
+    {name:"Sep", value:105},{name:"Okt", value:101},{name:"Nov", value:94},{name:"Dez", value:96}
   ]}
 },
 {
@@ -1338,15 +1363,15 @@ const QUESTIONS = [
   ]}
 },
 {
-  round:5, cat:"Auszählen", type:"open", time:60,
-  q:"Schätzt einmal: Wie viele der Anwesenden essen lieber Pommes – und wie viele lieber Pizza?",
-  hint:"Keine richtige Antwort. Jede Gruppe schreibt ihre Schätzung auf, danach wird ausgezählt.",
+  round:5, cat:"Abstimmung", type:"open", time:60,
+  q:"Was mag die Mehrheit hier im Raum lieber – 🍟 Pommes oder 🍕 Pizza?",
+  hint:"Notiert euren Tipp, wer gewinnt. Danach hebt jeder die Hand und es wird ausgezählt.",
   tally:[
-    {label:"Pommes", color:"#D9A84E"},
-    {label:"Pizza",  color:"#C97572"}
+    {label:"Pommes", emoji:"🍟", color:"#D9A84E"},
+    {label:"Pizza",  emoji:"🍕", color:"#C97572"}
   ],
-  answer:"Jetzt wird ausgezählt",
-  fact:"Alle Hände hoch. Der Quizmaster zählt live aus und trägt die Zahlen oben ein. Den Punkt bekommt die Gruppe, deren Schätzung am nächsten liegt."
+  answer:"Jetzt wird abgestimmt",
+  fact:"Alle Hände hoch. Der Quizmaster zählt live aus und trägt die Zahlen oben ein. Den Punkt bekommt jede Gruppe, die auf die Mehrheit getippt hat."
 },
 
 /* ---------- VI · DER 12. AUGUST 1966 ---------- */
@@ -1361,12 +1386,16 @@ const QUESTIONS = [
   ],
   correct:0,
   answer:"Die Beatles starteten ihre letzte Tournee",
-  fact:"Am 12. August 1966 spielten die Beatles im International Amphitheatre in Chicago den Auftakt ihrer allerletzten Tournee – keine drei Wochen später standen sie zum letzten Mal auf einer Konzertbühne. Am selben Tag wurde in Deutschland etwas viel Wichtigeres geboren.",
-  viz:{kind:"timeline", cap:"August 1966", events:[
-    {x:14, side:"above", d:"12. August", t:"Chicago – Auftakt der letzten Beatles-Tournee"},
-    {x:14, side:"below", d:"12. August", t:"Anne kommt zur Welt", star:true},
-    {x:78, side:"above", d:"29. August", t:"Candlestick Park, San Francisco – das letzte Konzert überhaupt"}
-  ]}
+  fact:"Am 12. August 1966 spielten die Beatles im International Amphitheatre in Chicago den Auftakt ihrer allerletzten Tournee – keine drei Wochen später standen sie zum letzten Mal auf einer Konzertbühne.",
+  viz:{kind:"birthday", cap:"Ein Datum, zwei Ereignisse", emoji:"🎂",
+    band:"Herzlichen Glückwunsch, Anne!",
+    halves:[
+      {where:"Chicago, Illinois",
+       what:"Die Beatles spielen den Auftakt ihrer letzten Tournee",
+       sub:"Am 29. August stehen sie in San Francisco zum letzten Mal auf einer Konzertbühne."},
+      {where:"Im Bergischen Land", what:"Anne wird geboren", date:"12. August 1966",
+       sub:"Das eigentliche Ereignis dieses Tages – und der Grund für diesen Abend.", star:true}
+    ]}
 }
 ];
 
@@ -1822,9 +1851,10 @@ function revealMath(q, stage){
 /* Offene Frage: Live-Auszählung */
 function revealOpen(q, stage){
   const cols = q.tally || [];
-  stage.innerHTML = `<div class="open-note">Keine richtige Antwort – hier wird live ausgezählt.</div>
+  stage.innerHTML = `<div class="open-note">Keine richtige Antwort im Voraus – hier wird live abgestimmt.</div>
     <div class="tally">` + cols.map((c,i)=>`
       <div class="tally-col" data-i="${i}">
+        ${c.emoji ? `<div class="tally-emoji">${c.emoji}</div>` : ""}
         <div class="tally-bar"><div class="tally-fill" style="background:${c.color}"></div></div>
         <div class="tally-num">0</div>
         <div class="tally-lbl">${esc(c.label)}</div>
@@ -1879,8 +1909,10 @@ function renderViz(q, stage){
     const max = Math.max(...v.items.map(i=> i.value));
     box.innerHTML += `<div class="cols">` + v.items.map((it,i)=>`
       <div class="col${it.hl?" hl":""}">
-        <i style="--h:${(it.value/max)*100}; animation-delay:${.1+i*.06}s"></i><b>${esc(it.name)}</b>
+        <i style="height:${Math.round(it.value/max*118)}px; animation-delay:${.1+i*.07}s"></i>
+        <b>${esc(it.name)}</b>
       </div>`).join("") + `</div>`;
+    v.items.filter(it=> it.hl).forEach(()=> tone(880, .3, {type:"triangle", gain:.13, delay:.1+v.items.length*.07}));
   }
 
   if(v.kind === "hexmap"){
@@ -1953,6 +1985,23 @@ function renderViz(q, stage){
   if(v.kind === "rosette"){
     box.innerHTML += `<div class="rosette-wrap"><div class="rosette"></div>
       <div class="rosette-note">${esc(v.note)}</div></div>`;
+  }
+
+  if(v.kind === "birthday"){
+    box.innerHTML += `<div class="bday">` + v.halves.map((h,i)=>`
+      <div class="half ${h.star?"star":""}" style="animation-delay:${.15+i*.4}s">
+        <div class="where">${esc(h.where)}</div>
+        <div class="what">${esc(h.what)}</div>
+        ${h.date ? `<div class="date">${esc(h.date)}</div>` : ""}
+        ${h.sub  ? `<div class="sub">${esc(h.sub)}</div>` : ""}
+      </div>`).join("") +
+      `<div class="band"><span class="cake">${v.emoji}</span><span class="txt">${esc(v.band)}</span></div></div>`;
+    tone(523, .3, {type:"sine",     gain:.12, delay:.15});
+    tone(784, .4, {type:"triangle", gain:.14, delay:.55});
+    setTimeout(()=>{ sfxFinal(); confetti(90, {fromTop:true}); }, 1150);
+    /* Die linke Kartenhälfte nennt die Antwort schon – die Überschrift würde sie
+       nur wiederholen und die Gratulation von ihrem Platz am Ende verdrängen. */
+    $("#revealAnswer").style.display = "none";
   }
 
   if(v.kind === "wordsplit"){
