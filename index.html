@@ -451,6 +451,133 @@ body.quiz-mode{overflow:hidden}
 .open-note{background:rgba(255,255,255,.1); border-radius:8px; padding:11px 15px; margin-bottom:12px;
   border-left:3px solid var(--gold-light); font-size:14px}
 
+/* ---------- Auflösungs-Grafiken (viz) ---------- */
+.viz{margin-top:16px; position:relative}
+.viz-cap{font-size:10.5px; font-weight:700; letter-spacing:.24em; text-transform:uppercase;
+  color:rgba(255,255,255,.62); margin-bottom:10px}
+.viz .rank-name{color:var(--sea-deep)}
+.viz .rank-fill.hl{background:linear-gradient(90deg,var(--gold-light),var(--gold))}
+.viz .rank-row.hl .rank-pos{color:#fff; border-right-color:rgba(255,255,255,.5)}
+
+/* Monats-Säulen */
+.cols{display:flex; gap:5px; align-items:flex-end; height:110px; max-width:560px}
+.cols .col{flex:1; display:flex; flex-direction:column; justify-content:flex-end; gap:5px; text-align:center}
+.cols .col i{display:block; border-radius:4px 4px 0 0; background:rgba(255,255,255,.22);
+  height:calc(var(--h) * 1%); transform:scaleY(0); transform-origin:bottom;
+  animation:colGrow .55s cubic-bezier(.2,.9,.3,1) both}
+.cols .col.hl i{background:linear-gradient(180deg,var(--gold-light),var(--gold));
+  box-shadow:0 0 18px rgba(232,195,122,.45)}
+.cols .col b{font-size:9px; font-weight:600; letter-spacing:.06em; color:rgba(255,255,255,.66); text-transform:uppercase}
+.cols .col.hl b{color:var(--gold-light)}
+@keyframes colGrow{to{transform:scaleY(1)}}
+
+/* Frankreich-Sechseck mit Nachbarn */
+.hexmap{position:relative; height:230px; max-width:560px}
+.hexmap .hex{
+  position:absolute; left:50%; top:50%; width:120px; height:132px; transform:translate(-50%,-50%);
+  background:rgba(255,255,255,.13); border:0;
+  clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display:grid; place-items:center; animation:hexIn .6s cubic-bezier(.2,1.2,.4,1) both;
+}
+.hexmap .hex span{font-family:var(--serif); font-style:italic; font-size:15px; color:#fff}
+@keyframes hexIn{from{opacity:0; transform:translate(-50%,-50%) scale(.5) rotate(-14deg)}to{opacity:1; transform:translate(-50%,-50%) scale(1)}}
+.geo-chip{
+  position:absolute; transform:translate(-50%,-50%);
+  background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.32); border-radius:999px;
+  padding:4px 12px; font-size:12.5px; font-weight:600; color:#fff; white-space:nowrap;
+  animation:chipIn .45s cubic-bezier(.2,1.4,.4,1) both;
+}
+.geo-chip .n{color:var(--gold-light); font-family:var(--serif); margin-right:5px}
+@keyframes chipIn{from{opacity:0; transform:translate(-50%,-50%) scale(.4)}to{opacity:1; transform:translate(-50%,-50%) scale(1)}}
+
+/* Oberberg-Karte mit Pins */
+.obermap{position:relative; height:210px; max-width:560px; border-radius:12px;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); overflow:hidden}
+.obermap::after{content:"Oberbergisches Land"; position:absolute; right:12px; bottom:8px;
+  font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(255,255,255,.4)}
+.map-pin{position:absolute; transform:translate(-50%,-100%); text-align:center;
+  animation:pinDrop .5s cubic-bezier(.2,1.4,.4,1) both}
+.map-pin .head{width:30px; height:30px; margin:0 auto; border-radius:50% 50% 50% 4px;
+  transform:rotate(45deg); background:linear-gradient(155deg,var(--gold-light),var(--gold));
+  display:grid; place-items:center; box-shadow:0 6px 14px rgba(0,0,0,.3)}
+.map-pin .head b{transform:rotate(-45deg); color:#4A3308; font-size:13px}
+.map-pin .lbl{margin-top:7px; font-size:11.5px; font-weight:600; color:#fff; white-space:nowrap;
+  background:rgba(0,0,0,.25); border-radius:5px; padding:2px 7px}
+@keyframes pinDrop{from{opacity:0; transform:translate(-50%,-260%)}60%{transform:translate(-50%,-88%)}to{opacity:1; transform:translate(-50%,-100%)}}
+
+/* Zeitstrahl */
+.tl{position:relative; height:150px; max-width:600px; margin-top:6px}
+.tl .line{position:absolute; left:2%; right:2%; top:50%; height:2px; background:rgba(255,255,255,.35);
+  transform:scaleX(0); transform-origin:left; animation:tlGrow .9s .1s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes tlGrow{to{transform:scaleX(1)}}
+.tl .node{position:absolute; transform:translateX(-50%); width:170px; text-align:center;
+  animation:riseIn .5s both}
+.tl .node .dot{width:13px; height:13px; border-radius:50%; background:var(--foam);
+  border:2.5px solid #fff; margin:0 auto}
+.tl .node.star .dot{background:var(--gold); width:17px; height:17px; box-shadow:0 0 16px rgba(232,195,122,.75)}
+.tl .node .d{font-family:var(--serif); font-size:14px; color:var(--gold-light); margin:5px 0 2px}
+.tl .node .t{font-size:11.5px; line-height:1.35; color:rgba(255,255,255,.85)}
+.tl .node.above{bottom:calc(50% + 8px)} .tl .node.above .dot{position:absolute; bottom:-14px; left:50%; transform:translateX(-50%)}
+.tl .node.below{top:calc(50% + 8px)} .tl .node.below .dot{position:absolute; top:-14px; left:50%; transform:translateX(-50%)}
+
+/* Live-Sekundenzähler */
+.persec{margin-top:14px; background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.18);
+  border-radius:12px; padding:12px 18px; display:inline-flex; align-items:baseline; gap:12px;
+  animation:riseIn .5s 1.9s both}
+.persec b{font-family:var(--serif); font-size:clamp(22px,2.6vw,30px); color:var(--gold-light);
+  font-variant-numeric:tabular-nums; min-width:5ch}
+.persec span{font-size:12.5px; color:rgba(255,255,255,.8)}
+
+/* Skala mit Markierungen */
+.gauge{max-width:560px; margin-top:8px}
+.gauge .track{position:relative; height:26px; border-radius:999px; background:rgba(255,255,255,.12); overflow:visible}
+.gauge .fill{position:absolute; inset:0 auto 0 0; width:0; border-radius:999px;
+  background:linear-gradient(90deg,rgba(143,168,136,.9),var(--gold)); animation:grow 1.4s .3s cubic-bezier(.2,.9,.3,1) forwards}
+.gauge .mark{position:absolute; top:-7px; bottom:-7px; width:2px; background:rgba(255,255,255,.55)}
+.gauge .mark i{position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-style:normal;
+  font-size:10.5px; color:rgba(255,255,255,.75); white-space:nowrap}
+.gauge .cap-row{display:flex; justify-content:space-between; font-size:11px; color:rgba(255,255,255,.6); margin-top:26px}
+
+/* Flächenvergleich */
+.areacomp{display:flex; align-items:flex-end; gap:34px; margin-top:8px; flex-wrap:wrap}
+.areacomp .ac{text-align:center; animation:riseIn .6s both}
+.areacomp .ac .circ{border-radius:50%; margin:0 auto 10px; transform:scale(0);
+  animation:circIn .8s cubic-bezier(.2,1.1,.4,1) forwards}
+@keyframes circIn{to{transform:scale(1)}}
+.areacomp .ac.a .circ{background:radial-gradient(circle at 34% 30%, rgba(232,195,122,.95), rgba(217,168,78,.75))}
+.areacomp .ac.b .circ{background:rgba(255,255,255,.1); border:2px dashed rgba(255,255,255,.5)}
+.areacomp .ac .nm{font-size:12.5px; font-weight:600; color:#fff}
+.areacomp .ac .ar{font-family:var(--serif); font-size:17px; color:var(--gold-light)}
+
+/* Fensterrose */
+.rosette-wrap{display:flex; align-items:center; gap:22px; margin-top:6px; flex-wrap:wrap}
+.rosette{width:130px; height:130px; border-radius:50%; position:relative; flex:0 0 auto;
+  background:
+    radial-gradient(circle, transparent 0 12%, rgba(232,195,122,.25) 12% 16%, transparent 16% 100%),
+    repeating-conic-gradient(from 0deg, rgba(232,195,122,.85) 0 9deg, rgba(255,255,255,.07) 9deg 30deg);
+  -webkit-mask:radial-gradient(circle, transparent 0 10%, #000 11% 62%, transparent 63% 66%, #000 67% 74%, transparent 75%);
+  mask:radial-gradient(circle, transparent 0 10%, #000 11% 62%, transparent 63% 66%, #000 67% 74%, transparent 75%);
+  animation:sealIn .8s cubic-bezier(.2,1.2,.4,1) both, spin 60s linear infinite;
+}
+.rosette-note{font-size:13px; line-height:1.5; color:rgba(255,255,255,.85); max-width:330px}
+
+/* Lavendel-Vergleich */
+.lavcomp{display:grid; grid-template-columns:1fr 1fr; gap:12px; max-width:620px; margin-top:6px}
+@media(max-width:640px){.lavcomp{grid-template-columns:1fr}}
+.lav-card{background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.18); border-radius:12px;
+  padding:14px 16px; display:flex; gap:14px; align-items:center; animation:riseIn .55s both}
+.lav-card.win{border-color:var(--gold-light); box-shadow:0 0 0 2px rgba(232,195,122,.3)}
+.lav-card svg{flex:0 0 auto; overflow:visible}
+.lav-card svg path,.lav-card svg line{stroke-dasharray:120; stroke-dashoffset:120;
+  animation:lavDraw 1s .35s cubic-bezier(.3,.6,.4,1) forwards}
+.lav-card svg ellipse{opacity:0; animation:lavBloom .45s 1.05s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes lavDraw{to{stroke-dashoffset:0}}
+@keyframes lavBloom{from{opacity:0; transform:scale(.3)}to{opacity:1; transform:scale(1)}}
+.lav-card .bot{font-family:var(--serif); font-style:italic; font-size:16.5px; color:#fff; margin-bottom:3px}
+.lav-card .bot .ltr{font-style:normal; font-family:var(--sans); font-weight:700; font-size:11px;
+  color:var(--gold-light); letter-spacing:.2em; margin-right:7px; vertical-align:2px}
+.lav-card .desc{font-size:12.5px; line-height:1.45; color:rgba(255,255,255,.82)}
+
 /* Konfetti aus Papierschnipseln */
 .confetti{position:fixed; z-index:60; pointer-events:none; will-change:transform,opacity; border-radius:1px}
 
@@ -789,7 +916,8 @@ const QUESTIONS = [
   ],
   sheetLines:["A", "B", "C", "D"],
   answer:"",
-  fact:"Vier Kirchtürme, keine zwanzig Kilometer voneinander entfernt – und doch kennt kaum jemand alle vier. Gimborn gehört zu Marienheide, Frielingsdorf und Lindlar liegen in derselben Gemeinde, Hülsenbusch zu Gummersbach."
+  fact:"Vier Kirchtürme, keine zwanzig Kilometer voneinander entfernt – und doch kennt kaum jemand alle vier. Gimborn gehört zu Marienheide, Frielingsdorf und Lindlar liegen in derselben Gemeinde, Hülsenbusch zu Gummersbach.",
+  viz:{kind:"obermap", cap:"So liegen die vier Orte zueinander"}
 },
 {
   round:1, cat:"Ein Bild", type:"photo", time:45,
@@ -835,7 +963,13 @@ const QUESTIONS = [
   options:["Mont Maudit","Mont Blanc","Dôme du Goûter","Barre des Écrins"],
   correct:1,
   answer:"Der Mont Blanc",
-  fact:"Mit rund 4.806 Metern ist er nicht nur Frankreichs höchster Berg, sondern der höchste der gesamten Alpen. Seine gemessene Höhe schwankt je nach Schneeauflage um mehrere Meter."
+  fact:"Mit rund 4.806 Metern ist er nicht nur Frankreichs höchster Berg, sondern der höchste der gesamten Alpen. Seine gemessene Höhe schwankt je nach Schneeauflage um mehrere Meter.",
+  viz:{kind:"bars", cap:"Die vier Gipfel im Vergleich", items:[
+    {name:"Barre des Écrins", value:4102, label:"4.102 m"},
+    {name:"Dôme du Goûter",  value:4304, label:"4.304 m"},
+    {name:"Mont Maudit",     value:4465, label:"4.465 m"},
+    {name:"Mont Blanc",      value:4806, label:"4.806 m", hl:true}
+  ]}
 },
 {
   round:2, cat:"Geografie", type:"single", time:40,
@@ -843,7 +977,8 @@ const QUESTIONS = [
   options:["Sechs","Sieben","Acht","Elf"],
   correct:2,
   answer:"An acht Länder",
-  fact:"Belgien, Luxemburg, Deutschland, die Schweiz, Italien, Monaco, Spanien und Andorra. Zählt man die Überseegebiete mit, kommen Brasilien, Suriname und die Niederlande hinzu – dann sind es elf."
+  fact:"Belgien, Luxemburg, Deutschland, die Schweiz, Italien, Monaco, Spanien und Andorra. Zählt man die Überseegebiete mit, kommen Brasilien, Suriname und die Niederlande hinzu – dann sind es elf.",
+  viz:{kind:"hexmap", cap:"L’Hexagone und seine Nachbarn"}
 },
 {
   round:2, cat:"Wahr oder falsch", type:"truefalse", time:30,
@@ -867,7 +1002,8 @@ const QUESTIONS = [
   q:"Wie viele Baguettes werden in Frankreich pro Jahr verkauft?",
   hint:"Schätzen. Den Punkt bekommt, wer am nächsten liegt.",
   value:6000000000, display:"6 Milliarden", unit:"Baguettes pro Jahr",
-  fact:"Das entspricht etwa einem halben Baguette pro Person und Tag – oder rund 190 verkauften Baguettes in jeder einzelnen Sekunde."
+  fact:"Das entspricht etwa einem halben Baguette pro Person und Tag – oder rund 190 verkauften Baguettes in jeder einzelnen Sekunde.",
+  viz:{kind:"persec", rate:190, label:"Baguettes verkauft, seit die Antwort offen ist"}
 },
 {
   round:2, cat:"Zwei Bilder", type:"single", time:45,
@@ -878,8 +1014,9 @@ const QUESTIONS = [
     {src:"bilder/lavendel-a.jpg", hint:"Echter Lavendel", cap:"A"},
     {src:"bilder/lavendel-b.jpg", hint:"Lavandin",        cap:"B"}
   ],
-  answer:"Bild A zeigt den echten Lavendel",
-  fact:"Der echte Lavendel wächst hoch in den Bergen, blüht kompakt an einem einzelnen Stiel und liefert das feinste Öl. Bild B zeigt Lavandin, eine Kreuzung: buschiger, mit verzweigten Blütenständen, deutlich ertragreicher – aber kampferartiger im Duft."
+  answer:"Bild A – Lavandula angustifolia",
+  fact:"Der echte Lavendel (Lavandula angustifolia) wächst hoch in den Bergen und liefert das feinste Öl. Bild B zeigt Lavandin (Lavandula × intermedia), eine Kreuzung aus echtem Lavendel und Speik-Lavendel: buschiger, ertragreicher – aber kampferartiger im Duft.",
+  viz:{kind:"lavendel"}
 },
 {
   round:2, cat:"Provence", type:"single", time:40,
@@ -887,7 +1024,10 @@ const QUESTIONS = [
   options:["500 Quadratkilometer","650 Quadratkilometer","800 Quadratkilometer","1.200 Quadratkilometer"],
   correct:2,
   answer:"Rund 800 Quadratkilometer",
-  fact:"Das größte zusammenhängende Lavendelanbaugebiet Europas. Die Hauptblüte liegt zwischen Ende Juni und Anfang August, danach wird geerntet – und es riecht kilometerweit."
+  fact:"Das größte zusammenhängende Lavendelanbaugebiet Europas – fast so groß wie der Oberbergische Kreis. Die Hauptblüte liegt zwischen Ende Juni und Anfang August, danach wird geerntet – und es riecht kilometerweit.",
+  viz:{kind:"areacomp", cap:"Zum Vergleich",
+    a:{name:"Plateau von Valensole", km:800},
+    b:{name:"Oberbergischer Kreis", km:919}}
 },
 
 /* ---------- III · DER JAKOBSWEG ---------- */
@@ -916,7 +1056,14 @@ const QUESTIONS = [
   ],
   correct:4,
   answer:"Die Via de la Plata",
-  fact:"Rund tausend Kilometer von Sevilla quer durch Spanien, sechs bis acht Wochen zu Fuß. Sie ist die längste, aber auch die einsamste Route; im Hochsommer wird sie wegen der Hitze in der Extremadura kaum gegangen."
+  fact:"Rund tausend Kilometer von Sevilla quer durch Spanien, sechs bis acht Wochen zu Fuß. Sie ist die längste, aber auch die einsamste Route; im Hochsommer wird sie wegen der Hitze in der Extremadura kaum gegangen.",
+  viz:{kind:"bars", cap:"Die fünf Routen nach Santiago", items:[
+    {name:"Camino Portugués (ab Porto)", value:240,  label:"ca. 240 km"},
+    {name:"Camino Primitivo",            value:320,  label:"ca. 320 km"},
+    {name:"Camino Francés",              value:770,  label:"ca. 770 km"},
+    {name:"Camino del Norte",            value:825,  label:"ca. 825 km"},
+    {name:"Via de la Plata",             value:1000, label:"ca. 1.000 km", hl:true}
+  ]}
 },
 {
   round:3, cat:"Ein Bild", type:"photo", time:40,
@@ -949,7 +1096,12 @@ const QUESTIONS = [
   options:["987 Meter","1.180 Meter","1.445 Meter","1.712 Meter"],
   correct:2,
   answer:"1.445 Meter",
-  fact:"Der Gipfel in der Serra de Tramuntana ist militärisches Sperrgebiet, hinauf darf niemand. Der höchste frei begehbare Berg der Insel ist deshalb der Puig de Massanella mit 1.364 Metern."
+  fact:"Der Gipfel in der Serra de Tramuntana ist militärisches Sperrgebiet, hinauf darf niemand. Der höchste frei begehbare Berg der Insel ist deshalb der Puig de Massanella mit 1.364 Metern.",
+  viz:{kind:"bars", cap:"Die höchsten Gipfel der Tramuntana", items:[
+    {name:"Puig de Galatzó",   value:1027, label:"1.027 m"},
+    {name:"Puig de Massanella",value:1364, label:"1.364 m"},
+    {name:"Puig Major",        value:1445, label:"1.445 m", hl:true}
+  ]}
 },
 {
   round:4, cat:"Inselkunde", type:"single", time:40,
@@ -957,7 +1109,8 @@ const QUESTIONS = [
   options:["La Rambla","El Faro","La Seu","La Perla"],
   correct:2,
   answer:"La Seu",
-  fact:"Die Kathedrale des Lichts besitzt eine der größten gotischen Fensterrosen der Welt. Zweimal im Jahr, am 2. Februar und am 11. November, projiziert die Sonne sie exakt unter das gegenüberliegende Fenster."
+  fact:"Die Kathedrale des Lichts besitzt eine der größten gotischen Fensterrosen der Welt. Zweimal im Jahr, am 2. Februar und am 11. November, projiziert die Sonne sie exakt unter das gegenüberliegende Fenster.",
+  viz:{kind:"rosette", note:"Die große Fensterrose misst fast 13 Meter im Durchmesser und besteht aus 1.236 farbigen Glasstücken – ihr Spitzname: das gotische Auge."}
 },
 
 /* ---------- V · SCHÄTZEN UND KNOBELN ---------- */
@@ -967,14 +1120,24 @@ const QUESTIONS = [
   options:["Juli","August","September","Dezember"],
   correct:0,
   answer:"Im Juli",
-  fact:"Der Juli ist in Deutschland seit einigen Jahren der geburtenstärkste Monat; früher lag der September vorn. Anne hält es mit dem August."
+  fact:"Der Juli ist in Deutschland seit einigen Jahren der geburtenstärkste Monat; früher lag der September vorn. Anne hält es mit dem August.",
+  viz:{kind:"columns", cap:"Geburten je Monat, relativ", items:[
+    {name:"Jan", value:92},{name:"Feb", value:88},{name:"Mär", value:96},{name:"Apr", value:93},
+    {name:"Mai", value:97},{name:"Jun", value:98},{name:"Jul", value:105, hl:true},{name:"Aug", value:103},
+    {name:"Sep", value:102},{name:"Okt", value:98},{name:"Nov", value:91},{name:"Dez", value:93}
+  ]}
 },
 {
   round:5, cat:"Schätzfrage", type:"estimate", time:60,
   q:"Wie viele Rothirsche leben schätzungsweise in Norwegen?",
   hint:"Schätzen. Den Punkt bekommt, wer am nächsten liegt.",
   value:250000, display:"250.000", unit:"Rothirsche",
-  fact:"So groß ist der Bestand vor der Jagdsaison. Jedes Jahr werden über vierzigtausend Tiere erlegt. Zählt man Elch, Reh und Rentier hinzu, leben in Norwegen deutlich über eine halbe Million Hirschartige."
+  fact:"So groß ist der Bestand vor der Jagdsaison. Jedes Jahr werden über vierzigtausend Tiere erlegt. Zählt man Elch, Reh und Rentier hinzu, leben in Norwegen deutlich über eine halbe Million Hirschartige.",
+  viz:{kind:"bars", cap:"Zum Größenvergleich", items:[
+    {name:"Jagdstrecke pro Jahr",  value:40000,  label:"über 40.000"},
+    {name:"Einwohner von Bergen",  value:290000, label:"ca. 290.000"},
+    {name:"Rothirsche in Norwegen",value:250000, label:"250.000", hl:true}
+  ]}
 },
 {
   round:5, cat:"Knobelei", type:"math", time:60,
@@ -995,7 +1158,11 @@ const QUESTIONS = [
   q:"Wie viele Schritte gehen die Deutschen im Durchschnitt pro Tag?",
   hint:"Schätzen. Den Punkt bekommt, wer am nächsten liegt.",
   value:5200, display:"5.200", unit:"Schritte pro Tag",
-  fact:"Das sind etwa dreieinhalb bis vier Kilometer – deutlich weniger als die viel zitierten zehntausend. Gesundheitlich messbar wird es Studien zufolge schon ab rund siebentausend Schritten."
+  fact:"Das sind etwa dreieinhalb bis vier Kilometer – deutlich weniger als die viel zitierten zehntausend. Gesundheitlich messbar wird es Studien zufolge schon ab rund siebentausend Schritten.",
+  viz:{kind:"gauge", cap:"So weit kommt der Durchschnitt", value:5200, max:12000, marks:[
+    {at:7000,  label:"7.000 · wirksam"},
+    {at:10000, label:"10.000 · der Mythos"}
+  ]}
 },
 {
   round:5, cat:"Auszählen", type:"open", time:60,
@@ -1021,7 +1188,12 @@ const QUESTIONS = [
   ],
   correct:0,
   answer:"Die Beatles starteten ihre letzte Tournee",
-  fact:"Am 12. August 1966 spielten die Beatles im International Amphitheatre in Chicago den Auftakt ihrer allerletzten Tournee – keine drei Wochen später standen sie zum letzten Mal auf einer Konzertbühne. Am selben Tag wurde in Deutschland etwas viel Wichtigeres geboren."
+  fact:"Am 12. August 1966 spielten die Beatles im International Amphitheatre in Chicago den Auftakt ihrer allerletzten Tournee – keine drei Wochen später standen sie zum letzten Mal auf einer Konzertbühne. Am selben Tag wurde in Deutschland etwas viel Wichtigeres geboren.",
+  viz:{kind:"timeline", cap:"August 1966", events:[
+    {x:14, side:"above", d:"12. August", t:"Chicago – Auftakt der letzten Beatles-Tournee"},
+    {x:14, side:"below", d:"12. August", t:"Anne kommt zur Welt", star:true},
+    {x:78, side:"above", d:"29. August", t:"Candlestick Park, San Francisco – das letzte Konzert überhaupt"}
+  ]}
 }
 ];
 
@@ -1340,6 +1512,7 @@ function showStep(i){
     });
 
     $("#reveal").classList.remove("show");
+    clearViz();
     $("#revealStage").innerHTML = "";
     $("#revealAnswer").textContent = "";
     $("#revealAnswer").style.display = "";
@@ -1388,8 +1561,9 @@ function reveal(){
     case "order":     revealOrder(q, stage);     break;
     case "math":      revealMath(q, stage);      break;
     case "open":      revealOpen(q, stage);      break;
-    default:          revealSingle(q, stage);
+    default:          if(!q.viz) revealSingle(q, stage);
   }
+  renderViz(q, stage);
 
   $("#revealAnswer").textContent = q.answer || "";
   if(!q.answer) $("#revealAnswer").style.display = "none";
@@ -1500,6 +1674,136 @@ function revealOpen(q, stage){
     });
   });
   sync();
+}
+
+/* ---------- Zusatzgrafiken zur Auflösung ---------- */
+let VIZ_TIMERS = [];
+function clearViz(){ VIZ_TIMERS.forEach(t=> clearInterval(t)); VIZ_TIMERS = []; }
+
+function renderViz(q, stage){
+  const v = q.viz; if(!v) return;
+  const box = document.createElement("div");
+  box.className = "viz";
+  /* Bei Schätzfragen erst nach dem Hochzählen zeigen – sonst stünde die Zahl schon da */
+  if(q.type === "estimate") box.style.animation = "riseIn .6s 1.9s both";
+  if(v.cap) box.innerHTML = `<div class="viz-cap">${esc(v.cap)}</div>`;
+  stage.appendChild(box);
+
+  if(v.kind === "bars"){
+    const max = Math.max(...v.items.map(i=> i.value));
+    box.innerHTML += `<div class="rank-list">` + v.items.map((it,i)=>`
+      <div class="rank-row${it.hl?" hl":""}" style="animation-delay:${i*.16}s">
+        <div class="rank-pos">${i+1}</div>
+        <div class="rank-bar">
+          <span class="rank-name">${esc(it.name)}</span>
+          <span class="rank-val">${esc(it.label)}</span>
+          <div class="rank-fill${it.hl?" hl":""}" style="--w:${Math.max(24,(it.value/max)*100)}%;animation-delay:${.22+i*.16}s"></div>
+        </div>
+      </div>`).join("") + `</div>`;
+  }
+
+  if(v.kind === "columns"){
+    const max = Math.max(...v.items.map(i=> i.value));
+    box.innerHTML += `<div class="cols">` + v.items.map((it,i)=>`
+      <div class="col${it.hl?" hl":""}">
+        <i style="--h:${(it.value/max)*100}; animation-delay:${.1+i*.06}s"></i><b>${esc(it.name)}</b>
+      </div>`).join("") + `</div>`;
+  }
+
+  if(v.kind === "hexmap"){
+    const chips = [
+      {n:1, name:"Belgien",    x:38, y:9},
+      {n:2, name:"Luxemburg",  x:64, y:16},
+      {n:3, name:"Deutschland",x:79, y:32},
+      {n:4, name:"Schweiz",    x:82, y:55},
+      {n:5, name:"Italien",    x:74, y:78},
+      {n:6, name:"Monaco",     x:56, y:92},
+      {n:7, name:"Spanien",    x:26, y:86},
+      {n:8, name:"Andorra",    x:15, y:64}
+    ];
+    box.innerHTML += `<div class="hexmap"><div class="hex"><span>France</span></div>` +
+      chips.map((c,i)=>`<div class="geo-chip" style="left:${c.x}%;top:${c.y}%;animation-delay:${.4+i*.22}s">
+        <span class="n">${c.n}</span>${esc(c.name)}</div>`).join("") + `</div>`;
+    chips.forEach((_,i)=> tone(392 + i*66, .18, {type:"sine", gain:.09, delay:.4+i*.22}));
+  }
+
+  if(v.kind === "obermap"){
+    const pins = [
+      {l:"C", name:"Lindlar",       x:16, y:66},
+      {l:"D", name:"Frielingsdorf", x:36, y:38},
+      {l:"A", name:"Hülsenbusch",   x:62, y:56},
+      {l:"B", name:"Gimborn",       x:83, y:30}
+    ];
+    box.innerHTML += `<div class="obermap">` + pins.map((p,i)=>`
+      <div class="map-pin" style="left:${p.x}%;top:${p.y}%;animation-delay:${.35+i*.3}s">
+        <div class="head"><b>${p.l}</b></div><div class="lbl">${esc(p.name)}</div>
+      </div>`).join("") + `</div>`;
+  }
+
+  if(v.kind === "timeline"){
+    box.innerHTML += `<div class="tl"><div class="line"></div>` + v.events.map((e,i)=>`
+      <div class="node ${e.side} ${e.star?"star":""}" style="left:${e.x}%;animation-delay:${.4+i*.4}s">
+        <div class="dot"></div><div class="d">${esc(e.d)}</div><div class="t">${esc(e.t)}</div>
+      </div>`).join("") + `</div>`;
+    v.events.forEach((e,i)=> tone(e.star? 1046 : 523 + i*80, .25, {type:"triangle", gain:.11, delay:.4+i*.4}));
+  }
+
+  if(v.kind === "persec"){
+    box.innerHTML += `<div class="persec"><b id="persecNum">0</b><span>${esc(v.label)}</span></div>`;
+    const t0 = performance.now() + 1900;
+    const el = box.querySelector("#persecNum");
+    VIZ_TIMERS.push(setInterval(()=>{
+      const s = Math.max(0, (performance.now()-t0)/1000);
+      el.textContent = Math.floor(s * v.rate).toLocaleString("de-DE");
+    }, 120));
+  }
+
+  if(v.kind === "gauge"){
+    const pct = x => (x / v.max * 100);
+    box.innerHTML += `<div class="gauge">
+      <div class="track">
+        <div class="fill" style="--w:${pct(v.value)}%"></div>
+        ${v.marks.map(m=>`<div class="mark" style="left:${pct(m.at)}%"><i>${esc(m.label)}</i></div>`).join("")}
+      </div>
+      <div class="cap-row"><span>0</span><span>${v.max.toLocaleString("de-DE")}</span></div></div>`;
+  }
+
+  if(v.kind === "areacomp"){
+    const r = a => Math.round(Math.sqrt(a) * 3.1);
+    box.innerHTML += `<div class="areacomp">
+      <div class="ac a"><div class="circ" style="width:${r(v.a.km)*2}px;height:${r(v.a.km)*2}px;animation-delay:.25s"></div>
+        <div class="nm">${esc(v.a.name)}</div><div class="ar">${v.a.km.toLocaleString("de-DE")} km²</div></div>
+      <div class="ac b" style="animation-delay:.45s"><div class="circ" style="width:${r(v.b.km)*2}px;height:${r(v.b.km)*2}px;animation-delay:.6s"></div>
+        <div class="nm">${esc(v.b.name)}</div><div class="ar">${v.b.km.toLocaleString("de-DE")} km²</div></div></div>`;
+  }
+
+  if(v.kind === "rosette"){
+    box.innerHTML += `<div class="rosette-wrap"><div class="rosette"></div>
+      <div class="rosette-note">${esc(v.note)}</div></div>`;
+  }
+
+  if(v.kind === "lavendel"){
+    const stem = branched => branched
+      ? `<svg width="54" height="86" viewBox="0 0 54 86">
+           <path d="M27 86 L27 44 M27 52 C27 40 12 40 12 26 M27 52 C27 40 42 40 42 26 M27 44 L27 22"
+             fill="none" stroke="#CBDCC4" stroke-width="2.5" stroke-linecap="round"/>
+           <ellipse cx="12" cy="18" rx="5" ry="10" fill="#B9A6D6"/>
+           <ellipse cx="27" cy="13" rx="5.5" ry="11" fill="#B9A6D6"/>
+           <ellipse cx="42" cy="18" rx="5" ry="10" fill="#B9A6D6"/>
+         </svg>`
+      : `<svg width="54" height="86" viewBox="0 0 54 86">
+           <line x1="27" y1="86" x2="27" y2="24" stroke="#CBDCC4" stroke-width="2.5" stroke-linecap="round"/>
+           <ellipse cx="27" cy="14" rx="6" ry="12" fill="#B9A6D6"/>
+         </svg>`;
+    box.innerHTML += `<div class="lavcomp">
+      <div class="lav-card win" style="animation-delay:.15s">${stem(false)}
+        <div><div class="bot"><span class="ltr">Bild A</span>Lavandula angustifolia</div>
+        <div class="desc">Echter Lavendel: je Trieb ein unverzweigter Stiel mit einer einzelnen Ähre. Wächst hoch in den Bergen, feinstes Öl.</div></div></div>
+      <div class="lav-card" style="animation-delay:.4s">${stem(true)}
+        <div><div class="bot"><span class="ltr">Bild B</span>Lavandula × intermedia</div>
+        <div class="desc">Lavandin, die Kreuzung: Stiele oben verzweigt, meist drei Ähren. Ertragreicher, aber kampferartiger im Duft.</div></div></div>
+    </div>`;
+  }
 }
 
 /* ============================================================

@@ -132,6 +132,14 @@ Auflösung bestimmt:
 Foto hervor. `sheetLines` erzeugt auf dem Antwortzettel mehrere beschriftete Zeilen
 statt einer.
 
+Viele Fragen tragen zusätzlich ein `viz`-Feld: eine animierte Grafik in der
+Auflösung. Verfügbare Arten: `bars` (Balkenvergleich), `columns` (Monatssäulen),
+`hexmap` (Frankreich und Nachbarn), `obermap` (Ortskarte mit Pins), `timeline`
+(Zeitstrahl), `persec` (Live-Zähler), `gauge` (Skala mit Markierungen),
+`areacomp` (Flächenvergleich), `rosette` (Fensterrose) und `lavendel`
+(botanischer Vergleich). Bei Schätzfragen erscheint die Grafik erst, nachdem
+die Zahl hochgezählt hat.
+
 > **Zur Heckenfrage:** Welche Hecke wirklich auf Walks Grundstück wächst, weiß nur die
 > Familie. Hinterlegt ist derzeit Hecke C (`correct: 2`, `correctImg: 2`). Zum Ändern
 > beide Werte auf denselben Index setzen – A ist 0, D ist 3.
