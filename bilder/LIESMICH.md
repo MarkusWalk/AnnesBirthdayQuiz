@@ -5,6 +5,8 @@ Reihe nach `.jpg`, `.jpeg`, `.png`, `.webp` und `.svg`. Es zählt nur der Name v
 dem Punkt.
 
 Umbenennen, fertig. Kein Zuschneiden nötig, die App schneidet auf 4:3 zu.
+**Am besten Querformate verwenden:** bei Hochformaten bliebe nach dem Beschnitt
+nur die Bildmitte übrig.
 
 | Dateiname | Was aufs Bild gehört | Status |
 |---|---|---|
@@ -17,34 +19,14 @@ Umbenennen, fertig. Kein Zuschneiden nötig, die App schneidet auf 4:3 zu.
 | `hecke-b` | Hecke B | fehlt – nur als eigenes Foto möglich |
 | `hecke-c` | Hecke C – **das ist die richtige Antwort** (Rotbuche) | fehlt – nur als eigenes Foto möglich |
 | `hecke-d` | Hecke D | fehlt – nur als eigenes Foto möglich |
-| `baguette` | umgedrehtes Baguette auf einem Tisch | **Zeichnung vorhanden** |
-| `lavendel-a` | echter Lavendel, *Lavandula angustifolia* | **Zeichnung vorhanden** |
-| `lavendel-b` | Lavandin, *Lavandula × intermedia* | **Zeichnung vorhanden** |
+| `baguette` | Baguette auf einem Tisch | **Foto vorhanden** (Wikimedia) |
+| `lavendel-a` | echter Lavendel, *Lavandula angustifolia* | **Foto vorhanden** (Wikimedia) |
+| `lavendel-b` | Lavandin, *Lavandula × intermedia* | **Foto vorhanden** (Wikimedia) |
 | `bauwerk` | Kathedrale von Santiago de Compostela | **Foto vorhanden** (Wikimedia) |
-
-## Zu den beiden Lavendel-Zeichnungen
-
-`lavendel-a.svg` und `lavendel-b.svg` sind **schematische Zeichnungen, keine Fotos** –
-und im Bild auch so beschriftet. Sie zeigen das Merkmal, auf das es bei der Frage
-ankommt:
-
-- **A – echter Lavendel:** ein einzelner, unverzweigter Blütenstiel je Trieb.
-- **B – Lavandin:** der Stiel verzweigt sich oben, typischerweise in drei Ähren.
-
-Genau daran erkennt man die beiden im Feld. Wer ein echtes Foto hat, legt es als
-`lavendel-a.jpg` bzw. `lavendel-b.jpg` daneben – die Fotos haben Vorrang und
-ersetzen die Zeichnungen automatisch.
-
-## Zur Baguette-Zeichnung
-
-`baguette.svg` ist wie die Lavendelbilder eine beschriftete schematische Zeichnung:
-das Baguette liegt umgedreht auf dem Tisch, die typischen schrägen Einschnitte zeigen
-nach unten, die flache bemehlte Unterseite nach oben. Ein echtes Foto als
-`baguette.jpg` hat Vorrang und ersetzt die Zeichnung automatisch.
 
 ## Bildnachweise (Wikimedia Commons)
 
-Die fünf Fotos stammen von Wikimedia Commons und stehen unter freien Lizenzen.
+Die Fotos stammen von Wikimedia Commons und stehen unter freien Lizenzen.
 Bei Weitergabe gehört der Nachweis dazu; für den privaten Quizabend genügt diese Liste.
 
 | Datei | Quelle (Commons) | Autor | Lizenz |
@@ -54,10 +36,16 @@ Bei Weitergabe gehört der Nachweis dazu; für den privaten Quizabend genügt di
 | `kirche-c.jpg` | [St. Severin (Lindlar) (2).jpg](https://commons.wikimedia.org/wiki/File:St._Severin_(Lindlar)_(2).jpg) | Chris06 | CC BY-SA 4.0 |
 | `kirche-d.jpg` | [Lindlar Frielingsdorf - Sankt Apollinaris 01 ies.jpg](https://commons.wikimedia.org/wiki/File:Lindlar_Frielingsdorf_-_Sankt_Apollinaris_01_ies.jpg) | Frank Vincentz | CC BY-SA 3.0 |
 | `bauwerk.jpg` | [Santiago Compostela Cathedral 2023 – View from Alameda Park.jpg](https://commons.wikimedia.org/wiki/File:Santiago_Compostela_Cathedral_2023_-_View_from_Alameda_Park.jpg) | Fernando Pascullo | CC BY-SA 4.0 |
+| `lavendel-a.jpg` | [Echter Lavendel (Lavandula angustifolia) (9478066937).jpg](https://commons.wikimedia.org/wiki/File:Echter_Lavendel_(Lavandula_angustifolia)_(9478066937).jpg) | Maja Dumat | CC BY 2.0 |
+| `lavendel-b.jpg` | [Lavandula x intermedia 2c.JPG](https://commons.wikimedia.org/wiki/File:Lavandula_x_intermedia_2c.JPG) | Consultaplantas | CC BY-SA 4.0 |
+| `baguette.jpg` | [Baguette de pain, WikiCheese Lausanne.jpg](https://commons.wikimedia.org/wiki/File:Baguette_de_pain,_WikiCheese_Lausanne.jpg) | Yann Forget | CC BY-SA 4.0 |
 
-Alle Fotos sind bewusst Querformate: die App beschneidet auf 4:3, und bei
-Hochformaten bliebe sonst nur die Turmspitze übrig. Das gilt auch für eigene
-Fotos (Hecken, Stadtwerke): am besten quer fotografieren.
+## Zu den beiden Lavendelfotos
+
+Beide zeigen blühende Pflanzen im Beet. Das Erkennungsmerkmal aus der Auflösung
+gilt auch hier: beim echten Lavendel (`lavendel-a`) trägt jeder Trieb eine einzelne
+Ähre auf unverzweigtem Stiel, beim Lavandin (`lavendel-b`) verzweigen sich viele
+Stiele oben – auf dem Foto gut zu erkennen.
 
 ## Achtung bei den vier Kirchen
 

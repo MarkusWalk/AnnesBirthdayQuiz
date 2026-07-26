@@ -17,10 +17,10 @@
   --ink-soft:#6B5F58;
   --ink-faint:#9A8D84;
 
-  --sea-deep:#4A2C4C;
-  --sea:#6A4368;
-  --sea-light:#8A6488;
-  --foam:#8FA888;
+  --sea-deep:#3E5340;
+  --sea:#5F7A5A;
+  --sea-light:#7E9678;
+  --foam:#CBDCC4;
 
   --sand:#FAF5EC;
   --sand-mid:#F2EADB;
@@ -36,9 +36,9 @@
   --rose:#E6A3A0;
   --sky:#93B3C9;
 
-  --line:rgba(74,44,76,.13);
-  --shadow-sm:0 2px 10px rgba(74,44,76,.07);
-  --shadow:0 18px 44px -12px rgba(74,44,76,.22);
+  --line:rgba(62,83,64,.15);
+  --shadow-sm:0 2px 10px rgba(62,83,64,.07);
+  --shadow:0 18px 44px -12px rgba(62,83,64,.22);
   --radius:22px;
 
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
@@ -162,12 +162,12 @@ body.quiz-mode{overflow:hidden}
 }
 .btn:hover{transform:translateY(-1px); box-shadow:0 12px 26px -8px rgba(168,92,89,.6); filter:brightness(1.04)}
 .btn:active{transform:scale(.97)}
-.btn.sea{background:linear-gradient(155deg,var(--sea),var(--sea-deep)); box-shadow:0 10px 22px -8px rgba(74,44,76,.5)}
-.btn.sea:hover{box-shadow:0 12px 26px -8px rgba(74,44,76,.6)}
+.btn.sea{background:linear-gradient(155deg,var(--sea),var(--sea-deep)); box-shadow:0 10px 22px -8px rgba(62,83,64,.5)}
+.btn.sea:hover{box-shadow:0 12px 26px -8px rgba(62,83,64,.6)}
 .btn.gold{background:linear-gradient(155deg,var(--gold-light),var(--gold)); color:#4A3308}
 .btn.gold:hover{box-shadow:0 12px 26px -8px rgba(217,168,78,.55)}
-.btn.quiet{background:rgba(106,67,104,.08); color:var(--sea-deep); box-shadow:none}
-.btn.quiet:hover{background:rgba(106,67,104,.14); box-shadow:none}
+.btn.quiet{background:rgba(95,122,90,.09); color:var(--sea-deep); box-shadow:none}
+.btn.quiet:hover{background:rgba(95,122,90,.16); box-shadow:none}
 .btn.sm{padding:8px 15px; font-size:13.5px; border-radius:11px}
 .btn:disabled{opacity:.4; cursor:default; transform:none; box-shadow:none}
 .btn-row{display:flex; gap:9px; flex-wrap:wrap; align-items:center; margin-top:14px}
@@ -1037,7 +1037,7 @@ const countIn = id => QUESTIONS.filter(q=> q.round === id).length;
 /* ============================================================
    3) ZUSTAND
    ============================================================ */
-const GROUP_COLORS = ["#6A4368","#C97572","#D9A84E","#5F7A5A","#5F87A3","#A85C59","#8A6488","#8FA888"];
+const GROUP_COLORS = ["#5F7A5A","#C97572","#D9A84E","#5F87A3","#8A6488","#A85C59","#8FA888","#6A4368"];
 const DEFAULT_GROUPS = ["Los Pommes","Sangría Sisters","Tramuntana","Die Mandelblüten"];
 const STORE = "annesBirthdayQuiz.v2";
 
@@ -1267,8 +1267,7 @@ function renderDots(){
 }
 /* Der in den Fragen hinterlegte Dateiname wird zuerst versucht; danach dieselbe
    Datei mit anderer Endung. So genügt es, das Foto in bilder/ abzulegen – egal
-   ob die Kamera .jpeg, .png oder .webp geliefert hat. Ein echtes Foto ersetzt
-   damit automatisch eine hinterlegte Zeichnung. */
+   ob die Kamera .jpeg, .png oder .webp geliefert hat. */
 const IMG_EXTS = ["jpg","jpeg","png","webp","svg"];
 function imgCandidates(src){
   if(src.startsWith("data:")) return [src];   /* eingebettetes Bild, keine Varianten */
