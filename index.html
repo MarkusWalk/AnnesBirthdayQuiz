@@ -7,35 +7,39 @@
 <style>
 /* ============================================================
    ANNES BIRTHDAY QUIZ
-   Mediterrane Bildsprache: Azulejo-Kachel, Kalkweiß, Meerblau,
-   gebranntes Terrakotta. Zurückhaltend gesetzt, ohne Dekor-Emoji.
+   Warme Creme-Grundfläche, gedämpfte Pflaume, Salbei, Gold und
+   Rosé. Weiche Farbflächen statt Muster, zurückhaltend gesetzt.
    ============================================================ */
 :root{
   color-scheme:light;
 
-  --ink:#1E2A32;
-  --ink-soft:#5C6B75;
-  --ink-faint:#8B98A1;
+  --ink:#382E2C;
+  --ink-soft:#6B5F58;
+  --ink-faint:#9A8D84;
 
-  --sea-deep:#0B3C4F;
-  --sea:#14708F;
-  --sea-light:#2E93AD;
-  --foam:#8FD4CE;
+  --sea-deep:#4A2C4C;
+  --sea:#6A4368;
+  --sea-light:#8A6488;
+  --foam:#8FA888;
 
   --sand:#FAF5EC;
-  --sand-mid:#F1E7D6;
-  --sand-dark:#E2D4BC;
+  --sand-mid:#F2EADB;
+  --sand-dark:#E3D8C6;
 
-  --terracotta:#C25A38;
-  --terracotta-deep:#9C4227;
-  --gold:#D8A945;
-  --gold-light:#EFC96B;
-  --olive:#6E8B4A;
+  --terracotta:#C97572;
+  --terracotta-deep:#A85C59;
+  --gold:#D9A84E;
+  --gold-light:#E8C37A;
+  --olive:#5F7A5A;
 
-  --line:rgba(11,60,79,.14);
-  --shadow-sm:0 2px 8px rgba(11,60,79,.08);
-  --shadow:0 14px 38px rgba(11,60,79,.16);
-  --radius:18px;
+  --sage:#8FA888;
+  --rose:#E6A3A0;
+  --sky:#93B3C9;
+
+  --line:rgba(74,44,76,.13);
+  --shadow-sm:0 2px 10px rgba(74,44,76,.07);
+  --shadow:0 18px 44px -12px rgba(74,44,76,.22);
+  --radius:22px;
 
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
   --sans:"Avenir Next","Segoe UI",system-ui,-apple-system,"Helvetica Neue",sans-serif;
@@ -55,30 +59,31 @@ body{
 ::selection{background:var(--gold-light); color:var(--sea-deep)}
 :focus-visible{outline:3px solid var(--sea-light); outline-offset:3px; border-radius:6px}
 
-/* ---------- Hintergrund: Azulejo-Kachel, sehr zurückgenommen ---------- */
-.tiles{
-  position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.42;
-  background-color:var(--sand);
-  background-image:
-    linear-gradient(45deg,  transparent 47.4%, rgba(20,112,143,.28) 47.5%, rgba(20,112,143,.28) 52.5%, transparent 52.6%),
-    linear-gradient(-45deg, transparent 47.4%, rgba(20,112,143,.28) 47.5%, rgba(20,112,143,.28) 52.6%, transparent 52.7%),
-    radial-gradient(circle at 0 0,      rgba(194,90,56,.42) 3px, transparent 3.5px),
-    radial-gradient(circle at 64px 0,   rgba(194,90,56,.42) 3px, transparent 3.5px),
-    radial-gradient(circle at 0 64px,   rgba(194,90,56,.42) 3px, transparent 3.5px),
-    radial-gradient(circle at 64px 64px,rgba(194,90,56,.42) 3px, transparent 3.5px),
-    radial-gradient(circle at 32px 32px,rgba(216,169,69,.46) 4.5px, transparent 5px);
-  background-size:64px 64px;
+/* ---------- Hintergrund: weiche, langsam treibende Farbflächen ---------- */
+.tiles{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+.tiles::before,.tiles::after{
+  content:""; position:absolute; border-radius:50%; filter:blur(80px); opacity:.32;
+  animation:meshMove linear infinite;
+}
+.tiles::before{width:44vw; height:44vw; background:var(--rose); top:-14vw; left:-10vw; animation-duration:26s}
+.tiles::after{width:38vw; height:38vw; background:var(--sky); top:4vw; right:-12vw; animation-duration:32s; animation-delay:-9s}
+@keyframes meshMove{
+  0%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(3vw,-2vw) scale(1.1)}
+  66%{transform:translate(-2vw,3vw) scale(.94)}
+  100%{transform:translate(0,0) scale(1)}
 }
 /* warmes Licht von oben rechts */
 .glow{
   position:fixed; top:-260px; right:-200px; width:760px; height:760px; z-index:0; pointer-events:none;
-  border-radius:50%;
-  background:radial-gradient(circle, rgba(239,201,107,.55) 0%, rgba(239,201,107,.20) 42%, transparent 68%);
+  border-radius:50%; filter:blur(30px);
+  background:radial-gradient(circle, rgba(217,168,78,.28) 0%, rgba(217,168,78,.10) 42%, transparent 68%);
 }
-/* ruhige Horizontlinie unten */
+/* ruhige Salbei-Fläche unten */
 .horizon{
-  position:fixed; left:0; right:0; bottom:0; height:180px; z-index:0; pointer-events:none;
-  background:linear-gradient(to bottom, transparent, rgba(143,212,206,.20) 55%, rgba(20,112,143,.16));
+  position:fixed; left:-8vw; right:auto; bottom:-18vw; width:46vw; height:46vw; z-index:0; pointer-events:none;
+  border-radius:50%; filter:blur(80px); opacity:.30; background:var(--sage);
+  animation:meshMove 30s linear -14s infinite;
 }
 
 .wrap{position:relative; z-index:2; max-width:1340px; margin:0 auto; padding:16px 22px calc(var(--barH) + 12px)}
@@ -119,10 +124,6 @@ body.quiz-mode{overflow:hidden}
   background:#fff; border-radius:var(--radius); box-shadow:var(--shadow);
   padding:24px 26px; position:relative; overflow:hidden; border:1px solid rgba(255,255,255,.9);
 }
-.card::before{
-  content:""; position:absolute; inset:0 0 auto 0; height:4px;
-  background:linear-gradient(90deg,var(--sea-deep),var(--sea),var(--foam),var(--gold),var(--terracotta));
-}
 .card h2{font-family:var(--serif); font-weight:400; color:var(--sea-deep); margin:8px 0 6px; font-size:24px; letter-spacing:-.01em}
 .card .lead{color:var(--ink-soft); margin:0 0 16px; line-height:1.6; font-size:14.5px}
 
@@ -155,18 +156,19 @@ body.quiz-mode{overflow:hidden}
 /* ---------- Schaltflächen ---------- */
 .btn{
   font:inherit; font-weight:600; letter-spacing:.01em; cursor:pointer; border:1px solid transparent;
-  border-radius:10px; padding:11px 22px; font-size:15px; transition:.18s cubic-bezier(.2,.8,.3,1);
-  background:var(--terracotta); color:#fff; box-shadow:var(--shadow-sm);
+  border-radius:14px; padding:11px 22px; font-size:15px; transition:.18s cubic-bezier(.2,.8,.3,1);
+  background:linear-gradient(155deg,var(--terracotta),var(--terracotta-deep)); color:#fff;
+  box-shadow:0 10px 22px -8px rgba(168,92,89,.5);
 }
-.btn:hover{background:var(--terracotta-deep); transform:translateY(-1px); box-shadow:0 8px 18px rgba(156,66,39,.28)}
-.btn:active{transform:translateY(0)}
-.btn.sea{background:var(--sea)}
-.btn.sea:hover{background:var(--sea-deep); box-shadow:0 8px 18px rgba(11,60,79,.26)}
-.btn.gold{background:var(--gold); color:#4A3308}
-.btn.gold:hover{background:var(--gold-light); color:#4A3308; box-shadow:0 8px 18px rgba(216,169,69,.34)}
-.btn.quiet{background:#fff; color:var(--sea-deep); border-color:var(--sand-dark); box-shadow:none}
-.btn.quiet:hover{background:var(--sand); border-color:var(--sea-light); color:var(--sea-deep)}
-.btn.sm{padding:8px 15px; font-size:13.5px; border-radius:9px}
+.btn:hover{transform:translateY(-1px); box-shadow:0 12px 26px -8px rgba(168,92,89,.6); filter:brightness(1.04)}
+.btn:active{transform:scale(.97)}
+.btn.sea{background:linear-gradient(155deg,var(--sea),var(--sea-deep)); box-shadow:0 10px 22px -8px rgba(74,44,76,.5)}
+.btn.sea:hover{box-shadow:0 12px 26px -8px rgba(74,44,76,.6)}
+.btn.gold{background:linear-gradient(155deg,var(--gold-light),var(--gold)); color:#4A3308}
+.btn.gold:hover{box-shadow:0 12px 26px -8px rgba(217,168,78,.55)}
+.btn.quiet{background:rgba(106,67,104,.08); color:var(--sea-deep); box-shadow:none}
+.btn.quiet:hover{background:rgba(106,67,104,.14); box-shadow:none}
+.btn.sm{padding:8px 15px; font-size:13.5px; border-radius:11px}
 .btn:disabled{opacity:.4; cursor:default; transform:none; box-shadow:none}
 .btn-row{display:flex; gap:9px; flex-wrap:wrap; align-items:center; margin-top:14px}
 
@@ -195,14 +197,11 @@ body.quiz-mode{overflow:hidden}
 }
 .round-card.show{display:grid}
 .round-card::after{
-  content:""; position:absolute; inset:0; pointer-events:none; opacity:.5;
-  background-image:
-    linear-gradient(45deg,  transparent 47.4%, rgba(20,112,143,.16) 47.5%, rgba(20,112,143,.16) 52.5%, transparent 52.6%),
-    linear-gradient(-45deg, transparent 47.4%, rgba(20,112,143,.16) 47.5%, rgba(20,112,143,.16) 52.6%, transparent 52.7%),
-    radial-gradient(circle at 36px 36px, rgba(216,169,69,.20) 5px, transparent 5.5px);
-  background-size:72px 72px;
-  -webkit-mask-image:radial-gradient(ellipse at center, transparent 30%, #000 78%);
-  mask-image:radial-gradient(ellipse at center, transparent 30%, #000 78%);
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(46% 52% at 8% 100%, rgba(143,168,136,.16), transparent 70%),
+    radial-gradient(42% 48% at 96% 0%,  rgba(230,163,160,.14), transparent 70%),
+    radial-gradient(36% 42% at 88% 92%, rgba(217,168,78,.10),  transparent 70%);
 }
 .rc-inner{position:relative; z-index:1; max-width:640px; display:grid; gap:18px; justify-items:center}
 .rc-eyebrow{animation:riseIn .5s .05s both}
@@ -256,11 +255,11 @@ body.quiz-mode{overflow:hidden}
 .options.dense .opt{padding:9px 15px; font-size:15px}
 .opt{
   display:flex; align-items:center; gap:13px; background:var(--sand); border:1px solid var(--line);
-  border-radius:11px; padding:12px 16px; font-size:16.5px; font-weight:500; color:var(--ink);
+  border-radius:14px; padding:12px 16px; font-size:16.5px; font-weight:500; color:var(--ink);
   transition:.42s cubic-bezier(.2,.8,.3,1);
 }
 .opt .letter{
-  flex:0 0 auto; width:28px; height:28px; border-radius:7px; display:grid; place-items:center;
+  flex:0 0 auto; width:28px; height:28px; border-radius:50%; display:grid; place-items:center;
   background:#fff; border:1px solid var(--line); color:var(--sea); font-weight:700; font-size:13px;
 }
 .opt.correct{
@@ -351,11 +350,10 @@ body.quiz-mode{overflow:hidden}
   color:#fff; padding:17px 24px 19px; position:relative; overflow:hidden;
 }
 .reveal-inner::before{
-  content:""; position:absolute; inset:0; opacity:.14; pointer-events:none;
-  background-image:
-    linear-gradient(45deg,  transparent 47.5%, #fff 47.6%, #fff 52.4%, transparent 52.5%),
-    linear-gradient(-45deg, transparent 47.5%, #fff 47.6%, #fff 52.4%, transparent 52.5%);
-  background-size:64px 64px;
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(60% 90% at 100% 0%, rgba(255,255,255,.10), transparent 65%),
+    radial-gradient(50% 80% at 0% 100%, rgba(217,168,78,.14), transparent 60%);
 }
 .reveal-label{font-size:10.5px; letter-spacing:.32em; text-transform:uppercase; color:var(--gold-light); font-weight:700; margin-bottom:6px; position:relative}
 .reveal-answer{font-family:var(--serif); font-weight:400; font-size:clamp(23px,2.9vw,33px); line-height:1.18; margin:0 0 8px; position:relative; letter-spacing:-.01em}
@@ -383,8 +381,8 @@ body.quiz-mode{overflow:hidden}
   padding:8px 26px; border:5px solid currentColor; border-radius:8px; transform:rotate(-9deg);
   text-transform:uppercase; animation:stampIn .55s cubic-bezier(.2,1.5,.35,1) both;
 }
-.stamp.yes{color:#9BE8B4}
-.stamp.no{color:#F2A08F}
+.stamp.yes{color:#A9C9A2}
+.stamp.no{color:#E8A5A2}
 @keyframes stampIn{
   0%{transform:rotate(-26deg) scale(2.8); opacity:0; filter:blur(5px)}
   60%{transform:rotate(-6deg) scale(.94); opacity:1; filter:blur(0)}
@@ -416,7 +414,7 @@ body.quiz-mode{overflow:hidden}
 .rank-pos{width:28px; height:32px; flex:0 0 auto; display:grid; place-items:center;
   font-family:var(--serif); font-size:17px; color:var(--gold-light); border-right:1px solid rgba(255,255,255,.2)}
 .rank-bar{flex:1; height:32px; border-radius:6px; background:rgba(255,255,255,.11); overflow:hidden; position:relative}
-.rank-fill{height:100%; border-radius:6px; background:linear-gradient(90deg,rgba(143,212,206,.85),rgba(239,201,107,.9));
+.rank-fill{height:100%; border-radius:6px; background:linear-gradient(90deg,rgba(143,168,136,.9),rgba(232,195,122,.9));
   width:0; animation:grow 1s .25s cubic-bezier(.2,.9,.3,1) forwards}
 @keyframes grow{to{width:var(--w)}}
 .rank-name{position:absolute; left:12px; top:50%; transform:translateY(-50%); z-index:2;
@@ -1004,8 +1002,8 @@ const QUESTIONS = [
   q:"Schätzt einmal: Wie viele der Anwesenden essen lieber Pommes – und wie viele lieber Pizza?",
   hint:"Keine richtige Antwort. Jede Gruppe schreibt ihre Schätzung auf, danach wird ausgezählt.",
   tally:[
-    {label:"Pommes", color:"#D8A945"},
-    {label:"Pizza",  color:"#C25A38"}
+    {label:"Pommes", color:"#D9A84E"},
+    {label:"Pizza",  color:"#C97572"}
   ],
   answer:"Jetzt wird ausgezählt",
   fact:"Alle Hände hoch. Der Quizmaster zählt live aus und trägt die Zahlen oben ein. Den Punkt bekommt die Gruppe, deren Schätzung am nächsten liegt."
@@ -1039,7 +1037,7 @@ const countIn = id => QUESTIONS.filter(q=> q.round === id).length;
 /* ============================================================
    3) ZUSTAND
    ============================================================ */
-const GROUP_COLORS = ["#14708F","#C25A38","#D8A945","#6E8B4A","#8E2C4A","#2E93AD","#7A6BA8","#2E8B57"];
+const GROUP_COLORS = ["#6A4368","#C97572","#D9A84E","#5F7A5A","#5F87A3","#A85C59","#8A6488","#8FA888"];
 const DEFAULT_GROUPS = ["Los Pommes","Sangría Sisters","Tramuntana","Die Mandelblüten"];
 const STORE = "annesBirthdayQuiz.v2";
 
@@ -1058,7 +1056,13 @@ function load(){
   try{
     const raw = localStorage.getItem(STORE); if(!raw) return;
     const d = JSON.parse(raw);
-    if(Array.isArray(d.groups) && d.groups.length) state.groups = d.groups;
+    if(Array.isArray(d.groups) && d.groups.length){
+      state.groups = d.groups;
+      // Gespeicherte Stände aus der alten Farbwelt auf die neue Palette heben
+      state.groups.forEach((g,i)=>{
+        if(!GROUP_COLORS.includes(g.color)) g.color = GROUP_COLORS[i%GROUP_COLORS.length];
+      });
+    }
     if(typeof d.step === "number") state.step = Math.min(Math.max(0, d.step), STEPS.length-1);
     if(typeof d.scoresOpen === "boolean") state.scoresOpen = d.scoresOpen;
   }catch(e){}
@@ -1164,7 +1168,7 @@ function timerAdd(sec){
 /* ============================================================
    6) KONFETTI aus Papierschnipseln
    ============================================================ */
-const PAPER = ["#C25A38","#D8A945","#14708F","#8FD4CE","#6E8B4A","#EFC96B","#2E93AD"];
+const PAPER = ["#E6A3A0","#D9A84E","#93B3C9","#8FA888","#E8C37A","#8A6488","#C97572"];
 function confetti(count = 90, {fromTop = false} = {}){
   for(let i=0;i<count;i++){
     const el = document.createElement("div");
