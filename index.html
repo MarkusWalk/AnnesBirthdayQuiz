@@ -344,7 +344,7 @@ body.quiz-mode{overflow:hidden}
 /* ---------- Auflösung ---------- */
 .reveal{margin-top:18px; border-radius:14px; overflow:hidden; max-height:0; opacity:0;
   transition:max-height .65s cubic-bezier(.2,.9,.3,1), opacity .45s}
-.reveal.show{max-height:1400px; opacity:1}
+.reveal.show{max-height:2600px; opacity:1}
 .reveal-inner{
   background:linear-gradient(150deg,var(--sea-deep) 0%,var(--sea) 62%,var(--sea-light) 100%);
   color:#fff; padding:17px 24px 19px; position:relative; overflow:hidden;
@@ -577,6 +577,128 @@ body.quiz-mode{overflow:hidden}
 .lav-card .bot .ltr{font-style:normal; font-family:var(--sans); font-weight:700; font-size:11px;
   color:var(--gold-light); letter-spacing:.2em; margin-right:7px; vertical-align:2px}
 .lav-card .desc{font-size:12.5px; line-height:1.45; color:rgba(255,255,255,.82)}
+
+/* Wortherkunft */
+.wsplit{display:flex; align-items:stretch; gap:12px; flex-wrap:wrap; max-width:620px}
+.wsplit .part{background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.2);
+  border-radius:12px; padding:12px 15px; flex:1 1 120px; min-width:0; animation:riseIn .55s both}
+.wsplit .part .w{font-family:var(--serif); font-size:clamp(21px,2.5vw,27px); color:var(--gold-light); line-height:1.1}
+.wsplit .part .g{font-size:12.5px; line-height:1.45; color:rgba(255,255,255,.84); margin-top:6px}
+.wsplit .plus{display:grid; place-items:center; font-family:var(--serif); font-size:24px;
+  color:rgba(255,255,255,.45); animation:riseIn .5s .2s both}
+
+/* Zusammenschluss */
+.merge{display:flex; align-items:center; gap:14px; flex-wrap:wrap; max-width:640px}
+.merge .box{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); border-radius:11px;
+  padding:11px 16px; font-weight:600; font-size:14px; animation:riseIn .5s both}
+.merge .box.res{background:rgba(217,168,78,.22); border-color:var(--gold-light); color:#fff}
+.merge .plus{display:grid; place-items:center; font-family:var(--serif); font-size:22px;
+  color:rgba(255,255,255,.45); animation:riseIn .5s both}
+.merge .arw{position:relative; flex:0 0 auto; width:74px; height:2px; background:rgba(255,255,255,.4);
+  transform:scaleX(0); transform-origin:left; animation:tlGrow .5s .55s forwards}
+.merge .arw::after{content:"›"; position:absolute; right:-4px; top:-15px; font-size:22px; color:rgba(255,255,255,.6)}
+.merge .arw i{position:absolute; left:50%; top:-28px; transform:translateX(-50%); font-style:normal;
+  font-family:var(--serif); font-size:14px; color:var(--gold-light); white-space:nowrap}
+
+/* Laubkalender */
+.leafyear{max-width:600px}
+.leafyear .lrow{display:grid; grid-template-columns:132px 1fr; gap:12px; align-items:center; margin-bottom:8px}
+.leafyear .lname{font-size:12.5px; font-weight:600; color:rgba(255,255,255,.9); text-align:right}
+.leafyear .cells{display:grid; grid-template-columns:repeat(12,1fr); gap:3px}
+.leafyear .cells i{height:22px; border-radius:4px; transform:scale(0);
+  animation:cellIn .3s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes cellIn{to{transform:scale(1)}}
+.leafyear .cells i.gruen{background:#7E9E76}
+.leafyear .cells i.kupfer{background:linear-gradient(180deg,#C08A46,#9E6327); box-shadow:0 0 10px rgba(192,138,70,.4)}
+.leafyear .cells i.kahl{background:rgba(255,255,255,.07); border:1px dashed rgba(255,255,255,.3)}
+.leafyear .months{display:grid; grid-template-columns:repeat(12,1fr); gap:3px; margin-left:144px}
+.leafyear .months b{font-size:9px; font-weight:600; text-align:center; color:rgba(255,255,255,.5)}
+.leafyear .lg{display:flex; gap:16px; flex-wrap:wrap; margin-top:12px; font-size:11.5px; color:rgba(255,255,255,.75)}
+.leafyear .lg span{display:flex; align-items:center; gap:6px}
+.leafyear .lg em{width:13px; height:13px; border-radius:3px; display:block}
+
+/* Wärmeausdehnung */
+.thermo{max-width:560px}
+.thermo .scale{position:relative; height:22px; border-radius:999px; margin:20px 0 34px;
+  background:linear-gradient(90deg,#7FA3C4,#CBDCC4 42%,#E8C37A 72%,#C97572)}
+.thermo .pt{position:absolute; top:-6px; width:4px; height:34px; border-radius:2px; background:#fff;
+  animation:riseIn .5s both}
+.thermo .pt i{position:absolute; left:50%; transform:translateX(-50%); font-style:normal; white-space:nowrap;
+  font-size:11px; color:rgba(255,255,255,.85)}
+.thermo .pt i.up{top:-20px} .thermo .pt i.dn{top:38px; font-family:var(--serif); font-size:14px; color:var(--gold-light)}
+.thermo .delta{display:inline-flex; align-items:baseline; gap:10px; background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2); border-radius:11px; padding:10px 16px; animation:riseIn .5s .7s both}
+.thermo .delta b{font-family:var(--serif); font-size:26px; color:var(--gold-light); white-space:nowrap}
+.thermo .delta span{font-size:12.5px; color:rgba(255,255,255,.8)}
+
+/* Erzählkette */
+.flow{display:flex; align-items:stretch; gap:0; flex-wrap:wrap; max-width:640px}
+.flow .stn{flex:1 1 165px; background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.2);
+  border-radius:12px; padding:12px 15px; animation:riseIn .55s both}
+.flow .stn .when{font-size:10.5px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--gold-light); margin-bottom:5px}
+.flow .stn .what{font-size:13px; line-height:1.45; color:rgba(255,255,255,.9)}
+.flow .lnk{flex:0 0 26px; display:grid; place-items:center; font-size:19px; color:rgba(255,255,255,.4);
+  animation:riseIn .4s both}
+
+/* Aussagen-Check */
+.mcheck{display:grid; gap:7px; max-width:640px}
+.mcheck .row{display:grid; grid-template-columns:26px 1fr; gap:12px; align-items:start;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:11px;
+  padding:10px 14px; animation:slideIn .5s cubic-bezier(.2,1.2,.4,1) both}
+.mcheck .row.ok{background:rgba(217,168,78,.18); border-color:var(--gold-light)}
+.mcheck .mk{width:24px; height:24px; border-radius:50%; display:grid; place-items:center;
+  font-size:13px; font-weight:700; background:rgba(255,255,255,.13); color:rgba(255,255,255,.8)}
+.mcheck .row.ok .mk{background:var(--gold); color:#4A3308}
+.mcheck .cl{font-size:13.5px; line-height:1.4; color:#fff}
+.mcheck .wy{font-size:12px; line-height:1.4; color:rgba(255,255,255,.66); margin-top:3px}
+
+/* Botafumeiro */
+.bota{display:flex; gap:26px; align-items:center; flex-wrap:wrap}
+.bota .rig{position:relative; width:200px; height:178px; flex:0 0 auto; overflow:hidden}
+/* Kreis um den Aufhängepunkt mit dem Radius des Seils – sichtbar ist nur der untere Bogen,
+   also genau die Bahn, die das Fass beschreibt. */
+.bota .arc{position:absolute; left:50%; top:-130px; width:280px; height:280px; margin-left:-140px;
+  border-radius:50%; border:2px dashed rgba(232,195,122,.42); border-top-color:transparent;
+  border-left-color:transparent; border-right-color:transparent}
+.bota .piv{position:absolute; left:50%; top:6px; width:9px; height:9px; margin-left:-4.5px;
+  border-radius:50%; background:rgba(255,255,255,.7)}
+.bota .swing{position:absolute; left:50%; top:10px; width:2px; height:118px; margin-left:-1px;
+  transform-origin:top center; background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.28));
+  animation:swing 2.6s cubic-bezier(.45,0,.55,1) infinite alternate}
+@keyframes swing{from{transform:rotate(-42deg)}to{transform:rotate(42deg)}}
+.bota .cens{position:absolute; left:50%; bottom:-16px; width:26px; height:34px; margin-left:-13px;
+  border-radius:6px 6px 13px 13px; background:linear-gradient(160deg,var(--gold-light),#A87B24);
+  box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.bota .cens::after{content:""; position:absolute; inset:-13px -7px auto; height:13px; border-radius:50%;
+  background:radial-gradient(ellipse at center, rgba(255,255,255,.4), transparent 70%)}
+.bota .facts{display:grid; gap:7px; flex:1 1 210px}
+.bota .facts div{background:rgba(255,255,255,.09); border-left:3px solid var(--gold-light);
+  border-radius:7px; padding:8px 13px; font-size:13px; animation:slideIn .5s both}
+.bota .facts b{font-family:var(--serif); color:var(--gold-light); font-size:16px; margin-right:7px}
+
+/* Inselgruppe */
+.isles{position:relative; height:248px; max-width:580px}
+.isles .isle{position:absolute; transform:translate(-50%,-50%); text-align:center;
+  animation:circIn .7s cubic-bezier(.2,1.15,.4,1) both}
+.isles .isle .bl{border-radius:52% 48% 56% 44%/48% 56% 44% 52%; margin:0 auto;
+  background:linear-gradient(150deg,var(--gold-light),rgba(217,168,78,.72)); box-shadow:0 6px 18px rgba(0,0,0,.22)}
+.isles .isle.park .bl{background:rgba(255,255,255,.1); border:2px dashed rgba(255,255,255,.45)}
+.isles .isle .nm{margin-top:6px; font-size:12px; font-weight:600; color:#fff; white-space:nowrap}
+.isles .isle .km{font-size:10.5px; color:rgba(255,255,255,.62); white-space:nowrap}
+.isles .isle.park .nm{color:rgba(255,255,255,.72)}
+
+/* Kräuter-Wolke */
+.herbs{display:flex; flex-wrap:wrap; gap:8px; max-width:620px}
+.herbs span{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); border-radius:999px;
+  padding:6px 14px; font-size:13px; color:#fff; animation:popIn .45s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes popIn{from{opacity:0; transform:scale(.4)}to{opacity:1; transform:scale(1)}}
+.herbs span.more{background:transparent; border-style:dashed; color:rgba(255,255,255,.7); font-style:italic}
+.herb-kinds{display:flex; gap:9px; flex-wrap:wrap; margin-top:14px}
+.herb-kinds div{flex:1 1 130px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
+  border-radius:11px; padding:10px 14px; animation:riseIn .5s both}
+.herb-kinds b{display:block; font-family:var(--serif); font-size:16px; color:var(--gold-light); margin-bottom:2px}
+.herb-kinds span{font-size:12px; color:rgba(255,255,255,.78); line-height:1.4}
 
 /* Konfetti aus Papierschnipseln */
 .confetti{position:fixed; z-index:60; pointer-events:none; will-change:transform,opacity; border-radius:1px}
@@ -881,6 +1003,7 @@ const ROUNDS = [
           math      = Rechenweg
           open      = keine richtige Antwort, Live-Auszählung
    correctImg: hebt beim Aufdecken zusätzlich das richtige Foto hervor
+   viz:        zusätzliche animierte Grafik in der Auflösung, siehe renderViz()
    ============================================================ */
 const QUESTIONS = [
 
@@ -896,7 +1019,12 @@ const QUESTIONS = [
   ],
   correct:1,
   answer:"Von den Grafen von Berg",
-  fact:"Namensgebend waren nicht die Hügel, sondern ein Adelsgeschlecht: Die Grafen und späteren Herzöge von Berg residierten auf Schloss Burg an der Wupper. „Ober-“ bezeichnet schlicht den oberen, östlichen Teil des Bergischen Landes."
+  fact:"Namensgebend waren nicht die Hügel, sondern ein Adelsgeschlecht: Die Grafen und späteren Herzöge von Berg residierten auf Schloss Burg an der Wupper. „Ober-“ bezeichnet schlicht den oberen, östlichen Teil des Bergischen Landes.",
+  viz:{kind:"wordsplit", cap:"Der Name, auseinandergenommen", parts:[
+    {w:"Ober-",  g:"der obere, östliche Teil des Bergischen Landes – flussaufwärts gedacht"},
+    {w:"Berg",   g:"die Grafen von Berg auf Schloss Burg an der Wupper, nicht die Hügel"},
+    {w:"Kreis",  g:"die Verwaltungseinheit, 1932 in heutiger Form entstanden"}
+  ]}
 },
 {
   round:1, cat:"Vier Bilder", type:"places", time:120,
@@ -924,7 +1052,10 @@ const QUESTIONS = [
   q:"Und wo steht dieses Gebäude?",
   imgs:[{src:"bilder/gebaeude.jpg", hint:"Stadtwerke Bensberg", cap:"Rätselbild"}],
   answer:"Bensberg, Bergisch Gladbach",
-  fact:"Bensberg ist seit der kommunalen Neugliederung von 1975 ein Stadtteil von Bergisch Gladbach im Rheinisch-Bergischen Kreis."
+  fact:"Bensberg ist seit der kommunalen Neugliederung von 1975 ein Stadtteil von Bergisch Gladbach im Rheinisch-Bergischen Kreis.",
+  viz:{kind:"merge", cap:"Die kommunale Neugliederung",
+    a:"Stadt Bensberg", b:"Stadt Bergisch Gladbach", year:"1. Januar 1975",
+    result:"Bergisch Gladbach – Bensberg ist seither Stadtteil"}
 },
 {
   round:1, cat:"Reihenfolge", type:"order", time:75,
@@ -953,7 +1084,11 @@ const QUESTIONS = [
     {src:"bilder/hecke-d.jpg", hint:"Hecke D", cap:"D"}
   ],
   answer:"Hecke C",
-  fact:"Es ist die Rotbuche. Sie behält ihr trockenes Laub den ganzen Winter über und ist deshalb als Sichtschutz so beliebt – im Februar steht sie noch kupferbraun da, während ringsum alles kahl ist."
+  fact:"Es ist die Rotbuche. Sie behält ihr trockenes Laub den ganzen Winter über und ist deshalb als Sichtschutz so beliebt – im Februar steht sie noch kupferbraun da, während ringsum alles kahl ist.",
+  viz:{kind:"leafyear", cap:"Warum die Rotbuche als Hecke so beliebt ist", rows:[
+    {name:"Rotbuche", states:["kupfer","kupfer","kupfer","gruen","gruen","gruen","gruen","gruen","gruen","kupfer","kupfer","kupfer"]},
+    {name:"andere Laubhecke", states:["kahl","kahl","kahl","gruen","gruen","gruen","gruen","gruen","gruen","kahl","kahl","kahl"]}
+  ]}
 },
 
 /* ---------- II · FRANKREICH ---------- */
@@ -986,7 +1121,10 @@ const QUESTIONS = [
   options:["Wahr","Falsch"],
   correct:0,
   answer:"Der Eiffelturm schrumpft tatsächlich",
-  fact:"Stahl zieht sich bei Kälte zusammen. Im Hochsommer wächst der Turm umgekehrt um bis zu fünfzehn Zentimeter und neigt sich dabei leicht von der Sonne weg."
+  fact:"Stahl zieht sich bei Kälte zusammen. Im Hochsommer wächst der Turm umgekehrt um bis zu fünfzehn Zentimeter und neigt sich dabei leicht von der Sonne weg.",
+  viz:{kind:"thermo", cap:"Der Turm als Thermometer", min:-25, max:52,
+    points:[{t:-10, tl:"−10 °C", h:"−5 cm"}, {t:20, tl:"20 °C", h:"330 m"}, {t:40, tl:"40 °C", h:"+15 cm"}],
+    delta:"20 cm", deltaLabel:"Unterschied zwischen Frostnacht und Hitzetag – 18.000 Tonnen Eisen dehnen sich eben"}
 },
 {
   round:2, cat:"Wahr oder falsch", type:"truefalse", time:30,
@@ -995,7 +1133,12 @@ const QUESTIONS = [
   correct:0,
   imgs:[{src:"bilder/baguette.jpg", hint:"Umgedrehtes Baguette auf einem Tisch", cap:"Rätselbild"}],
   answer:"Ein umgedrehtes Baguette bringt Unglück",
-  fact:"Im Mittelalter legten Bäcker das Brot des Henkers umgedreht beiseite, damit niemand versehentlich danach griff. Bis heute dreht man in Frankreich ein umgedrehtes Baguette sofort wieder um."
+  fact:"Im Mittelalter legten Bäcker das Brot des Henkers umgedreht beiseite, damit niemand versehentlich danach griff. Bis heute dreht man in Frankreich ein umgedrehtes Baguette sofort wieder um.",
+  viz:{kind:"flow", cap:"Wie aus einer Vorsichtsmaßnahme ein Aberglaube wurde", stations:[
+    {when:"Mittelalter", what:"Der Henker durfte sich sein Brot nehmen, ohne zu bezahlen."},
+    {when:"Beim Bäcker", what:"Sein Laib lag umgedreht bereit – damit ja niemand sonst danach griff."},
+    {when:"Heute", what:"Ein umgedrehtes Baguette gilt als Unglücksbringer und wird sofort zurückgedreht."}
+  ]}
 },
 {
   round:2, cat:"Schätzfrage", type:"estimate", time:60,
@@ -1042,7 +1185,17 @@ const QUESTIONS = [
   ],
   correct:0,
   answer:"Die letzten hundert Kilometer zu Fuß",
-  fact:"So verlangt es das Pilgerbüro in Santiago für die Compostela: mindestens hundert Kilometer zu Fuß oder zu Pferd, mit dem Rad zweihundert, belegt durch Stempel im Pilgerausweis. Die anderen drei sind Legenden – Gepäcktransport ist ausdrücklich erlaubt, der Weg steht allen offen, und die Muschel weist nach Santiago, also nach Westen. Dass im Grab der Apostel Jakobus liegt, ist übrigens ebenfalls Überlieferung und kein gesicherter Befund."
+  viz:{kind:"mythcheck", cap:"Die vier Aussagen im Faktencheck", claims:[
+    {ok:true,  text:"Mindestens die letzten hundert Kilometer zu Fuß",
+     why:"So verlangt es das Pilgerbüro für die Compostela – mit dem Rad sind es zweihundert."},
+    {ok:false, text:"Den Rucksack die ganze Strecke selbst tragen",
+     why:"Gepäcktransport von Herberge zu Herberge ist ausdrücklich erlaubt."},
+    {ok:false, text:"Nur Getaufte dürfen den Weg gehen",
+     why:"Der Weg steht allen offen, unabhängig von Konfession und Glauben."},
+    {ok:false, text:"Die Muschel zeigt immer nach Osten",
+     why:"Sie weist nach Santiago – und das liegt im Westen."}
+  ]},
+  fact:"Nachgewiesen wird die Strecke durch Stempel im Pilgerausweis – zu Fuß oder zu Pferd hundert Kilometer, mit dem Rad zweihundert. Dass im Grab der Apostel Jakobus liegt, ist übrigens ebenfalls Überlieferung und kein gesicherter Befund."
 },
 {
   round:3, cat:"Routen", type:"single", time:50,
@@ -1070,7 +1223,12 @@ const QUESTIONS = [
   q:"In welcher Stadt steht dieses Bauwerk?",
   imgs:[{src:"bilder/bauwerk.jpg", hint:"Kathedrale von Santiago de Compostela", cap:"Rätselbild"}],
   answer:"Santiago de Compostela",
-  fact:"Das Ziel aller Jakobswege, im spanischen Galicien. Im Inneren schwingt der Botafumeiro, ein sechzig Kilogramm schweres Weihrauchfass – das ursprünglich auch dazu diente, den Geruch der angekommenen Pilger zu übertönen."
+  fact:"Das Ziel aller Jakobswege, im spanischen Galicien. Im Inneren schwingt der Botafumeiro, ein sechzig Kilogramm schweres Weihrauchfass – das ursprünglich auch dazu diente, den Geruch der angekommenen Pilger zu übertönen.",
+  viz:{kind:"botafumeiro", cap:"Der Botafumeiro im Querschiff", facts:[
+    {v:"62 kg", t:"schwer, aus versilberter Messinglegierung"},
+    {v:"21 m",  t:"Seil, an dem acht Männer ihn in Schwung ziehen"},
+    {v:"68 km/h", t:"Spitzengeschwindigkeit am tiefsten Punkt"}
+  ]}
 },
 
 /* ---------- IV · MALLORCA ---------- */
@@ -1080,7 +1238,14 @@ const QUESTIONS = [
   options:["Zwei","Vier","Sechs","Neun"],
   correct:1,
   answer:"Vier Inseln",
-  fact:"Mallorca, Menorca, Ibiza und Formentera. Die fünfte größere Insel, Cabrera, ist Nationalpark – dort leben nur Ranger und Forschende."
+  fact:"Mallorca, Menorca, Ibiza und Formentera. Die fünfte größere Insel, Cabrera, ist Nationalpark – dort leben nur Ranger und Forschende.",
+  viz:{kind:"islands", cap:"Die Balearen nach Fläche", items:[
+    {name:"Mallorca",   km:3640, x:52, y:38},
+    {name:"Menorca",    km:696,  x:87, y:16},
+    {name:"Ibiza",      km:572,  x:13, y:50},
+    {name:"Formentera", km:83,   x:15, y:84},
+    {name:"Cabrera",    km:13,   x:56, y:84, park:true}
+  ]}
 },
 {
   round:4, cat:"Inselkunde", type:"single", time:40,
@@ -1088,7 +1253,15 @@ const QUESTIONS = [
   options:["Orujo","Hierbas","Horchata","Cava"],
   correct:1,
   answer:"Hierbas",
-  fact:"Es gibt ihn süß, trocken und gemischt, angesetzt mit Fenchel, Rosmarin, Zitronenblättern und bis zu dreißig weiteren Kräutern. Auf der Insel gehört er nach dem Essen dazu."
+  fact:"Es gibt ihn süß, trocken und gemischt, angesetzt mit Fenchel, Rosmarin, Zitronenblättern und bis zu dreißig weiteren Kräutern. Auf der Insel gehört er nach dem Essen dazu.",
+  viz:{kind:"herbs", cap:"Was im Ansatz steckt",
+    list:["Fenchel","Rosmarin","Zitronenblätter","Anis","Thymian","Kamille","Minze","Wacholder","Orangenschale","Salbei"],
+    more:"… bis zu dreißig Kräuter",
+    kinds:[
+      {n:"Dolces", d:"süß, mild, der Klassiker nach dem Essen"},
+      {n:"Seques", d:"trocken und kräuterherb, deutlich stärker"},
+      {n:"Mesclades", d:"gemischt – die goldene Mitte"}
+    ]}
 },
 {
   round:4, cat:"Inselkunde", type:"single", time:40,
@@ -1780,6 +1953,91 @@ function renderViz(q, stage){
   if(v.kind === "rosette"){
     box.innerHTML += `<div class="rosette-wrap"><div class="rosette"></div>
       <div class="rosette-note">${esc(v.note)}</div></div>`;
+  }
+
+  if(v.kind === "wordsplit"){
+    box.innerHTML += `<div class="wsplit">` + v.parts.map((p,i)=> (i? `<div class="plus">+</div>`:"") +
+      `<div class="part" style="animation-delay:${.15+i*.35}s">
+         <div class="w">${esc(p.w)}</div><div class="g">${esc(p.g)}</div></div>`).join("") + `</div>`;
+    v.parts.forEach((_,i)=> tone(440 + i*160, .25, {type:"sine", gain:.1, delay:.15+i*.35}));
+  }
+
+  if(v.kind === "merge"){
+    box.innerHTML += `<div class="merge">
+      <div class="box" style="animation-delay:.1s">${esc(v.a)}</div>
+      <div class="plus" style="animation-delay:.18s">+</div>
+      <div class="box" style="animation-delay:.25s">${esc(v.b)}</div>
+      <div class="arw"><i>${esc(v.year)}</i></div>
+      <div class="box res" style="animation-delay:1s">${esc(v.result)}</div></div>`;
+    setTimeout(()=> tone(660, .35, {type:"triangle", gain:.13, sweepTo:880}), 1000);
+  }
+
+  if(v.kind === "leafyear"){
+    const M = ["J","F","M","A","M","J","J","A","S","O","N","D"];
+    box.innerHTML += `<div class="leafyear">
+      <div class="months">${M.map(m=>`<b>${m}</b>`).join("")}</div>` +
+      v.rows.map((r,ri)=>`
+        <div class="lrow"><div class="lname">${esc(r.name)}</div>
+          <div class="cells">${r.states.map((s,i)=>
+            `<i class="${s}" style="animation-delay:${.2+ri*.5+i*.05}s"></i>`).join("")}</div></div>`).join("") +
+      `<div class="lg">
+        <span><em style="background:#7E9E76"></em>grünes Laub</span>
+        <span><em style="background:linear-gradient(180deg,#C08A46,#9E6327)"></em>trockenes Laub bleibt hängen</span>
+        <span><em style="background:rgba(255,255,255,.07);border:1px dashed rgba(255,255,255,.3)"></em>kahl</span>
+      </div></div>`;
+  }
+
+  if(v.kind === "thermo"){
+    const pos = t => ((t - v.min) / (v.max - v.min)) * 100;
+    box.innerHTML += `<div class="thermo"><div class="scale">` +
+      v.points.map((p,i)=>`<div class="pt" style="left:${pos(p.t)}%;animation-delay:${.3+i*.35}s">
+        <i class="up">${esc(p.tl)}</i><i class="dn">${esc(p.h)}</i></div>`).join("") +
+      `</div><div class="delta"><b>${esc(v.delta)}</b><span>${esc(v.deltaLabel)}</span></div></div>`;
+    setTimeout(()=> tone(880, .4, {type:"triangle", gain:.14}), 900);
+  }
+
+  if(v.kind === "flow"){
+    box.innerHTML += `<div class="flow">` + v.stations.map((s,i)=> (i? `<div class="lnk" style="animation-delay:${.3+i*.45}s">›</div>`:"") +
+      `<div class="stn" style="animation-delay:${.15+i*.45}s">
+         <div class="when">${esc(s.when)}</div><div class="what">${esc(s.what)}</div></div>`).join("") + `</div>`;
+    v.stations.forEach((_,i)=> tone(392 + i*130, .22, {type:"sine", gain:.1, delay:.15+i*.45}));
+  }
+
+  if(v.kind === "mythcheck"){
+    box.innerHTML += `<div class="mcheck">` + v.claims.map((c,i)=>`
+      <div class="row ${c.ok?"ok":""}" style="animation-delay:${.15+i*.28}s">
+        <div class="mk">${c.ok?"✓":"✗"}</div>
+        <div><div class="cl">${esc(c.text)}</div><div class="wy">${esc(c.why)}</div></div>
+      </div>`).join("") + `</div>`;
+    v.claims.forEach((c,i)=> tone(c.ok? 880 : 260, .2, {type:c.ok?"triangle":"sine", gain:.1, delay:.15+i*.28}));
+  }
+
+  if(v.kind === "botafumeiro"){
+    box.innerHTML += `<div class="bota">
+      <div class="rig"><div class="arc"></div><div class="piv"></div>
+        <div class="swing"><div class="cens"></div></div></div>
+      <div class="facts">` + v.facts.map((f,i)=>
+        `<div style="animation-delay:${.2+i*.25}s"><b>${esc(f.v)}</b>${esc(f.t)}</div>`).join("") +
+      `</div></div>`;
+  }
+
+  if(v.kind === "islands"){
+    const r = km => Math.max(11, Math.round(Math.sqrt(km) * 0.78));
+    box.innerHTML += `<div class="isles">` + v.items.map((it,i)=>`
+      <div class="isle ${it.park?"park":""}" style="left:${it.x}%;top:${it.y}%;animation-delay:${.15+i*.24}s">
+        <div class="bl" style="width:${r(it.km)*2}px;height:${r(it.km)*1.6}px"></div>
+        <div class="nm">${esc(it.name)}</div><div class="km">${it.km.toLocaleString("de-DE")} km²</div>
+      </div>`).join("") + `</div>`;
+    v.items.forEach((it,i)=> tone(it.park? 300 : 523 + i*90, .2, {type:"sine", gain:.09, delay:.15+i*.24}));
+  }
+
+  if(v.kind === "herbs"){
+    box.innerHTML += `<div class="herbs">` + v.list.map((h,i)=>
+      `<span style="animation-delay:${.1+i*.09}s">${esc(h)}</span>`).join("") +
+      `<span class="more" style="animation-delay:${.1+v.list.length*.09}s">${esc(v.more)}</span></div>
+      <div class="herb-kinds">` + v.kinds.map((k,i)=>
+        `<div style="animation-delay:${.5+i*.2}s"><b>${esc(k.n)}</b><span>${esc(k.d)}</span></div>`).join("") + `</div>`;
+    v.list.forEach((_,i)=> tone(600 + i*40, .12, {type:"sine", gain:.06, delay:.1+i*.09}));
   }
 
   if(v.kind === "lavendel"){

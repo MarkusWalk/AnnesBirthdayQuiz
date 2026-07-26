@@ -132,13 +132,33 @@ Auflösung bestimmt:
 Foto hervor. `sheetLines` erzeugt auf dem Antwortzettel mehrere beschriftete Zeilen
 statt einer.
 
-Viele Fragen tragen zusätzlich ein `viz`-Feld: eine animierte Grafik in der
-Auflösung. Verfügbare Arten: `bars` (Balkenvergleich), `columns` (Monatssäulen),
-`hexmap` (Frankreich und Nachbarn), `obermap` (Ortskarte mit Pins), `timeline`
-(Zeitstrahl), `persec` (Live-Zähler), `gauge` (Skala mit Markierungen),
-`areacomp` (Flächenvergleich), `rosette` (Fensterrose) und `lavendel`
-(botanischer Vergleich). Bei Schätzfragen erscheint die Grafik erst, nachdem
-die Zahl hochgezählt hat.
+Fast jede Frage trägt zusätzlich ein `viz`-Feld: eine animierte Grafik in der
+Auflösung. Verfügbare Arten:
+
+| `kind` | Darstellung |
+|---|---|
+| `bars` | waagerechte Balken, die richtige Antwort in Gold |
+| `columns` | Säulenreihe, etwa die zwölf Monate |
+| `wordsplit` | ein Wort in seine Bestandteile zerlegt |
+| `merge` | zwei Kästen, ein Pfeil mit Jahreszahl, ein Ergebnis |
+| `flow` | Erzählkette aus mehreren Stationen |
+| `mythcheck` | Aussagenliste mit Haken und Kreuzen |
+| `hexmap` | Frankreich als Sechseck mit seinen Nachbarn |
+| `obermap` | Ortskarte mit einfallenden Pins |
+| `islands` | Inseln als Flächenkreise, geografisch angeordnet |
+| `timeline` | Zeitstrahl mit Ereignissen ober- und unterhalb |
+| `leafyear` | Laubkalender über zwölf Monate |
+| `thermo` | Temperaturskala mit Markierungen |
+| `gauge` | Skala mit Schwellenwerten |
+| `areacomp` | zwei Flächen als Kreise im Größenvergleich |
+| `persec` | mitlaufender Sekundenzähler |
+| `rosette` | rotierende Fensterrose |
+| `herbs` | Zutatenwolke mit Sortenkarten |
+| `botafumeiro` | schwingendes Pendel mit Kennzahlen |
+| `lavendel` | botanischer Vergleich der beiden Lavendelarten |
+
+Bei Schätzfragen erscheint die Grafik erst, nachdem die Zahl hochgezählt hat –
+sonst stünde die Lösung schon vorher da.
 
 > **Zur Heckenfrage:** Welche Hecke wirklich auf Walks Grundstück wächst, weiß nur die
 > Familie. Hinterlegt ist derzeit Hecke C (`correct: 2`, `correctImg: 2`). Zum Ändern
