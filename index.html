@@ -1058,7 +1058,7 @@ body.viewer-mode .controlbar{display:none !important}
       <div class="qcard" id="qcard">
         <div class="qmain">
           <div class="qhead">
-            <span class="num" id="qCounter">Frage 1 von 25</span>
+            <span class="num" id="qCounter">Frage 1 von 20</span>
             <span class="cat" id="qCat">Kategorie</span>
           </div>
           <h2 class="qtext" id="qText"></h2>
@@ -1092,7 +1092,7 @@ body.viewer-mode .controlbar{display:none !important}
           <div class="timer-ctrl">
             <button class="tbtn" id="btnPause">Pause</button>
             <button class="tbtn" id="btnRestart">Neu</button>
-            <button class="tbtn" id="btnPlus">+30 s</button>
+            <button class="tbtn" id="btnPlus" title="Füllt die Uhr auf, höchstens bis zur Sollzeit der Frage">Auffüllen</button>
           </div>
           <button class="btn gold" id="btnReveal" style="width:100%">Antwort aufdecken</button>
           <div class="side-note">Die Uhr deckt nichts auf.<br>Das macht nur der Quizmaster.</div>
@@ -1652,9 +1652,15 @@ function timerToggle(){
   }
   syncPush();
 }
+/* Füllt die Uhr auf, höchstens bis zur Sollzeit der Frage. Vorher wuchs
+   timer.total mit, die Uhr sprang auf 90 Sekunden und der Ring auf voll –
+   von einem Neustart nicht zu unterscheiden. Die Sollzeit ist jetzt die
+   Obergrenze, mehr als die Frage wert ist kann nie auf der Uhr stehen. */
 function timerAdd(sec){
-  if(!currentQuestion()) return;
-  timer.remain += sec; timer.total = Math.max(timer.total, timer.remain);
+  const q = currentQuestion(); if(!q) return;
+  const soll = q.time || 60;
+  timer.total = soll;
+  timer.remain = Math.min(soll, timer.remain + sec);
   timer.done = false; $("#timeUp").classList.remove("show");
   if(!timer.running){ timer.running = true; timer.last = performance.now(); timer.raf = requestAnimationFrame(timerLoop); }
   timerRender();
