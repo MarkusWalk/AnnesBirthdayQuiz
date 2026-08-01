@@ -289,6 +289,9 @@ body.quiz-mode{overflow:hidden}
 .photo .frame{
   aspect-ratio:4/3; border-radius:6px; overflow:hidden; background:var(--sand-mid);
   display:grid; place-items:center; text-align:center; padding:10px; border:1px dashed var(--sand-dark);
+  /* Ein Feld mit fester Größe. Ohne minmax(0,1fr) bemäße sich die Zeile am
+     Bild statt am Rahmen – ein Hochformat wie der Lavendel drückte sie auf. */
+  grid-template:minmax(0,1fr) / minmax(0,1fr);
 }
 /* Bild und Platzhalter gehören in dasselbe Rasterfeld. Ohne das legt das Grid
    sie in zwei Zeilen untereinander: Das Foto bekam nie die volle Rahmenhöhe,
