@@ -869,9 +869,15 @@ body.viewer-mode .quiz-body{display:block}
 body.viewer-mode .quiz-body .qcard,
 body.viewer-mode .quiz-body .round-card,
 body.viewer-mode .quiz-body .wait-card{height:auto}
-body.viewer-mode .topbar{padding:9px 14px; gap:10px}
+body.viewer-mode .topbar{padding:9px 14px; gap:6px 10px; flex-wrap:wrap}
 body.viewer-mode .brand{font-size:15px}
-body.viewer-mode .round-tag{font-size:11px; padding-left:10px; max-width:44%}
+/* Auf dem Handy bleibt neben Titelzeile und Verbindungsanzeige nicht genug
+   Platz: „Schätzen und Knobeln“ wurde auf ein „S…“ zusammengequetscht. Der
+   Rundentitel bekommt deshalb eine eigene Zeile unter dem Namenszug. */
+body.viewer-mode .round-tag{
+  font-size:11px; order:3; flex:1 0 100%; max-width:100%;
+  border-left:0; padding-left:0; white-space:normal;
+}
 body.viewer-mode .link-state{display:inline-flex}
 body.viewer-mode .qcard{grid-template-columns:1fr}
 body.viewer-mode .qmain{padding:17px 17px 22px; overflow:visible}
@@ -1529,7 +1535,7 @@ const state = {
 function save(){
   if(VIEWER) return;   /* Mitleser haben keinen eigenen Spielstand */
   try{ localStorage.setItem(STORE, JSON.stringify(
-    {groups:state.groups, step:state.step, scoresOpen:state.scoresOpen})); }catch(e){}
+    {groups:state.groups, scoresOpen:state.scoresOpen})); }catch(e){}
 }
 function load(){
   try{
@@ -1542,7 +1548,9 @@ function load(){
         if(!GROUP_COLORS.includes(g.color)) g.color = GROUP_COLORS[i%GROUP_COLORS.length];
       });
     }
-    if(typeof d.step === "number") state.step = Math.min(Math.max(0, d.step), STEPS.length-1);
+    /* Der Fortschritt wird bewusst nicht wiederhergestellt: Nach einem Neuladen
+       sprang „Quiz starten“ sonst mitten in die Fragen. Gruppen und Punkte
+       bleiben erhalten, zurückgesetzt werden die über den Knopf. */
     if(typeof d.scoresOpen === "boolean") state.scoresOpen = d.scoresOpen;
   }catch(e){}
 }
