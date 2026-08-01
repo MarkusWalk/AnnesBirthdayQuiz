@@ -802,6 +802,104 @@ body.quiz-mode{overflow:hidden}
 .pod.p3 .base{height:70px; background:linear-gradient(180deg,var(--terracotta),var(--terracotta-deep))}
 .final-rest{max-width:440px; margin:0 auto; display:grid; gap:7px}
 
+/* ---------- Beitrittskarte auf der Startseite ---------- */
+.sync-card{margin-top:18px}
+.sync-head{display:flex; align-items:flex-start; gap:18px; flex-wrap:wrap}
+.sync-head .txt{flex:1 1 320px; min-width:0}
+.sync-head h2{margin-top:0}
+.switch{display:inline-flex; align-items:center; gap:10px; cursor:pointer; user-select:none; flex:0 0 auto; padding-top:4px}
+.switch input{position:absolute; opacity:0; width:0; height:0}
+.switch .track{
+  width:46px; height:26px; border-radius:999px; background:var(--sand-dark);
+  position:relative; transition:.25s; flex:0 0 auto;
+}
+.switch .knob{
+  position:absolute; top:3px; left:3px; width:20px; height:20px; border-radius:50%;
+  background:#fff; box-shadow:var(--shadow-sm); transition:.25s;
+}
+.switch input:checked + .track{background:var(--sea)}
+.switch input:checked + .track .knob{transform:translateX(20px)}
+.switch input:focus-visible + .track{outline:3px solid var(--sea-light); outline-offset:3px}
+.switch .lbl{font-size:13px; font-weight:600; color:var(--ink-soft)}
+.switch input:checked ~ .lbl{color:var(--sea-deep)}
+
+.sync-body{
+  display:none; gap:20px; margin-top:16px; padding-top:16px;
+  border-top:1px solid var(--line); align-items:center; flex-wrap:wrap;
+}
+.sync-card.on .sync-body{display:flex}
+.sync-qr{
+  background:#fff; border:1px solid var(--line); border-radius:14px; padding:9px;
+  box-shadow:var(--shadow-sm); flex:0 0 auto; line-height:0;
+}
+.sync-qr canvas{display:block; image-rendering:pixelated}   /* Modulgröße geht glatt auf */
+.sync-info{flex:1 1 250px; min-width:0; display:grid; gap:11px}
+.sync-cap{font-size:10.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-faint)}
+.sync-code-row{display:flex; align-items:flex-end; gap:14px; flex-wrap:wrap}
+.sync-code{font-family:var(--serif); font-size:34px; letter-spacing:.16em; color:var(--sea-deep); line-height:1.08}
+.sync-url{
+  font-size:13px; color:var(--sea); word-break:break-all;
+  background:var(--sand-mid); border-radius:8px; padding:8px 11px;
+}
+.sync-state{display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--ink-soft)}
+.sync-state .dot{width:9px; height:9px; border-radius:50%; background:var(--sand-dark); flex:0 0 auto; transition:.3s}
+.sync-state.ok .dot{background:var(--sea)}
+.sync-state.err .dot{background:var(--terracotta)}
+
+/* ---------- Mitlesen: Zustandstafel und Verbindungsanzeige ---------- */
+.wait-card{
+  background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid var(--line);
+  display:none; place-items:center; text-align:center; padding:40px 30px; position:relative; overflow:hidden;
+}
+.wait-card.show{display:grid}
+.link-state{
+  display:none; align-items:center; gap:7px; margin-left:auto; font-size:12px; font-weight:600;
+  color:var(--ink-soft); white-space:nowrap;
+}
+.link-state .dot{width:8px; height:8px; border-radius:50%; background:var(--sand-dark); transition:.3s}
+.link-state.ok .dot{background:var(--sea); box-shadow:0 0 0 3px rgba(95,122,90,.18)}
+.link-state.err .dot{background:var(--terracotta)}
+
+/* ---------- Viewer-Modus: eine Spalte, Uhr oben, keine Bedienung ---------- */
+body.viewer-mode,
+body.viewer-mode.quiz-mode{overflow:auto}
+body.viewer-mode .wrap{max-width:680px; padding:12px 13px 28px}
+body.viewer-mode #screen-quiz.active{height:auto; gap:10px}
+body.viewer-mode .quiz-body{display:block}
+body.viewer-mode .quiz-body .qcard,
+body.viewer-mode .quiz-body .round-card,
+body.viewer-mode .quiz-body .wait-card{height:auto}
+body.viewer-mode .topbar{padding:9px 14px; gap:10px}
+body.viewer-mode .brand{font-size:15px}
+body.viewer-mode .round-tag{font-size:11px; padding-left:10px; max-width:44%}
+body.viewer-mode .link-state{display:inline-flex}
+body.viewer-mode .qcard{grid-template-columns:1fr}
+body.viewer-mode .qmain{padding:17px 17px 22px; overflow:visible}
+body.viewer-mode .qtext{font-size:clamp(21px,5.6vw,28px)}
+body.viewer-mode .qside{
+  order:-1; flex-direction:row; align-items:center; justify-content:flex-start;
+  gap:15px; padding:11px 16px; overflow:visible; position:sticky; top:0; z-index:5;
+}
+body.viewer-mode .timer-wrap{width:70px; height:70px}
+body.viewer-mode .timer-wrap .track,
+body.viewer-mode .timer-wrap .bar{stroke-width:13}
+body.viewer-mode .timer-num{font-size:25px}
+body.viewer-mode .timer-label{font-size:7px; letter-spacing:.04em; margin-top:2px}
+/* Die Auflösungsgrafiken sind für die Leinwand gezeichnet. Auf dem Handy
+   bekommen sie ihre gewohnte Breite und werden als Ganzes verkleinert –
+   sonst verrutschen die freigestellten Beschriftungen ineinander. */
+body.viewer-mode #revealStage{zoom:.72}
+body.viewer-mode .panic-ring{inset:-5px; border-width:2px}
+body.viewer-mode .timeup{text-align:left; font-size:11.5px}
+body.viewer-mode .imgs .photo{max-width:150px}
+body.viewer-mode .timer-ctrl,
+body.viewer-mode .side-note,
+body.viewer-mode #btnReveal,
+body.viewer-mode #btnScores,
+body.viewer-mode .score-drawer,
+body.viewer-mode .progress-dots,
+body.viewer-mode .controlbar{display:none !important}
+
 /* ---------- Antwortzettel ---------- */
 #printSheet{display:none}
 @media print{
@@ -876,6 +974,41 @@ body.quiz-mode{overflow:hidden}
         die bei jeder Fotofrage angezeigt werden. Sie ersetzen den Platzhalter automatisch.</p>
       </div>
     </div>
+
+    <div class="card sync-card" id="syncCard">
+      <div class="sync-head">
+        <div class="txt">
+          <h2>Mitlesen auf dem Handy</h2>
+          <p class="lead">Ohne diesen Schalter läuft das Quiz wie immer nur über den Beamer. Eingeschaltet
+          können die Gäste denselben Stand auf dem eigenen Gerät verfolgen: dieselbe Frage, dieselben
+          Antwortmöglichkeiten, dieselbe Uhr – und die Auflösung in dem Moment, in dem sie hier aufgedeckt
+          wird. Geantwortet wird weiterhin auf dem Zettel.</p>
+        </div>
+        <label class="switch" title="Mitlesen ein- oder ausschalten">
+          <input type="checkbox" id="syncOn">
+          <span class="track"><span class="knob"></span></span>
+          <span class="lbl">Aktiv</span>
+        </label>
+      </div>
+      <div class="sync-body">
+        <div class="sync-qr"><canvas id="syncQr" width="172" height="172"></canvas></div>
+        <div class="sync-info">
+          <div class="sync-code-row">
+            <div>
+              <span class="sync-cap">Raumcode</span>
+              <div class="sync-code" id="syncCode">––––</div>
+            </div>
+            <button class="btn quiet sm" id="btnNewRoom">Neuer Code</button>
+          </div>
+          <div>
+            <span class="sync-cap">Adresse zum Mitlesen</span>
+            <div class="sync-url" id="syncUrl">–</div>
+          </div>
+          <div class="sync-state" id="syncState"><span class="dot"></span><span id="syncStateText">Noch nicht verbunden</span></div>
+        </div>
+      </div>
+      <p class="note" id="syncNote"></p>
+    </div>
   </section>
 
   <!-- ============ QUIZ ============ -->
@@ -886,6 +1019,9 @@ body.quiz-mode{overflow:hidden}
       <button class="score-toggle" id="btnScores" aria-expanded="false" aria-controls="scoreDrawer">
         Punktestand <span class="chev">▼</span>
       </button>
+      <span class="link-state" id="linkState" aria-live="polite">
+        <span class="dot"></span><span id="linkText">verbinde …</span>
+      </span>
       <div class="progress-dots" id="dots"></div>
     </div>
 
@@ -899,6 +1035,16 @@ body.quiz-mode{overflow:hidden}
           <div class="ornament rc-orn"><span></span><i>◆◆◆</i><span></span></div>
           <p class="rc-lead" id="rcLead"></p>
           <div class="rc-count" id="rcCount"></div>
+        </div>
+      </div>
+
+      <!-- Zwischentafel für die Mitleser: Rundentafeln und Endstand bleiben dem Beamer vorbehalten -->
+      <div class="wait-card" id="waitCard">
+        <div class="rc-inner">
+          <span class="eyebrow rc-eyebrow">Mitlesen</span>
+          <h2 class="rc-title" id="waitTitle">Gleich geht es los</h2>
+          <div class="ornament rc-orn"><span></span><i>◆◆◆</i><span></span></div>
+          <p class="rc-lead" id="waitLead">Sobald am Beamer die nächste Frage erscheint, steht sie auch hier.</p>
         </div>
       </div>
 
@@ -1414,6 +1560,15 @@ const countIn = id => QUESTIONS.filter(q=> q.round === id).length;
 const GROUP_COLORS = ["#5F7A5A","#C97572","#D9A84E","#5F87A3","#8A6488","#A85C59","#8FA888","#6A4368"];
 const DEFAULT_GROUPS = ["Los Pommes","Sangría Sisters","Tramuntana","Die Mandelblüten"];
 const STORE = "annesBirthdayQuiz.v2";
+const ROOM_STORE = "annesBirthdayQuiz.room";
+
+/* Zwei Betriebsarten. Ohne Zusatz in der Adresse ist dies der Beamer, also die
+   Fassung mit Uhrsteuerung, Punkten und Auflösen. Steht ein Raumcode in der
+   Adresse (…/?v=ABCD), läuft dieselbe Datei als reine Mitlesefassung: sie zeigt
+   nur, was der Quizmaster gerade freigegeben hat, und bedient nichts selbst. */
+const VIEW_PARAM = "v";
+const VIEWER_ROOM = (new URLSearchParams(location.search).get(VIEW_PARAM) || "").toUpperCase();
+const VIEWER = /^[A-Z0-9]{4,12}$/.test(VIEWER_ROOM);
 
 const state = {
   groups: DEFAULT_GROUPS.map((n,i)=>({name:n, points:0, color:GROUP_COLORS[i%GROUP_COLORS.length]})),
@@ -1423,6 +1578,7 @@ const state = {
 };
 
 function save(){
+  if(VIEWER) return;   /* Mitleser haben keinen eigenen Spielstand */
   try{ localStorage.setItem(STORE, JSON.stringify(
     {groups:state.groups, step:state.step, scoresOpen:state.scoresOpen})); }catch(e){}
 }
@@ -1456,6 +1612,7 @@ function audioCtx(){
   return ac;
 }
 function tone(freq, dur, {type="sine", gain=.16, delay=0, sweepTo=null}={}){
+  if(VIEWER) return;   /* zwanzig Telefone, die gegeneinander piepen, will niemand */
   const c = audioCtx(); if(!c) return;
   const t0 = c.currentTime + delay;
   const osc = c.createOscillator(), g = c.createGain();
@@ -1508,11 +1665,12 @@ function timerLoop(now){
     $("#timerWrap").classList.remove("panic");
     $("#timeUp").classList.add("show");
     sfxTimeUp();
+    syncPush();
     return;
   }
   timer.raf = requestAnimationFrame(timerLoop);
 }
-function timerStop(){ timer.running = false; cancelAnimationFrame(timer.raf); }
+function timerStop(){ timer.running = false; cancelAnimationFrame(timer.raf); syncPush(); }
 function timerStart(sec){
   cancelAnimationFrame(timer.raf);
   timer.total = sec; timer.remain = sec; timer.lastBeep = -1; timer.done = false;
@@ -1521,6 +1679,7 @@ function timerStart(sec){
   $("#btnPause").textContent = "Pause";
   timerRender();
   timer.raf = requestAnimationFrame(timerLoop);
+  syncPush();
 }
 function timerToggle(){
   if(timer.done || !currentQuestion()) return;
@@ -1530,6 +1689,7 @@ function timerToggle(){
     timer.running = true; timer.last = performance.now(); $("#btnPause").textContent = "Pause";
     timer.raf = requestAnimationFrame(timerLoop);
   }
+  syncPush();
 }
 function timerAdd(sec){
   if(!currentQuestion()) return;
@@ -1537,6 +1697,7 @@ function timerAdd(sec){
   timer.done = false; $("#timeUp").classList.remove("show");
   if(!timer.running){ timer.running = true; timer.last = performance.now(); timer.raf = requestAnimationFrame(timerLoop); }
   timerRender();
+  syncPush();
 }
 
 /* ============================================================
@@ -1726,7 +1887,7 @@ function showStep(i){
     timerStart(q.time || 60);
   }
 
-  renderDots(); save();
+  renderDots(); save(); syncPush();
 }
 
 /* ============================================================
@@ -1773,6 +1934,7 @@ function reveal(){
   $("#reveal").classList.add("show");
   $("#btnReveal").disabled = true;
   $("#btnReveal").textContent = "Aufgedeckt";
+  syncPush();
   setTimeout(()=> $("#reveal").scrollIntoView({behavior:"smooth", block:"nearest"}), 240);
 }
 
@@ -2152,6 +2314,7 @@ function go(screen){
   $("#controlbar").style.display = screen === "quiz" ? "flex" : "none";
   document.body.classList.toggle("quiz-mode", screen === "quiz");
   window.scrollTo({top:0, behavior:"smooth"});
+  syncPush();
 }
 
 $("#btnStart").addEventListener("click", ()=>{
@@ -2192,6 +2355,7 @@ $("#btnBackToQuiz").addEventListener("click", ()=>{ go("quiz"); showStep(state.s
 $("#btnConfettiAgain").addEventListener("click", ()=>{ sfxFinal(); confetti(110, {fromTop:true}); });
 
 document.addEventListener("keydown", e=>{
+  if(VIEWER) return;
   if(e.target.tagName === "INPUT") return;
   if(!$("#screen-quiz").classList.contains("active")) return;
   const k = e.key.toLowerCase();
@@ -2246,14 +2410,492 @@ function buildPrintSheet(){
 $("#btnPrint").addEventListener("click", ()=>{ buildPrintSheet(); setTimeout(()=> window.print(), 60); });
 
 /* ============================================================
-   13) START
+   13) MITLESEN – Beamer und Handys im Gleichtakt
+   ------------------------------------------------------------
+   Der Beamer ist die einzige Quelle der Wahrheit. Bei jedem Wechsel
+   schickt er einen kleinen Zustand nach oben – welcher Schritt, ob
+   aufgedeckt, wie die Uhr steht. Die Handys hängen an einer offenen
+   Leitung und bauen daraus dieselbe Ansicht.
+
+   Was nicht übertragen wird: Punktestand, Rundentafeln und Endstand.
+   Die bleiben der Leinwand vorbehalten.
    ============================================================ */
-load();
+
+/* ---------- QR-Code: Byte-Modus, Fehlerkorrektur M, Version 1 bis 10 ---------- */
+const QR = (function(){
+  /* Datenwörter und Blockaufteilung je Version, Stufe M */
+  const SPEC = {
+    1:{ec:10, g:[[1,16]]},   2:{ec:16, g:[[1,28]]},   3:{ec:26, g:[[1,44]]},
+    4:{ec:18, g:[[2,32]]},   5:{ec:24, g:[[2,43]]},   6:{ec:16, g:[[4,27]]},
+    7:{ec:18, g:[[4,31]]},   8:{ec:22, g:[[2,38],[2,39]]},
+    9:{ec:22, g:[[3,36],[2,37]]}, 10:{ec:26, g:[[4,43],[1,44]]}
+  };
+  const ALIGN = {1:[],2:[6,18],3:[6,22],4:[6,26],5:[6,30],6:[6,34],
+                 7:[6,22,38],8:[6,24,42],9:[6,26,46],10:[6,28,50]};
+  const REMAIN = {1:0,2:7,3:7,4:7,5:7,6:7,7:0,8:0,9:0,10:0};
+
+  /* Rechnen im Galoiskörper 256, Primitivpolynom 0x11D */
+  const EXP = new Uint8Array(512), LOG = new Uint8Array(256);
+  (function(){
+    let x = 1;
+    for(let i=0; i<255; i++){ EXP[i] = x; LOG[x] = i; x <<= 1; if(x & 0x100) x ^= 0x11D; }
+    for(let i=255; i<512; i++) EXP[i] = EXP[i-255];
+  })();
+  const mul = (a,b)=> (a === 0 || b === 0) ? 0 : EXP[LOG[a]+LOG[b]];
+
+  function genPoly(n){
+    let p = [1];
+    for(let i=0; i<n; i++){
+      const q = new Array(p.length+1).fill(0);
+      for(let j=0; j<p.length; j++){ q[j] ^= p[j]; q[j+1] ^= mul(p[j], EXP[i]); }
+      p = q;
+    }
+    return p;
+  }
+  function ecBytes(data, n){
+    const gen = genPoly(n), res = new Array(data.length + n).fill(0);
+    data.forEach((b,i)=> res[i] = b);
+    for(let i=0; i<data.length; i++){
+      const f = res[i]; if(!f) continue;
+      for(let j=0; j<gen.length; j++) res[i+j] ^= mul(gen[j], f);
+    }
+    return res.slice(data.length);
+  }
+  function bytesOf(str){
+    const out = [];
+    for(const ch of str){
+      const c = ch.codePointAt(0);
+      if(c < 0x80) out.push(c);
+      else if(c < 0x800) out.push(0xC0|(c>>6), 0x80|(c&63));
+      else if(c < 0x10000) out.push(0xE0|(c>>12), 0x80|((c>>6)&63), 0x80|(c&63));
+      else out.push(0xF0|(c>>18), 0x80|((c>>12)&63), 0x80|((c>>6)&63), 0x80|(c&63));
+    }
+    return out;
+  }
+  const MASKS = [
+    (r,c)=> (r+c)%2 === 0,
+    (r,c)=> r%2 === 0,
+    (r,c)=> c%3 === 0,
+    (r,c)=> (r+c)%3 === 0,
+    (r,c)=> (Math.floor(r/2)+Math.floor(c/3))%2 === 0,
+    (r,c)=> (r*c)%2 + (r*c)%3 === 0,
+    (r,c)=> ((r*c)%2 + (r*c)%3)%2 === 0,
+    (r,c)=> ((r+c)%2 + (r*c)%3)%2 === 0
+  ];
+  function bch15(v){
+    let d = v << 10;
+    for(let i=14; i>=10; i--) if((d>>i)&1) d ^= 0x537 << (i-10);
+    return ((v<<10) | d) ^ 0x5412;
+  }
+  function versionBits(v){
+    let d = v << 12;
+    for(let i=17; i>=12; i--) if((d>>i)&1) d ^= 0x1F25 << (i-12);
+    return (v<<12) | d;
+  }
+  /* Stufe M steckt in den Bits 00 */
+  function writeFormat(m, mask, size){
+    const f = bch15(mask);
+    for(let i=0; i<15; i++){
+      const bit = (f >> i) & 1;
+      if(i < 6)        m[i][8] = bit;
+      else if(i === 6) m[7][8] = bit;
+      else if(i === 7) m[8][8] = bit;
+      else if(i === 8) m[8][7] = bit;
+      else             m[8][14-i] = bit;
+      if(i < 8) m[8][size-1-i] = bit;
+      else      m[size-15+i][8] = bit;
+    }
+  }
+  function penalty(m, size){
+    let score = 0;
+    for(let i=0; i<size; i++){
+      for(const dir of [0,1]){
+        let run = 1;
+        for(let j=1; j<size; j++){
+          const a = dir ? m[j][i] : m[i][j], b = dir ? m[j-1][i] : m[i][j-1];
+          if(a === b) run++;
+          else{ if(run >= 5) score += 3 + (run-5); run = 1; }
+        }
+        if(run >= 5) score += 3 + (run-5);
+      }
+    }
+    for(let r=0; r<size-1; r++) for(let c=0; c<size-1; c++){
+      const a = m[r][c];
+      if(a === m[r][c+1] && a === m[r+1][c] && a === m[r+1][c+1]) score += 3;
+    }
+    const P1 = [1,0,1,1,1,0,1,0,0,0,0], P2 = [0,0,0,0,1,0,1,1,1,0,1];
+    for(let r=0; r<size; r++) for(let c=0; c<=size-11; c++){
+      let h1 = true, h2 = true, v1 = true, v2 = true;
+      for(let k=0; k<11; k++){
+        if(m[r][c+k] !== P1[k]) h1 = false;
+        if(m[r][c+k] !== P2[k]) h2 = false;
+        if(m[c+k][r] !== P1[k]) v1 = false;
+        if(m[c+k][r] !== P2[k]) v2 = false;
+      }
+      score += 40*((h1?1:0)+(h2?1:0)+(v1?1:0)+(v2?1:0));
+    }
+    let dark = 0;
+    for(let r=0; r<size; r++) for(let c=0; c<size; c++) dark += m[r][c];
+    score += 10*Math.floor(Math.abs(dark*100/(size*size) - 50)/5);
+    return score;
+  }
+
+  function encode(text){
+    const data = bytesOf(text);
+    let v = 0;
+    for(let k=1; k<=10; k++){
+      const cap = SPEC[k].g.reduce((s,[n,d])=> s + n*d, 0);
+      if(cap*8 >= 4 + (k < 10 ? 8 : 16) + data.length*8){ v = k; break; }
+    }
+    if(!v) throw new Error("Adresse zu lang für einen QR-Code");
+    const spec = SPEC[v];
+    const total = spec.g.reduce((s,[n,d])=> s + n*d, 0);
+
+    /* Bitstrom aufbauen */
+    const bits = [];
+    const push = (val, n)=>{ for(let i=n-1; i>=0; i--) bits.push((val>>i)&1); };
+    push(4, 4);
+    push(data.length, v < 10 ? 8 : 16);
+    data.forEach(b=> push(b, 8));
+    for(let i=0; i<4 && bits.length < total*8; i++) bits.push(0);
+    while(bits.length % 8) bits.push(0);
+    const words = [];
+    for(let i=0; i<bits.length; i+=8){
+      let b = 0;
+      for(let j=0; j<8; j++) b = (b<<1) | bits[i+j];
+      words.push(b);
+    }
+    const PAD = [0xEC, 0x11];
+    for(let i=0; words.length < total; i++) words.push(PAD[i%2]);
+
+    /* Blöcke, Fehlerkorrektur, Verschränkung */
+    const dBlocks = [], eBlocks = [];
+    let p = 0;
+    spec.g.forEach(([n,d])=>{
+      for(let i=0; i<n; i++){
+        const blk = words.slice(p, p+d); p += d;
+        dBlocks.push(blk); eBlocks.push(ecBytes(blk, spec.ec));
+      }
+    });
+    const seq = [];
+    const maxD = Math.max(...dBlocks.map(b=> b.length));
+    for(let i=0; i<maxD; i++) dBlocks.forEach(b=>{ if(i < b.length) seq.push(b[i]); });
+    for(let i=0; i<spec.ec; i++) eBlocks.forEach(b=> seq.push(b[i]));
+
+    /* Feste Muster setzen */
+    const size = 17 + v*4;
+    const m = Array.from({length:size}, ()=> new Array(size).fill(0));
+    const fn = Array.from({length:size}, ()=> new Array(size).fill(false));
+    const set = (r,c,val)=>{ m[r][c] = val ? 1 : 0; fn[r][c] = true; };
+
+    [[0,0],[0,size-7],[size-7,0]].forEach(([R,C])=>{
+      for(let r=-1; r<=7; r++) for(let c=-1; c<=7; c++){
+        const y = R+r, x = C+c;
+        if(y < 0 || x < 0 || y >= size || x >= size) continue;
+        set(y, x, (r >= 0 && r <= 6 && (c === 0 || c === 6)) ||
+                  (c >= 0 && c <= 6 && (r === 0 || r === 6)) ||
+                  (r >= 2 && r <= 4 && c >= 2 && c <= 4));
+      }
+    });
+    for(let i=8; i<size-8; i++){ set(6, i, i%2 === 0); set(i, 6, i%2 === 0); }
+    const ac = ALIGN[v];
+    ac.forEach(r=> ac.forEach(c=>{
+      if((r <= 8 && c <= 8) || (r <= 8 && c >= size-9) || (r >= size-9 && c <= 8)) return;
+      for(let dr=-2; dr<=2; dr++) for(let dc=-2; dc<=2; dc++)
+        set(r+dr, c+dc, Math.max(Math.abs(dr), Math.abs(dc)) !== 1);
+    }));
+    set(size-8, 8, true);
+    for(let i=0; i<9; i++){
+      if(!fn[8][i]) set(8, i, false);
+      if(!fn[i][8]) set(i, 8, false);
+    }
+    for(let i=0; i<8; i++){
+      if(!fn[8][size-1-i]) set(8, size-1-i, false);
+      if(!fn[size-1-i][8]) set(size-1-i, 8, false);
+    }
+    if(v >= 7){
+      const vb = versionBits(v);
+      for(let i=0; i<18; i++){
+        const bit = (vb >> i) & 1;
+        set(Math.floor(i/3), size-11 + i%3, bit);
+        set(size-11 + i%3, Math.floor(i/3), bit);
+      }
+    }
+
+    /* Daten im Zickzack von unten rechts einsetzen */
+    const stream = [];
+    seq.forEach(b=>{ for(let i=7; i>=0; i--) stream.push((b>>i)&1); });
+    for(let i=0; i<REMAIN[v]; i++) stream.push(0);
+    let idx = 0, up = true;
+    for(let col=size-1; col>0; col-=2){
+      if(col === 6) col--;                       /* die Taktspalte wird übersprungen */
+      for(let k=0; k<size; k++){
+        const row = up ? size-1-k : k;
+        for(let c=0; c<2; c++){
+          const x = col-c;
+          if(fn[row][x]) continue;
+          m[row][x] = idx < stream.length ? stream[idx++] : 0;
+        }
+      }
+      up = !up;
+    }
+
+    /* Von den acht Masken die ruhigste nehmen */
+    let best = null, bestScore = Infinity;
+    for(let mask=0; mask<8; mask++){
+      const cand = m.map((row,r)=> row.map((val,c)=> (!fn[r][c] && MASKS[mask](r,c)) ? val^1 : val));
+      writeFormat(cand, mask, size);
+      const s = penalty(cand, size);
+      if(s < bestScore){ bestScore = s; best = cand; }
+    }
+    return best;
+  }
+  return {encode};
+})();
+
+function drawQr(canvas, text){
+  const m = QR.encode(text), n = m.length, quiet = 4;
+  const px = Math.max(2, Math.floor(210 / (n + quiet*2)));
+  const size = px * (n + quiet*2);
+  canvas.width = canvas.height = size;
+  canvas.style.width = canvas.style.height = size + "px";
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, size, size);
+  ctx.fillStyle = "#3E5340";
+  for(let r=0; r<n; r++) for(let c=0; c<n; c++)
+    if(m[r][c]) ctx.fillRect((c+quiet)*px, (r+quiet)*px, px, px);
+}
+
+/* ---------- Raum und Schalter ---------- */
+const ROOM_ALPHABET = "ACDEFGHJKLMNPQRTUVWXY3479";   /* ohne I, O, 0, 1, S, 5, B, 8, Z, 2 */
+const HOSTED = location.protocol === "http:" || location.protocol === "https:";
+const SYNC = {room:null, on:false, seq:0, queued:false};
+
+function newRoomCode(){
+  const buf = new Uint32Array(4);
+  if(window.crypto && crypto.getRandomValues) crypto.getRandomValues(buf);
+  else for(let i=0; i<4; i++) buf[i] = Math.floor(Math.random()*4294967296);
+  let s = "";
+  for(let i=0; i<4; i++) s += ROOM_ALPHABET[buf[i] % ROOM_ALPHABET.length];
+  return s;
+}
+function loadRoom(){
+  try{
+    const d = JSON.parse(localStorage.getItem(ROOM_STORE) || "{}");
+    if(typeof d.room === "string" && /^[A-Z0-9]{4,12}$/.test(d.room)) SYNC.room = d.room;
+    SYNC.on = !!d.on;
+  }catch(e){}
+  if(!SYNC.room) SYNC.room = newRoomCode();
+}
+function saveRoom(){
+  try{ localStorage.setItem(ROOM_STORE, JSON.stringify({room:SYNC.room, on:SYNC.on})); }catch(e){}
+}
+function joinUrl(){
+  const u = new URL(location.href);
+  u.hash = "";
+  u.search = "?" + VIEW_PARAM + "=" + SYNC.room;
+  return u.toString();
+}
+
+function syncStatus(kind, text){
+  const el = $("#syncState");
+  el.classList.toggle("ok", kind === "ok");
+  el.classList.toggle("err", kind === "err");
+  $("#syncStateText").textContent = text;
+}
+function renderSyncCard(){
+  const url = joinUrl();
+  $("#syncCode").textContent = SYNC.room;
+  $("#syncUrl").textContent = HOSTED ? url : "steht erst in der gehosteten Fassung bereit";
+  $("#syncCard").classList.toggle("on", SYNC.on);
+  $("#syncOn").checked = SYNC.on;
+  $("#syncOn").disabled = !HOSTED;
+  $("#syncNote").innerHTML = HOSTED
+    ? "Mitgelesen werden Frage, Antwortmöglichkeiten, Fotos, Uhr und die Auflösung – "
+      + "genau dann, wenn du sie aufdeckst. <b>Punktestand, Rundentafeln und Siegertreppchen "
+      + "bleiben dem Beamer vorbehalten.</b> Der Raumcode bleibt, bis du einen neuen ziehst."
+    : "<b>Diese Datei liegt lokal.</b> Zum Mitlesen braucht es die gehostete Fassung. "
+      + "Für den Abend selbst ändert das nichts: Der Beamer-Modus läuft auch ohne Internet.";
+  if(SYNC.on && HOSTED){
+    try{ drawQr($("#syncQr"), url); }
+    catch(e){ syncStatus("err", "QR-Code nicht erzeugbar – bitte die Adresse abtippen"); }
+  }
+}
+
+function syncSnapshot(){
+  const screen = $("#screen-final").classList.contains("active") ? "final"
+               : $("#screen-quiz").classList.contains("active")  ? "quiz"
+               : "start";
+  return {
+    n: ++SYNC.seq,
+    screen,
+    step: state.step,
+    revealed: state.revealed,
+    t: {tot:timer.total, rem:Math.max(0, timer.remain), run:timer.running, done:timer.done}
+  };
+}
+/* Mehrere Änderungen kurz hintereinander werden zu einer Meldung zusammengefasst */
+function syncPush(){
+  if(VIEWER || !SYNC.on || !SYNC.room || SYNC.queued) return;
+  SYNC.queued = true;
+  setTimeout(syncSend, 80);
+}
+async function syncSend(){
+  SYNC.queued = false;
+  if(VIEWER || !SYNC.on || !SYNC.room) return;
+  try{
+    const r = await fetch("api/state", {
+      method:"POST",
+      headers:{"content-type":"application/json"},
+      body: JSON.stringify({room:SYNC.room, state:syncSnapshot()})
+    });
+    const d = await r.json().catch(()=> ({}));
+    if(!r.ok) return syncStatus("err", d.error || ("Server meldet " + r.status));
+    const k = d.listeners || 0;
+    syncStatus("ok", k === 0 ? "Bereit – noch liest niemand mit"
+                   : k === 1 ? "1 Gerät liest mit"
+                             : k + " Geräte lesen mit");
+  }catch(e){
+    syncStatus("err", "Keine Verbindung zum Server");
+  }
+}
+
+/* ---------- Die Mitlesefassung ---------- */
+const VIEW = {n:-1, step:null, revealed:false, es:null, poll:null, heard:false};
+
+function linkState(kind, text){
+  const el = $("#linkState");
+  el.classList.toggle("ok", kind === "ok");
+  el.classList.toggle("err", kind === "err");
+  $("#linkText").textContent = text;
+}
+function showWait(title, lead){
+  $("#qcard").classList.add("hidden");
+  $("#roundCard").classList.remove("show");
+  $("#waitCard").classList.add("show");
+  $("#waitTitle").textContent = title;
+  $("#waitLead").textContent = lead;
+}
+function viewerTimer(t){
+  if(!t) return;
+  cancelAnimationFrame(timer.raf);
+  timer.total   = t.tot > 0 ? t.tot : 60;
+  timer.remain  = Math.max(0, t.rem || 0);
+  timer.done    = !!t.done;
+  timer.lastBeep = -1;
+  timer.running = !!t.run && timer.remain > 0;
+  $("#timeUp").classList.toggle("show", timer.done);
+  timerRender();
+  if(timer.running){ timer.last = performance.now(); timer.raf = requestAnimationFrame(timerLoop); }
+}
+function viewerApply(raw){
+  let s;
+  try{ s = JSON.parse(raw); }catch(e){ return; }
+  if(!s || typeof s.n !== "number" || s.n <= VIEW.n) return;
+  VIEW.n = s.n;
+  VIEW.heard = true;
+  linkState("ok", "live");
+
+  if(s.screen !== "quiz"){
+    timerStop();
+    VIEW.step = null; VIEW.revealed = false;
+    $("#roundTag").textContent = "Raum " + VIEWER_ROOM;
+    if(s.screen === "final") showWait("Das war's", "Der Endstand wird gerade am Beamer gefeiert.");
+    else showWait("Gleich geht es los", "Sobald am Beamer die erste Frage erscheint, steht sie auch hier.");
+    return;
+  }
+
+  const step = STEPS[s.step];
+  if(!step) return;
+
+  if(step.kind === "round"){
+    timerStop();
+    VIEW.step = null; VIEW.revealed = false;
+    const r = roundOf(step.round), nr = ROUNDS.findIndex(x=> x.id === r.id) + 1;
+    $("#roundTag").textContent = r.title;
+    showWait("Runde " + nr, "„" + r.title + "“ – die Rundentafel läuft am Beamer. Gleich kommt die erste Frage.");
+    return;
+  }
+
+  $("#waitCard").classList.remove("show");
+  /* Neue Frage, oder der Quizmaster ist zurückgegangen: Karte neu aufbauen */
+  if(s.step !== VIEW.step || (VIEW.revealed && !s.revealed)){
+    showStep(s.step);
+    VIEW.step = s.step; VIEW.revealed = false;
+  }
+  if(s.revealed && !VIEW.revealed){ reveal(); VIEW.revealed = true; }
+  viewerTimer(s.t);
+}
+
+function viewerPoll(){
+  if(VIEW.poll) return;
+  try{ VIEW.es && VIEW.es.close(); }catch(e){}
+  VIEW.es = null;
+  VIEW.poll = setInterval(async ()=>{
+    try{
+      const r = await fetch("api/state?room=" + encodeURIComponent(VIEWER_ROOM), {cache:"no-store"});
+      const d = await r.json();
+      if(d && d.state) viewerApply(JSON.stringify(d.state));
+      else if(!VIEW.heard) linkState("", "wartet auf den Quizmaster");
+    }catch(e){ linkState("err", "keine Verbindung"); }
+  }, 3000);
+}
+function viewerConnect(){
+  let es;
+  try{ es = new EventSource("api/stream?room=" + encodeURIComponent(VIEWER_ROOM)); }
+  catch(e){ viewerPoll(); return; }
+  VIEW.es = es;
+  let alive = false;
+  es.addEventListener("ready", ()=>{ alive = true; if(!VIEW.heard) linkState("", "wartet auf den Quizmaster"); });
+  es.addEventListener("state", ev=> { alive = true; viewerApply(ev.data); });
+  es.addEventListener("trouble", ()=> linkState("err", "Der Server kommt nicht an den Spielstand"));
+  es.addEventListener("open", ()=>{ if(VIEW.heard) linkState("ok", "live"); });
+  es.addEventListener("error", ()=>{ if(!VIEW.poll) linkState("err", "Verbindung unterbrochen"); });
+  /* Bleibt die Leitung stumm, wird stattdessen in Ruhe nachgefragt. */
+  setTimeout(()=>{ if(!alive) viewerPoll(); }, 8000);
+}
+
+/* ============================================================
+   14) START
+   ============================================================ */
+if(!VIEWER) load();
 renderGroupInputs();
 renderScores();
 renderDots();
 timerRender();
 setScoresOpen(state.scoresOpen, false);
+
+if(VIEWER){
+  /* Mitlesefassung: keine Startseite, keine Bedienung, nur zuschauen. */
+  document.body.classList.add("viewer-mode");
+  document.title = "Mitlesen · Annes Birthday Quiz";
+  go("quiz");
+  $("#roundTag").textContent = "Raum " + VIEWER_ROOM;
+  showWait("Gleich geht es los", "Sobald am Beamer die erste Frage erscheint, steht sie auch hier.");
+  linkState("", "verbinde …");
+  viewerConnect();
+}else{
+  loadRoom();
+  renderSyncCard();
+  syncStatus("", SYNC.on ? "Verbinde …" : "Ausgeschaltet");
+
+  $("#syncOn").addEventListener("change", e=>{
+    SYNC.on = e.target.checked;
+    saveRoom(); renderSyncCard();
+    if(SYNC.on){ syncStatus("", "Verbinde …"); syncPush(); }
+    else syncStatus("", "Ausgeschaltet");
+  });
+  $("#btnNewRoom").addEventListener("click", ()=>{
+    SYNC.room = newRoomCode(); SYNC.seq = 0;
+    saveRoom(); renderSyncCard();
+    if(SYNC.on){ syncStatus("", "Verbinde …"); syncPush(); }
+  });
+
+  /* Ruhiger Herzschlag: hält die Uhren der Mitleser bei der Stange und
+     fängt eine verlorene Meldung wieder ein. */
+  setInterval(()=>{ if(SYNC.on) syncPush(); }, 15000);
+  if(SYNC.on) syncPush();
+}
 </script>
 </body>
 </html>
