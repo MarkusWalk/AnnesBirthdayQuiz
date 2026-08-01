@@ -158,10 +158,10 @@ mit Antwortzetteln ist das kein Problem, sollte aber gesagt sein.
 
 ## Fotos einfügen
 
-Dreizehn Bilder gehören ins Quiz; **acht liegen bereits als echte Fotos im Repo**
-(vier Kirchen, Santiago-Kathedrale, zwei Lavendelarten, Baguette – alle von
-Wikimedia Commons, Nachweise in `bilder/LIESMICH.md`). Es fehlen nur noch die vier
-Heckenfotos und die Stadtwerke Bensberg – Motive, die es nur als eigenes Foto gibt.
+Zwölf Bilder gehören ins Quiz; **acht liegen bereits als echte Fotos im Repo**
+(vier Kirchen, Santiago-Kathedrale, zwei Lavendelarten, Baguette – bis auf Gimborn
+und Lindlar alle von Wikimedia Commons, Nachweise in `bilder/LIESMICH.md`). Es
+fehlen nur noch die vier Heckenfotos – Motive, die es nur als eigenes Foto gibt.
 Solange eines fehlt, zeigt die App einen Platzhalter mit dem erwarteten Dateinamen.
 Lege die Bilder in den Ordner `bilder/` neben `index.html` – sie erscheinen dann
 automatisch, am besten im Querformat (die App schneidet auf 4:3 zu).
@@ -176,14 +176,13 @@ nichts verrät. Was auf welches Bild gehört, steht nur hier und in `bilder/LIES
 | Datei | Motiv | Status |
 |---|---|---|
 | `bilder/kirche-a.jpg` | Kirche in Hülsenbusch | liegt bei (Wikimedia) |
-| `bilder/kirche-b.jpg` | Kirche in Gimborn | liegt bei (Wikimedia) |
-| `bilder/kirche-c.jpg` | Kirche in Lindlar | liegt bei (Wikimedia) |
+| `bilder/kirche-b.webp` | Kirche in Gimborn | liegt bei (eigenes Foto) |
+| `bilder/kirche-c.jpg` | Kirche in Lindlar, St. Severin | liegt bei (eigenes Foto) |
 | `bilder/kirche-d.jpg` | Kirche in Frielingsdorf | liegt bei (Wikimedia) |
-| `bilder/gebaeude.jpg` | Stadtwerke Bensberg | **fehlt** – eigenes Foto nötig |
 | `bilder/hecke-a.jpg` … `hecke-d.jpg` | die vier Hecken zur Auswahl | **fehlen** – eigene Fotos nötig |
 | `bilder/baguette.jpg` | Baguette auf einem Tisch | liegt bei (Wikimedia) |
-| `bilder/lavendel-a.jpg` | echter Lavendel (Lavandula angustifolia) | liegt bei (Wikimedia) |
-| `bilder/lavendel-b.jpg` | Lavandin (Lavandula × intermedia) | liegt bei (Wikimedia) |
+| `bilder/lavendel-a.jpg` | echter Lavendel (Lavandula angustifolia) | liegt bei – **Nahaufnahme gewünscht** |
+| `bilder/lavendel-b.jpg` | Lavandin (Lavandula × intermedia) | liegt bei – **Nahaufnahme gewünscht** |
 | `bilder/bauwerk.jpg` | Kathedrale von Santiago de Compostela | liegt bei (Wikimedia) |
 
 Die Herkunfts- und Lizenzangaben zu den acht Wikimedia-Fotos stehen in
@@ -195,14 +194,15 @@ Die Herkunfts- und Lizenzangaben zu den acht Wikimedia-Fotos stehen in
 
 | Runde | Titel | Fragen |
 |---|---|---|
-| I | Oberberg und das Bergische Land | 5 |
+| I | Oberberg und das Bergische Land | 4 |
 | II | Frankreich | 7 |
 | III | Der Jakobsweg | 3 |
-| IV | Mallorca | 4 |
+| IV | Mallorca | 2 |
 | V | Schätzen und Knobeln | 5 |
 | VI | Der 12. August 1966 | 1 |
 
-25 Fragen insgesamt.
+22 Fragen insgesamt. Jede Frage hat mindestens 60 Sekunden Zeit; die
+Vier-Kirchen-Frage 120, die Reihenfolge-Frage 75.
 
 ---
 
@@ -215,7 +215,7 @@ Auflösung bestimmt:
 | `type` | Auflösung |
 |---|---|
 | `single` | die richtige Option leuchtet auf, die übrigen klappen zusammen; Siegel mit Strahlenkranz |
-| `truefalse` | Stempel „Wahr“ oder „Falsch“ schlägt ein |
+| `truefalse` | Stempel „Wahr“ oder „Falsch“ schlägt ein – funktioniert, wird derzeit von keiner Frage genutzt |
 | `estimate` | die Zahl zählt hoch – und wird bewusst nur dort genannt |
 | `photo` | ein Bild, ein Ort |
 | `places` | mehrere Bilder, je ein Ort, nacheinander eingeblendet |
@@ -236,7 +236,7 @@ Auflösung. Verfügbare Arten:
 | `bars` | waagerechte Balken, die richtige Antwort in Gold |
 | `columns` | Säulenreihe, etwa die zwölf Monate |
 | `wordsplit` | ein Wort in seine Bestandteile zerlegt |
-| `merge` | zwei Kästen, ein Pfeil mit Jahreszahl, ein Ergebnis |
+| `merge` | zwei Kästen, ein Pfeil mit Jahreszahl, ein Ergebnis – derzeit ungenutzt |
 | `flow` | Erzählkette aus mehreren Stationen |
 | `mythcheck` | Aussagenliste mit Haken und Kreuzen |
 | `hexmap` | Frankreich als Sechseck mit seinen Nachbarn |
@@ -249,7 +249,7 @@ Auflösung. Verfügbare Arten:
 | `areacomp` | zwei Flächen als Kreise im Größenvergleich |
 | `persec` | mitlaufender Sekundenzähler |
 | `rosette` | rotierende Fensterrose |
-| `herbs` | Zutatenwolke mit Sortenkarten |
+| `herbs` | Zutatenwolke mit Sortenkarten – derzeit ungenutzt |
 | `botafumeiro` | schwingendes Pendel mit Kennzahlen |
 | `lavendel` | botanischer Vergleich der beiden Lavendelarten |
 | `birthday` | Geburtstagskarte zum Finale, mit Konfetti |

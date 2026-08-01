@@ -1155,7 +1155,7 @@ const ROUNDS = [
   {id:3, title:"Der Jakobsweg",
    lead:"Muschel, Stempel, tausend Kilometer – und ein paar hartnäckige Legenden."},
   {id:4, title:"Mallorca",
-   lead:"Kalkstein, Kräuterlikör und eine Kathedrale, die alle nur beim Spitznamen nennen."},
+   lead:"Vier bewohnte Inseln, ein Nationalpark – und eine Kathedrale, die alle nur beim Spitznamen nennen."},
   {id:5, title:"Schätzen und Knobeln",
    lead:"Hier hilft kein Wissen mehr. Jetzt zählen Bauchgefühl und ein kühler Kopf."},
   {id:6, title:"Der 12. August 1966",
@@ -1180,7 +1180,7 @@ const QUESTIONS = [
 
 /* ---------- I · OBERBERG UND DAS BERGISCHE LAND ---------- */
 {
-  round:1, cat:"Heimat", type:"single", time:45,
+  round:1, cat:"Heimat", type:"single", time:60,
   q:"Woher kommt der Name „Oberbergischer Kreis“?",
   options:[
     "Von den vielen Bergen und Hügeln, die ihn prägen",
@@ -1219,30 +1219,20 @@ const QUESTIONS = [
   viz:{kind:"obermap", cap:"So liegen die vier Orte zueinander"}
 },
 {
-  round:1, cat:"Ein Bild", type:"photo", time:45,
-  q:"Und wo steht dieses Gebäude?",
-  imgs:[{src:"bilder/gebaeude.jpg", hint:"Stadtwerke Bensberg", cap:"Rätselbild"}],
-  answer:"Bensberg, Bergisch Gladbach",
-  fact:"Bensberg ist seit der kommunalen Neugliederung von 1975 ein Stadtteil von Bergisch Gladbach im Rheinisch-Bergischen Kreis.",
-  viz:{kind:"merge", cap:"Die kommunale Neugliederung",
-    a:"Stadt Bensberg", b:"Stadt Bergisch Gladbach", year:"1. Januar 1975",
-    result:"Bergisch Gladbach – Bensberg ist seither Stadtteil"}
-},
-{
   round:1, cat:"Reihenfolge", type:"order", time:75,
   q:"Bringt diese vier Orte in eine Reihenfolge – aufsteigend nach Einwohnerzahl.",
   hint:"Der kleinste Ort zuerst. Nur die vollständig richtige Reihenfolge zählt.",
   items:[
-    {name:"Hülsenbusch",   value:1400,  label:"rund 1.400"},
-    {name:"Frielingsdorf", value:2600,  label:"rund 2.600"},
-    {name:"Lindlar",       value:22000, label:"rund 22.000"},
-    {name:"Hennef",        value:48000, label:"rund 48.000"}
+    {name:"Lindlar",     value:22000, label:"rund 22.000"},
+    {name:"Gummersbach", value:52000, label:"rund 52.000"},
+    {name:"Ladenburg",   value:11800, label:"rund 11.800"},
+    {name:"Hennef",      value:48000, label:"rund 48.000"}
   ],
-  answer:"Hülsenbusch, Frielingsdorf, Lindlar, Hennef",
-  fact:"Hennef an der Sieg ist mit rund 48.000 Einwohnern die mit Abstand größte Kommune dieser Runde. Hülsenbusch passt gut dreißigmal hinein."
+  answer:"Ladenburg, Lindlar, Hennef, Gummersbach",
+  fact:"Gummersbach ist als Kreisstadt des Oberbergischen Kreises mit rund 52.000 Einwohnern die größte der vier – und liegt damit knapp vor Hennef an der Sieg. Ladenburg ist der einzige Ort, der nicht in Nordrhein-Westfalen liegt, sondern in Baden-Württemberg an der Bergstraße bei Heidelberg. Vier Ladenburgs passen gut in ein Gummersbach."
 },
 {
-  round:1, cat:"Vier Bilder", type:"single", time:50,
+  round:1, cat:"Vier Bilder", type:"single", time:60,
   q:"Welche dieser vier Hecken wächst auf Walks Grundstück?",
   hint:"Genau hinsehen – das Laub verrät es.",
   /* Richtige Hecke anpassen: correct und correctImg auf denselben Index setzen. */
@@ -1264,7 +1254,7 @@ const QUESTIONS = [
 
 /* ---------- II · FRANKREICH ---------- */
 {
-  round:2, cat:"Geografie", type:"single", time:40,
+  round:2, cat:"Geografie", type:"single", time:60,
   q:"Welcher Berg ist der höchste in Frankreich?",
   options:["Mont Maudit","Mont Blanc","Dôme du Goûter","Barre des Écrins"],
   correct:1,
@@ -1278,7 +1268,7 @@ const QUESTIONS = [
   ]}
 },
 {
-  round:2, cat:"Geografie", type:"single", time:40,
+  round:2, cat:"Geografie", type:"single", time:60,
   q:"An wie viele Länder grenzt Frankreich?",
   options:["Sechs","Sieben","Acht","Elf"],
   correct:2,
@@ -1287,23 +1277,33 @@ const QUESTIONS = [
   viz:{kind:"hexmap", cap:"L’Hexagone und seine Nachbarn"}
 },
 {
-  round:2, cat:"Wahr oder falsch", type:"truefalse", time:30,
-  q:"„Das Wahrzeichen von Paris kann im Winter durch die Kälte um etwa fünf Zentimeter schrumpfen.“",
-  options:["Wahr","Falsch"],
+  round:2, cat:"Paris", type:"single", time:60,
+  q:"Wie verändert sich der Eiffelturm im Lauf der Jahreszeiten?",
+  options:[
+    "Er ist im Sommer bis zu fünfzehn Zentimeter höher als bei Frost",
+    "Er ist im Winter höher, weil sich das Eisen zusammenzieht und dabei streckt",
+    "Seine Höhe bleibt gleich, nur die Aufzugsseile längen sich in der Hitze",
+    "Er schwankt bei Sturm um bis zu zwei Meter zur Seite"
+  ],
   correct:0,
-  answer:"Der Eiffelturm schrumpft tatsächlich",
-  fact:"Stahl zieht sich bei Kälte zusammen. Im Hochsommer wächst der Turm umgekehrt um bis zu fünfzehn Zentimeter und neigt sich dabei leicht von der Sonne weg.",
+  answer:"Im Sommer bis zu fünfzehn Zentimeter höher",
+  fact:"Eisen dehnt sich in der Wärme aus und zieht sich bei Kälte zusammen. In einer Frostnacht ist der Turm rund fünf Zentimeter kürzer als bei zwanzig Grad, an einem Hitzetag bis zu fünfzehn Zentimeter länger – und er neigt sich dabei leicht von der Sonne weg.",
   viz:{kind:"thermo", cap:"Der Turm als Thermometer", min:-25, max:52,
     points:[{t:-10, tl:"−10 °C", h:"−5 cm"}, {t:20, tl:"20 °C", h:"330 m"}, {t:40, tl:"40 °C", h:"+15 cm"}],
     delta:"20 cm", deltaLabel:"Unterschied zwischen Frostnacht und Hitzetag – 18.000 Tonnen Eisen dehnen sich eben"}
 },
 {
-  round:2, cat:"Wahr oder falsch", type:"truefalse", time:30,
-  q:"„Einem bekannten Aberglauben zufolge bringt es Unglück, ein Baguette umgedreht auf den Tisch zu legen.“",
-  options:["Wahr","Falsch"],
+  round:2, cat:"Mythen", type:"single", time:60,
+  q:"Welcher Mythos rund um das Baguette ist wahr?",
+  options:[
+    "Ein umgedreht auf den Tisch gelegtes Baguette bringt Unglück",
+    "Ein Baguette darf nur mit der Hand gebrochen werden, niemals geschnitten",
+    "Wer das Endstück verschenkt, verschenkt sein Glück gleich mit",
+    "Ein Baguette muss per Gesetz noch am Tag des Backens verkauft werden"
+  ],
   correct:0,
   imgs:[{src:"bilder/baguette.jpg", hint:"Umgedrehtes Baguette auf einem Tisch", cap:"Rätselbild"}],
-  answer:"Ein umgedrehtes Baguette bringt Unglück",
+  answer:"Das umgedrehte Baguette bringt Unglück",
   fact:"Im Mittelalter legten Bäcker das Brot des Henkers umgedreht beiseite, damit niemand versehentlich danach griff. Bis heute dreht man in Frankreich ein umgedrehtes Baguette sofort wieder um.",
   viz:{kind:"flow", cap:"Wie aus einer Vorsichtsmaßnahme ein Aberglaube wurde", stations:[
     {when:"Mittelalter", what:"Der Henker durfte sich sein Brot nehmen, ohne zu bezahlen."},
@@ -1320,7 +1320,7 @@ const QUESTIONS = [
   viz:{kind:"persec", rate:190, label:"Baguettes verkauft, seit die Antwort offen ist"}
 },
 {
-  round:2, cat:"Zwei Bilder", type:"single", time:45,
+  round:2, cat:"Zwei Bilder", type:"single", time:60,
   q:"Welches dieser beiden Bilder zeigt den echten Lavendel?",
   options:["Bild A","Bild B"],
   correct:0, correctImg:0,
@@ -1333,7 +1333,7 @@ const QUESTIONS = [
   viz:{kind:"lavendel"}
 },
 {
-  round:2, cat:"Provence", type:"single", time:40,
+  round:2, cat:"Provence", type:"single", time:60,
   q:"Frankreichs berühmtestes Lavendelgebiet ist das Plateau von Valensole. Wie groß ist es?",
   options:["500 Quadratkilometer","650 Quadratkilometer","800 Quadratkilometer","1.200 Quadratkilometer"],
   correct:2,
@@ -1369,7 +1369,7 @@ const QUESTIONS = [
   fact:"Nachgewiesen wird die Strecke durch Stempel im Pilgerausweis – zu Fuß oder zu Pferd hundert Kilometer, mit dem Rad zweihundert. Dass im Grab der Apostel Jakobus liegt, ist übrigens ebenfalls Überlieferung und kein gesicherter Befund."
 },
 {
-  round:3, cat:"Routen", type:"single", time:50,
+  round:3, cat:"Routen", type:"single", time:60,
   q:"Welche ist die längste Route des Jakobswegs?",
   options:[
     "Camino Francés, von St. Jean Pied de Port nach Santiago",
@@ -1390,7 +1390,7 @@ const QUESTIONS = [
   ]}
 },
 {
-  round:3, cat:"Ein Bild", type:"photo", time:40,
+  round:3, cat:"Ein Bild", type:"photo", time:60,
   q:"In welcher Stadt steht dieses Bauwerk?",
   imgs:[{src:"bilder/bauwerk.jpg", hint:"Kathedrale von Santiago de Compostela", cap:"Rätselbild"}],
   answer:"Santiago de Compostela",
@@ -1404,7 +1404,7 @@ const QUESTIONS = [
 
 /* ---------- IV · MALLORCA ---------- */
 {
-  round:4, cat:"Inselkunde", type:"single", time:40,
+  round:4, cat:"Inselkunde", type:"single", time:60,
   q:"Wie viele bewohnte Inseln gehören zu den Balearen?",
   options:["Zwei","Vier","Sechs","Neun"],
   correct:1,
@@ -1419,36 +1419,7 @@ const QUESTIONS = [
   ]}
 },
 {
-  round:4, cat:"Inselkunde", type:"single", time:40,
-  q:"Wie heißt der typische mallorquinische Kräuterlikör?",
-  options:["Orujo","Hierbas","Horchata","Cava"],
-  correct:1,
-  answer:"Hierbas",
-  fact:"Es gibt ihn süß, trocken und gemischt, angesetzt mit Fenchel, Rosmarin, Zitronenblättern und bis zu dreißig weiteren Kräutern. Auf der Insel gehört er nach dem Essen dazu.",
-  viz:{kind:"herbs", cap:"Was im Ansatz steckt",
-    list:["Fenchel","Rosmarin","Zitronenblätter","Anis","Thymian","Kamille","Minze","Wacholder","Orangenschale","Salbei"],
-    more:"… bis zu dreißig Kräuter",
-    kinds:[
-      {n:"Dolces", d:"süß, mild, der Klassiker nach dem Essen"},
-      {n:"Seques", d:"trocken und kräuterherb, deutlich stärker"},
-      {n:"Mesclades", d:"gemischt – die goldene Mitte"}
-    ]}
-},
-{
-  round:4, cat:"Inselkunde", type:"single", time:40,
-  q:"Wie hoch ist der Puig Major, der höchste Berg Mallorcas?",
-  options:["987 Meter","1.180 Meter","1.445 Meter","1.712 Meter"],
-  correct:2,
-  answer:"1.445 Meter",
-  fact:"Der Gipfel in der Serra de Tramuntana ist militärisches Sperrgebiet, hinauf darf niemand. Der höchste frei begehbare Berg der Insel ist deshalb der Puig de Massanella mit 1.364 Metern.",
-  viz:{kind:"bars", cap:"Die höchsten Gipfel der Tramuntana", items:[
-    {name:"Puig de Galatzó",   value:1027, label:"1.027 m"},
-    {name:"Puig de Massanella",value:1364, label:"1.364 m"},
-    {name:"Puig Major",        value:1445, label:"1.445 m", hl:true}
-  ]}
-},
-{
-  round:4, cat:"Inselkunde", type:"single", time:40,
+  round:4, cat:"Inselkunde", type:"single", time:60,
   q:"Wie nennen die Einheimischen die Kathedrale von Palma?",
   options:["La Rambla","El Faro","La Seu","La Perla"],
   correct:2,
@@ -1459,7 +1430,7 @@ const QUESTIONS = [
 
 /* ---------- V · SCHÄTZEN UND KNOBELN ---------- */
 {
-  round:5, cat:"Statistik", type:"single", time:40,
+  round:5, cat:"Statistik", type:"single", time:60,
   q:"In welchem Monat werden in Deutschland die meisten Kinder geboren?",
   options:["Juli","August","September","Dezember"],
   correct:0,
@@ -1498,7 +1469,7 @@ const QUESTIONS = [
   fact:"Fast alle antworten spontan „10 Euro“. Dann müsste der Wein aber 110 Euro kosten – zusammen also 120. Die Probe: 5 + 105 = 110, und 105 − 5 = 100. Beides stimmt."
 },
 {
-  round:5, cat:"Schätzfrage", type:"estimate", time:50,
+  round:5, cat:"Schätzfrage", type:"estimate", time:60,
   q:"Wie viele Schritte gehen die Deutschen im Durchschnitt pro Tag?",
   hint:"Schätzen. Den Punkt bekommt, wer am nächsten liegt.",
   value:5200, display:"5.200", unit:"Schritte pro Tag",
@@ -1522,7 +1493,7 @@ const QUESTIONS = [
 
 /* ---------- VI · DER 12. AUGUST 1966 ---------- */
 {
-  round:6, cat:"Zeitgeschichte", type:"single", time:45,
+  round:6, cat:"Zeitgeschichte", type:"single", time:60,
   q:"Was geschah außerdem am 12. August 1966?",
   options:[
     "Die Beatles gaben in Chicago das Auftaktkonzert ihrer letzten Tournee",
@@ -1655,8 +1626,12 @@ function timerRender(){
 }
 function timerLoop(now){
   if(!timer.running) return;
-  timer.remain = Math.max(0, timer.remain - (now-timer.last)/1000);
+  /* Der erste Frame nach dem Start kann einen älteren Zeitstempel tragen als
+     performance.now(). Ohne diese Klammer liefe die Uhr kurz rückwärts und die
+     Sekunden summierten sich beim schnellen Weiterschalten auf. */
+  const dt = Math.max(0, (now - timer.last)/1000);
   timer.last = now;
+  timer.remain = Math.min(timer.total, Math.max(0, timer.remain - dt));
   const sec = Math.ceil(timer.remain);
   if(sec <= 5 && sec >= 1 && sec !== timer.lastBeep){ timer.lastBeep = sec; sfxTick(sec); }
   timerRender();
