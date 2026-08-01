@@ -893,6 +893,7 @@ body.viewer-mode .panic-ring{inset:-5px; border-width:2px}
 body.viewer-mode .timeup{text-align:left; font-size:11.5px}
 body.viewer-mode .imgs .photo{max-width:150px}
 body.viewer-mode .timer-ctrl,
+body.viewer-mode .tally-ctrl,
 body.viewer-mode .side-note,
 body.viewer-mode #btnReveal,
 body.viewer-mode #btnScores,
@@ -1033,7 +1034,6 @@ body.viewer-mode .controlbar{display:none !important}
           <span class="eyebrow rc-eyebrow" id="rcEyebrow">Runde 1 von 6</span>
           <h2 class="rc-title" id="rcTitle">Titel</h2>
           <div class="ornament rc-orn"><span></span><i>◆◆◆</i><span></span></div>
-          <p class="rc-lead" id="rcLead"></p>
           <div class="rc-count" id="rcCount"></div>
         </div>
       </div>
@@ -1146,16 +1146,21 @@ body.viewer-mode .controlbar{display:none !important}
 <script>
 /* ============================================================
    1) RUNDEN
+   ------------------------------------------------------------
+   lead: Der Zweizeiler zur Runde steht nicht mehr auf der
+   Rundentafel – die Mitleser am Handy bekommen ihn ohnehin nicht
+   zu sehen, und auf dem Beamer stand er dann einseitig herum.
+   Er bleibt hier als Ansage für den Quizmaster zum Vorlesen.
    ============================================================ */
 const ROUNDS = [
   {id:1, title:"Oberberg und das Bergische Land",
    lead:"Wir fangen vor der Haustür an: bei einem Kreisnamen, vier Kirchtürmen und einer Hecke."},
   {id:2, title:"Frankreich",
-   lead:"Von den Gipfeln der Alpen über die Bäckerei bis in die blau blühende Provence."},
+   lead:"Von der Landkarte über die Bäckerei bis in die blau blühende Provence."},
   {id:3, title:"Der Jakobsweg",
-   lead:"Muschel, Stempel, tausend Kilometer – und ein paar hartnäckige Legenden."},
+   lead:"Muschel, Stempel, Herberge – und ein paar hartnäckige Legenden."},
   {id:4, title:"Mallorca",
-   lead:"Vier bewohnte Inseln, ein Nationalpark – und eine Kathedrale, die alle nur beim Spitznamen nennen."},
+   lead:"Kalkstein, Salz und Seewind – und eine Kathedrale, die alle nur beim Spitznamen nennen."},
   {id:5, title:"Schätzen und Knobeln",
    lead:"Hier hilft kein Wissen mehr. Jetzt zählen Bauchgefühl und ein kühler Kopf."},
   {id:6, title:"Der 12. August 1966",
@@ -1255,20 +1260,6 @@ const QUESTIONS = [
 /* ---------- II · FRANKREICH ---------- */
 {
   round:2, cat:"Geografie", type:"single", time:60,
-  q:"Welcher Berg ist der höchste in Frankreich?",
-  options:["Mont Maudit","Mont Blanc","Dôme du Goûter","Barre des Écrins"],
-  correct:1,
-  answer:"Der Mont Blanc",
-  fact:"Mit rund 4.806 Metern ist er nicht nur Frankreichs höchster Berg, sondern der höchste der gesamten Alpen. Seine gemessene Höhe schwankt je nach Schneeauflage um mehrere Meter.",
-  viz:{kind:"bars", cap:"Die vier Gipfel im Vergleich", items:[
-    {name:"Barre des Écrins", value:4102, label:"4.102 m"},
-    {name:"Dôme du Goûter",  value:4304, label:"4.304 m"},
-    {name:"Mont Maudit",     value:4465, label:"4.465 m"},
-    {name:"Mont Blanc",      value:4806, label:"4.806 m", hl:true}
-  ]}
-},
-{
-  round:2, cat:"Geografie", type:"single", time:60,
   q:"An wie viele Länder grenzt Frankreich?",
   options:["Sechs","Sieben","Acht","Elf"],
   correct:2,
@@ -1313,35 +1304,22 @@ const QUESTIONS = [
 },
 {
   round:2, cat:"Schätzfrage", type:"estimate", time:60,
-  q:"Wie viele Baguettes werden in Frankreich pro Jahr verkauft?",
+  q:"Wie viele Croissants werden in Frankreich pro Jahr verkauft?",
   hint:"Schätzen. Den Punkt bekommt, wer am nächsten liegt.",
-  value:6000000000, display:"6 Milliarden", unit:"Baguettes pro Jahr",
-  fact:"Das entspricht etwa einem halben Baguette pro Person und Tag – oder rund 190 verkauften Baguettes in jeder einzelnen Sekunde.",
-  viz:{kind:"persec", rate:190, label:"Baguettes verkauft, seit die Antwort offen ist"}
+  value:2500000000, display:"2,5 Milliarden", unit:"Croissants pro Jahr",
+  fact:"Rund 37 Croissants pro Franzose und Jahr – oder knapp achtzig in jeder einzelnen Sekunde. Die Zahl stammt von der Confédération nationale de la boulangerie-pâtisserie. Erfunden wurde das Croissant übrigens nicht in Frankreich: Es geht auf das österreichische Kipferl zurück, das im 19. Jahrhundert nach Paris kam.",
+  viz:{kind:"persec", rate:79, label:"Croissants verkauft, seit die Antwort offen ist"}
 },
 {
-  round:2, cat:"Zwei Bilder", type:"single", time:60,
-  q:"Welches dieser beiden Bilder zeigt den echten Lavendel?",
-  options:["Bild A","Bild B"],
-  correct:0, correctImg:0,
-  imgs:[
-    {src:"bilder/lavendel-a.jpg", hint:"Echter Lavendel", cap:"A"},
-    {src:"bilder/lavendel-b.jpg", hint:"Lavandin",        cap:"B"}
-  ],
-  answer:"Bild A – Lavandula angustifolia",
-  fact:"Der echte Lavendel (Lavandula angustifolia) wächst hoch in den Bergen und liefert das feinste Öl. Bild B zeigt Lavandin (Lavandula × intermedia), eine Kreuzung aus echtem Lavendel und Speik-Lavendel: buschiger, ertragreicher – aber kampferartiger im Duft.",
+  round:2, cat:"Botanik", type:"single", time:60,
+  q:"Sechs Lavendelstiele nebeneinander. Welche Seite zeigt den echten Lavendel?",
+  hint:"Auf die Ähren achten, nicht auf die Farbe.",
+  options:["Die drei linken","Die drei rechten"],
+  correct:1,
+  imgs:[{src:"bilder/lavendel.jpg", hint:"Sechs Lavendelstiele nebeneinander auf einem Holzbrett", cap:"Rätselbild"}],
+  answer:"Die drei rechten – Lavandula angustifolia",
+  fact:"Der echte Lavendel (Lavandula angustifolia) trägt eine kurze, dichte Ähre: Die Blüten sitzen fast lückenlos übereinander. Links steht Lavandin (Lavandula × intermedia), die Kreuzung aus echtem Lavendel und Speik-Lavendel – seine Ähre ist länger, lockerer und wirkt unterbrochen, weil zwischen den Blütenquirlen der Stiel durchschaut. Lavandin ist ertragreicher, riecht aber kampferartiger.",
   viz:{kind:"lavendel"}
-},
-{
-  round:2, cat:"Provence", type:"single", time:60,
-  q:"Frankreichs berühmtestes Lavendelgebiet ist das Plateau von Valensole. Wie groß ist es?",
-  options:["500 Quadratkilometer","650 Quadratkilometer","800 Quadratkilometer","1.200 Quadratkilometer"],
-  correct:2,
-  answer:"Rund 800 Quadratkilometer",
-  fact:"Das größte zusammenhängende Lavendelanbaugebiet Europas – fast so groß wie der Oberbergische Kreis. Die Hauptblüte liegt zwischen Ende Juni und Anfang August, danach wird geerntet – und es riecht kilometerweit.",
-  viz:{kind:"areacomp", cap:"Zum Vergleich",
-    a:{name:"Plateau von Valensole", km:800},
-    b:{name:"Oberbergischer Kreis", km:919}}
 },
 
 /* ---------- III · DER JAKOBSWEG ---------- */
@@ -1808,6 +1786,7 @@ function showStep(i){
   state.step = Math.max(0, Math.min(STEPS.length-1, i));
   const s = STEPS[state.step];
   state.revealed = false;
+  TALLY = [];
   timerStop();
 
   if(s.kind === "round"){
@@ -1816,7 +1795,6 @@ function showStep(i){
     $("#roundTag").textContent = `Runde ${nr}`;
     $("#rcEyebrow").textContent = `Runde ${nr} von ${ROUNDS.length}`;
     $("#rcTitle").textContent = r.title;
-    $("#rcLead").textContent = r.lead;
     const n = countIn(r.id);
     $("#rcCount").textContent = n === 1 ? "Eine Frage" : `${n} Fragen`;
     $("#roundCard").classList.add("show");
@@ -1986,6 +1964,22 @@ function revealMath(q, stage){
 }
 
 /* Offene Frage: Live-Auszählung */
+/* Die Zählstände der Abstimmung stehen bewusst hier oben und nicht im Closure
+   von revealOpen(): Nur so kommen sie in syncSnapshot() und damit zu den
+   Mitlesern am Handy. TALLY wird bei jedem Schrittwechsel geleert. */
+let TALLY = [];
+
+function renderTally(){
+  const cols = $("#revealStage").querySelectorAll(".tally-col");
+  if(!cols.length) return;
+  const max = Math.max(1, ...TALLY);
+  cols.forEach((col,i)=>{
+    const v = TALLY[i] || 0;
+    col.querySelector(".tally-num").textContent = v;
+    col.querySelector(".tally-fill").style.height = (v/max*100)+"%";
+  });
+}
+
 function revealOpen(q, stage){
   const cols = q.tally || [];
   stage.innerHTML = `<div class="open-note">Keine richtige Antwort im Voraus – hier wird live abgestimmt.</div>
@@ -1997,23 +1991,17 @@ function revealOpen(q, stage){
         <div class="tally-lbl">${esc(c.label)}</div>
         <div class="tally-ctrl"><button data-d="-1" aria-label="weniger">−</button><button data-d="1" aria-label="mehr">+</button></div>
       </div>`).join("") + `</div>`;
-  const counts = cols.map(()=>0);
-  const sync = ()=>{
-    const max = Math.max(1, ...counts);
-    stage.querySelectorAll(".tally-col").forEach((col,i)=>{
-      col.querySelector(".tally-num").textContent = counts[i];
-      col.querySelector(".tally-fill").style.height = (counts[i]/max*100)+"%";
-    });
-  };
+  if(TALLY.length !== cols.length) TALLY = cols.map(()=>0);
   stage.querySelectorAll(".tally-ctrl button").forEach(b=>{
     b.addEventListener("click", e=>{
       const i = +e.currentTarget.closest(".tally-col").dataset.i;
-      counts[i] = Math.max(0, counts[i] + (+e.currentTarget.dataset.d));
+      TALLY[i] = Math.max(0, (TALLY[i]||0) + (+e.currentTarget.dataset.d));
       tone(+e.currentTarget.dataset.d > 0 ? 700 : 320, .12, {type:"square", gain:.08});
-      sync();
+      renderTally();
+      syncPush();
     });
   });
-  sync();
+  renderTally();
 }
 
 /* ---------- Zusatzgrafiken zur Auflösung ---------- */
@@ -2241,11 +2229,11 @@ function renderViz(q, stage){
          </svg>`;
     box.innerHTML += `<div class="lavcomp">
       <div class="lav-card win" style="animation-delay:.15s">${stem(false)}
-        <div><div class="bot"><span class="ltr">Bild A</span>Lavandula angustifolia</div>
-        <div class="desc">Echter Lavendel: je Trieb ein unverzweigter Stiel mit einer einzelnen Ähre. Wächst hoch in den Bergen, feinstes Öl.</div></div></div>
+        <div><div class="bot"><span class="ltr">rechts</span>Lavandula angustifolia</div>
+        <div class="desc">Echter Lavendel: kurze, dichte Ähre auf unverzweigtem Stiel, die Blüten fast lückenlos übereinander. Wächst hoch in den Bergen, feinstes Öl.</div></div></div>
       <div class="lav-card" style="animation-delay:.4s">${stem(true)}
-        <div><div class="bot"><span class="ltr">Bild B</span>Lavandula × intermedia</div>
-        <div class="desc">Lavandin, die Kreuzung: Stiele oben verzweigt, meist drei Ähren. Ertragreicher, aber kampferartiger im Duft.</div></div></div>
+        <div><div class="bot"><span class="ltr">links</span>Lavandula × intermedia</div>
+        <div class="desc">Lavandin, die Kreuzung: längere Ähre, lockerblütig und wie unterbrochen – zwischen den Blütenquirlen schaut der Stiel durch. Ertragreicher, aber kampferartiger im Duft.</div></div></div>
     </div>`;
   }
 }
@@ -2706,7 +2694,8 @@ function syncSnapshot(){
     screen,
     step: state.step,
     revealed: state.revealed,
-    t: {tot:timer.total, rem:Math.max(0, timer.remain), run:timer.running, done:timer.done}
+    t: {tot:timer.total, rem:Math.max(0, timer.remain), run:timer.running, done:timer.done},
+    tally: TALLY.slice()
   };
 }
 /* Mehrere Änderungen kurz hintereinander werden zu einer Meldung zusammengefasst */
@@ -2799,6 +2788,9 @@ function viewerApply(raw){
     VIEW.step = s.step; VIEW.revealed = false;
   }
   if(s.revealed && !VIEW.revealed){ reveal(); VIEW.revealed = true; }
+  /* Die Abstimmung zählt weiter, nachdem aufgedeckt wurde – die Zahlen kommen
+     deshalb bei jeder Meldung neu, nicht nur beim ersten Aufdecken. */
+  if(Array.isArray(s.tally)){ TALLY = s.tally.slice(); renderTally(); }
   viewerTimer(s.t);
 }
 

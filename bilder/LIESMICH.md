@@ -19,14 +19,11 @@ nur die Bildmitte übrig.
 | `hecke-c` | Hecke C – **das ist die richtige Antwort** (Rotbuche) | fehlt – nur als eigenes Foto möglich |
 | `hecke-d` | Hecke D | fehlt – nur als eigenes Foto möglich |
 | `baguette` | Baguette auf einem Tisch | **Foto vorhanden** (Wikimedia) |
-| `lavendel-a` | echter Lavendel, *Lavandula angustifolia* – **Nahaufnahme der Blütenähre** | vorhanden, **soll ersetzt werden** – das jetzige Foto zeigt nur ein Beet aus der Ferne |
-| `lavendel-b` | Lavandin, *Lavandula × intermedia* – **Nahaufnahme der Blütenähre** | vorhanden, **soll ersetzt werden** – das jetzige Foto zeigt nur ein Beet aus der Ferne |
+| `lavendel` | sechs Blütenstiele nebeneinander: links Lavandin, rechts echter Lavendel | **Foto vorhanden** (eigenes Foto) |
 | `bauwerk` | Kathedrale von Santiago de Compostela | **Foto vorhanden** (Wikimedia) |
 
-Gimborn und Lindlar sind durch eigene Fotos ersetzt. Offen sind noch die beiden
-Lavendel-Nahaufnahmen: Die alten Wikimedia-Bilder liegen weiterhin im Ordner,
-damit das Quiz vollständig läuft – einfach überschreiben, der Dateiname bleibt
-gleich.
+Gimborn, Lindlar und der Lavendel sind durch eigene Fotos ersetzt. Es fehlen
+nur noch die vier Heckenfotos.
 
 ## Bildnachweise (Wikimedia Commons)
 
@@ -38,29 +35,26 @@ Bei Weitergabe gehört der Nachweis dazu; für den privaten Quizabend genügt di
 | `kirche-a.jpg` | [Ev Kirche Huelsenbusch.jpg](https://commons.wikimedia.org/wiki/File:Ev_Kirche_Huelsenbusch.jpg) | Sebastian Hirsch | CC BY-SA 3.0 |
 | `kirche-d.jpg` | [Lindlar Frielingsdorf - Sankt Apollinaris 01 ies.jpg](https://commons.wikimedia.org/wiki/File:Lindlar_Frielingsdorf_-_Sankt_Apollinaris_01_ies.jpg) | Frank Vincentz | CC BY-SA 3.0 |
 | `bauwerk.jpg` | [Santiago Compostela Cathedral 2023 – View from Alameda Park.jpg](https://commons.wikimedia.org/wiki/File:Santiago_Compostela_Cathedral_2023_-_View_from_Alameda_Park.jpg) | Fernando Pascullo | CC BY-SA 4.0 |
-| `lavendel-a.jpg` | [Echter Lavendel (Lavandula angustifolia) (9478066937).jpg](https://commons.wikimedia.org/wiki/File:Echter_Lavendel_(Lavandula_angustifolia)_(9478066937).jpg) | Maja Dumat | CC BY 2.0 |
-| `lavendel-b.jpg` | [Lavandula x intermedia 2c.JPG](https://commons.wikimedia.org/wiki/File:Lavandula_x_intermedia_2c.JPG) | Consultaplantas | CC BY-SA 4.0 |
 | `baguette.jpg` | [Baguette de pain, WikiCheese Lausanne.jpg](https://commons.wikimedia.org/wiki/File:Baguette_de_pain,_WikiCheese_Lausanne.jpg) | Yann Forget | CC BY-SA 4.0 |
 
-`kirche-b.webp` (Gimborn) und `kirche-c.jpg` (St. Severin in Lindlar) sind eigene
-Fotos und brauchen keinen Nachweis.
+`kirche-b.webp` (Gimborn), `kirche-c.jpg` (St. Severin in Lindlar) und
+`lavendel.jpg` sind eigene Fotos und brauchen keinen Nachweis.
 
-## Zu den beiden Lavendelfotos
+## Zum Lavendelfoto
 
-Hier hängt die ganze Frage am Bild: „Welches dieser beiden Bilder zeigt den echten
-Lavendel?" Aus der Ferne sieht ein Lavendelbeet aus wie das andere – es müssen also
-**Nahaufnahmen der Blütenähren** sein, ein einzelner Stiel oder wenige nebeneinander.
+`lavendel.jpg` zeigt sechs Blütenstiele nebeneinander auf einem Holzbrett. Die Frage
+lautet „Welche Seite zeigt den echten Lavendel?" – die Antwort ist **rechts**.
 
-Woran man die beiden unterscheidet:
-
-| | `lavendel-a` – echter Lavendel | `lavendel-b` – Lavandin |
+| | links – Lavandin (*Lavandula × intermedia*) | rechts – echter Lavendel (*Lavandula angustifolia*) |
 |---|---|---|
-| Ähre | kurz, dicht, kompakt, tief violett | lang und locker, die Blütenquirle sitzen mit deutlichen Abständen übereinander |
-| Stiel | unverzweigt, ein Stiel trägt eine Ähre | oben oft verzweigt, mehrere Ähren pro Trieb |
-| Dazwischen | kaum Lücken zu sehen | der grüne Stiel schaut zwischen den Quirlen durch |
+| Ähre | lang und locker, wirkt unterbrochen | kurz, dicht und kompakt |
+| Blütenquirle | mit deutlichen Abständen übereinander, der Stiel schaut durch | fast lückenlos übereinander |
+| Farbe | blasser, mit grünen Spitzen | tief violett |
 
-Ideal wäre auf beiden Fotos derselbe Bildausschnitt und ähnliches Licht – dann
-liegt der Unterschied wirklich an der Pflanze und nicht am Foto.
+Wird das Foto einmal ausgetauscht, muss auch `correct` in der Frage geprüft werden:
+Aktuell ist Option 1 richtig („Die drei rechten"). Steht der echte Lavendel auf dem
+neuen Bild links, gehört `correct:0` gesetzt – und die Auflösungsgrafik `lavendel`
+in `renderViz()` vertauscht die Beschriftungen „links" und „rechts" entsprechend.
 
 ## Achtung bei den vier Kirchen
 

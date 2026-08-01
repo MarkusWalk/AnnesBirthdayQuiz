@@ -181,8 +181,7 @@ nichts verrät. Was auf welches Bild gehört, steht nur hier und in `bilder/LIES
 | `bilder/kirche-d.jpg` | Kirche in Frielingsdorf | liegt bei (Wikimedia) |
 | `bilder/hecke-a.jpg` … `hecke-d.jpg` | die vier Hecken zur Auswahl | **fehlen** – eigene Fotos nötig |
 | `bilder/baguette.jpg` | Baguette auf einem Tisch | liegt bei (Wikimedia) |
-| `bilder/lavendel-a.jpg` | echter Lavendel (Lavandula angustifolia) | liegt bei – **Nahaufnahme gewünscht** |
-| `bilder/lavendel-b.jpg` | Lavandin (Lavandula × intermedia) | liegt bei – **Nahaufnahme gewünscht** |
+| `bilder/lavendel.jpg` | sechs Blütenstiele: links Lavandin, rechts echter Lavendel | liegt bei (eigenes Foto) |
 | `bilder/bauwerk.jpg` | Kathedrale von Santiago de Compostela | liegt bei (Wikimedia) |
 
 Die Herkunfts- und Lizenzangaben zu den acht Wikimedia-Fotos stehen in
@@ -195,14 +194,18 @@ Die Herkunfts- und Lizenzangaben zu den acht Wikimedia-Fotos stehen in
 | Runde | Titel | Fragen |
 |---|---|---|
 | I | Oberberg und das Bergische Land | 4 |
-| II | Frankreich | 7 |
+| II | Frankreich | 5 |
 | III | Der Jakobsweg | 3 |
 | IV | Mallorca | 2 |
 | V | Schätzen und Knobeln | 5 |
 | VI | Der 12. August 1966 | 1 |
 
-22 Fragen insgesamt. Jede Frage hat mindestens 60 Sekunden Zeit; die
+20 Fragen insgesamt. Jede Frage hat mindestens 60 Sekunden Zeit; die
 Vier-Kirchen-Frage 120, die Reihenfolge-Frage 75.
+
+Der `lead` einer Runde – der Zweizeiler im `ROUNDS`-Array – steht **nicht** auf
+der Rundentafel. Die Mitleser am Handy bekommen ihn ohnehin nicht zu sehen; er
+bleibt als Ansage zum Vorlesen für den Quizmaster stehen.
 
 ---
 
@@ -246,7 +249,7 @@ Auflösung. Verfügbare Arten:
 | `leafyear` | Laubkalender über zwölf Monate |
 | `thermo` | Temperaturskala mit Markierungen |
 | `gauge` | Skala mit Schwellenwerten |
-| `areacomp` | zwei Flächen als Kreise im Größenvergleich |
+| `areacomp` | zwei Flächen als Kreise im Größenvergleich – derzeit ungenutzt |
 | `persec` | mitlaufender Sekundenzähler |
 | `rosette` | rotierende Fensterrose |
 | `herbs` | Zutatenwolke mit Sortenkarten – derzeit ungenutzt |
