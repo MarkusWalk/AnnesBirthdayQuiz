@@ -898,6 +898,12 @@ body.viewer-mode #revealStage{zoom:.72}
 body.viewer-mode .panic-ring{inset:-5px; border-width:2px}
 body.viewer-mode .timeup{text-align:left; font-size:11.5px}
 body.viewer-mode .imgs .photo{max-width:150px}
+/* Vier Kirchen untereinander heißt viermal scrollen, bevor man sie vergleichen
+   kann. Am Handy stehen mehrere Fotos deshalb im Raster – zwei nebeneinander.
+   Nach dem Aufdecken schrumpfen sie zu Miniaturen und dürfen wieder fließen. */
+body.viewer-mode .imgs.multi{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+body.viewer-mode .imgs.multi .photo{max-width:none; min-width:0; flex:none}
+body.viewer-mode .imgs.multi.mini{display:flex}
 body.viewer-mode .timer-ctrl,
 body.viewer-mode .tally-ctrl,
 body.viewer-mode .side-note,
@@ -1828,6 +1834,7 @@ function showStep(i){
 
     $("#qImgs").innerHTML = (q.imgs || []).map(photoHTML).join("");
     $("#qImgs").classList.remove("mini");
+    $("#qImgs").classList.toggle("multi", (q.imgs || []).length > 1);
 
     const optWrap = $("#qOptions");
     optWrap.innerHTML = "";
