@@ -1616,7 +1616,16 @@ function sfxFinal(){ [523.25,659.25,783.99,1046.5,783.99,1046.5,1318.5].forEach(
    ============================================================ */
 const RADIUS = 88, CIRC = 2*Math.PI*RADIUS;
 $("#timerBar").style.strokeDasharray = CIRC;
-const timer = {total:60, remain:60, running:false, raf:null, last:0, lastBeep:-1, done:false};
+/* Die Uhr rechnet gegen einen festen Zielzeitpunkt (endAt), nicht gegen die
+   Summe der Frame-Abstände. Der alte Weg zog in jedem Frame die vergangene
+   Zeit ab – hielt der Browser die Frames an, weil das Fenster in den
+   Hintergrund geriet, der Bildschirm einschlief oder eine Auflösung mit ihren
+   Animationen den Takt riss, dann stand die Uhr still und beim nächsten Frame
+   fiel die gesamte Lücke auf einmal an. Bei einer 120-Sekunden-Frage genügt
+   eine Pause von zwei Minuten, und die Uhr springt auf null.
+   Gegen einen Zielzeitpunkt gerechnet stimmt die Restzeit immer, egal wie
+   unregelmäßig die Frames kommen. */
+const timer = {total:60, remain:60, running:false, raf:null, endAt:0, lastBeep:-1, done:false};
 
 function timerRender(){
   $("#timerNum").textContent = Math.max(0, Math.ceil(timer.remain));
@@ -1624,14 +1633,8 @@ function timerRender(){
   $("#timerBar").style.strokeDashoffset = CIRC * (1-ratio);
   $("#timerWrap").classList.toggle("panic", timer.remain > 0 && timer.remain <= 5.05);
 }
-function timerLoop(now){
-  if(!timer.running) return;
-  /* Der erste Frame nach dem Start kann einen älteren Zeitstempel tragen als
-     performance.now(). Ohne diese Klammer liefe die Uhr kurz rückwärts und die
-     Sekunden summierten sich beim schnellen Weiterschalten auf. */
-  const dt = Math.max(0, (now - timer.last)/1000);
-  timer.last = now;
-  timer.remain = Math.min(timer.total, Math.max(0, timer.remain - dt));
+function timerTick(){
+  timer.remain = Math.min(timer.total, Math.max(0, (timer.endAt - performance.now())/1000));
   const sec = Math.ceil(timer.remain);
   if(sec <= 5 && sec >= 1 && sec !== timer.lastBeep){ timer.lastBeep = sec; sfxTick(sec); }
   timerRender();
@@ -1641,19 +1644,27 @@ function timerLoop(now){
     $("#timeUp").classList.add("show");
     sfxTimeUp();
     syncPush();
-    return;
+    return false;
   }
+  return true;
+}
+function timerLoop(){
+  if(!timer.running) return;
+  if(timerTick()) timer.raf = requestAnimationFrame(timerLoop);
+}
+function timerRun(){
+  cancelAnimationFrame(timer.raf);
+  timer.endAt = performance.now() + timer.remain*1000;
+  timer.running = true;
   timer.raf = requestAnimationFrame(timerLoop);
 }
 function timerStop(){ timer.running = false; cancelAnimationFrame(timer.raf); syncPush(); }
 function timerStart(sec){
-  cancelAnimationFrame(timer.raf);
   timer.total = sec; timer.remain = sec; timer.lastBeep = -1; timer.done = false;
-  timer.running = true; timer.last = performance.now();
   $("#timeUp").classList.remove("show");
   $("#btnPause").textContent = "Pause";
   timerRender();
-  timer.raf = requestAnimationFrame(timerLoop);
+  timerRun();
   syncPush();
 }
 function timerToggle(){
@@ -1661,11 +1672,17 @@ function timerToggle(){
   if(timer.running){
     timerStop(); $("#btnPause").textContent = "Weiter"; $("#timerWrap").classList.remove("panic");
   }else{
-    timer.running = true; timer.last = performance.now(); $("#btnPause").textContent = "Pause";
-    timer.raf = requestAnimationFrame(timerLoop);
+    $("#btnPause").textContent = "Pause";
+    timerRun();
   }
   syncPush();
 }
+/* Kommt das Fenster aus dem Hintergrund zurück, standen die Frames still.
+   Einmal nachrechnen, damit sofort die richtige Restzeit dasteht. */
+document.addEventListener("visibilitychange", ()=>{
+  if(document.visibilityState !== "visible" || !timer.running) return;
+  if(timerTick()) timer.raf = requestAnimationFrame(timerLoop);
+});
 /* Füllt die Uhr auf, höchstens bis zur Sollzeit der Frage. Vorher wuchs
    timer.total mit, die Uhr sprang auf 90 Sekunden und der Ring auf voll –
    von einem Neustart nicht zu unterscheiden. Die Sollzeit ist jetzt die
@@ -1676,8 +1693,9 @@ function timerAdd(sec){
   timer.total = soll;
   timer.remain = Math.min(soll, timer.remain + sec);
   timer.done = false; $("#timeUp").classList.remove("show");
-  if(!timer.running){ timer.running = true; timer.last = performance.now(); timer.raf = requestAnimationFrame(timerLoop); }
+  $("#btnPause").textContent = "Pause";
   timerRender();
+  timerRun();
   syncPush();
 }
 
@@ -2779,7 +2797,7 @@ function viewerTimer(t){
   timer.running = !!t.run && timer.remain > 0;
   $("#timeUp").classList.toggle("show", timer.done);
   timerRender();
-  if(timer.running){ timer.last = performance.now(); timer.raf = requestAnimationFrame(timerLoop); }
+  if(timer.running) timerRun();
 }
 function viewerApply(raw){
   let s;
