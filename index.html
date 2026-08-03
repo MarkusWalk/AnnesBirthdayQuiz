@@ -1257,23 +1257,25 @@ const QUESTIONS = [
   fact:"Gummersbach ist als Kreisstadt des Oberbergischen Kreises mit rund 52.000 Einwohnern die größte der vier – und liegt damit knapp vor Hennef an der Sieg. Ladenburg ist der einzige Ort, der nicht in Nordrhein-Westfalen liegt, sondern in Baden-Württemberg an der Bergstraße bei Heidelberg. Vier Ladenburgs passen gut in ein Gummersbach."
 },
 {
-  round:1, cat:"Vier Bilder", type:"single", time:60,
-  q:"Welche dieser vier Hecken wächst auf Walks Grundstück?",
+  round:1, cat:"Drei Bilder", type:"single", time:60,
+  q:"Zwei dieser drei Hecken wachsen auf Walks Grundstück. Welche gehört nicht dazu?",
   hint:"Genau hinsehen – das Laub verrät es.",
-  /* Richtige Hecke anpassen: correct und correctImg auf denselben Index setzen. */
-  options:["Hecke A","Hecke B","Hecke C","Hecke D"],
-  correct:2, correctImg:2,
+  /* A ist die Rotbuche, B der Liguster, C der Weißdorn. Ändert sich die
+     Zuordnung der Fotos, gehören correct und correctImg auf denselben Index –
+     A ist 0, C ist 2 – und der Auflösungstext mit angepasst. */
+  options:["Hecke A","Hecke B","Hecke C"],
+  correct:1, correctImg:1,
   imgs:[
     {src:"bilder/hecke-a.jpg", hint:"Hecke A", cap:"A"},
     {src:"bilder/hecke-b.jpg", hint:"Hecke B", cap:"B"},
-    {src:"bilder/hecke-c.jpg", hint:"Hecke C", cap:"C"},
-    {src:"bilder/hecke-d.jpg", hint:"Hecke D", cap:"D"}
+    {src:"bilder/hecke-c.jpg", hint:"Hecke C", cap:"C"}
   ],
-  answer:"Hecke C",
-  fact:"Es ist die Rotbuche. Sie behält ihr trockenes Laub den ganzen Winter über und ist deshalb als Sichtschutz so beliebt – im Februar steht sie noch kupferbraun da, während ringsum alles kahl ist.",
-  viz:{kind:"leafyear", cap:"Warum die Rotbuche als Hecke so beliebt ist", rows:[
-    {name:"Rotbuche", states:["kupfer","kupfer","kupfer","gruen","gruen","gruen","gruen","gruen","gruen","kupfer","kupfer","kupfer"]},
-    {name:"andere Laubhecke", states:["kahl","kahl","kahl","gruen","gruen","gruen","gruen","gruen","gruen","kahl","kahl","kahl"]}
+  answer:"Hecke B – der Liguster",
+  fact:"Auf dem Grundstück stehen Rotbuche (A) und Weißdorn (C). Bild B zeigt Liguster: kleine, glattrandige Lederblättchen, paarweise gegenständig am Zweig. Die Rotbuche verrät ihr welliger Blattrand mit den seidigen Härchen, den Weißdorn die tief gelappten Blätter an dornigen Zweigen. Alle drei sind beliebte Heckenpflanzen – aber jede kommt anders durch den Winter: Die Rotbuche behält ihr trockenes Laub bis zum Frühjahr und steht im Februar noch kupferbraun da, der Liguster bleibt in milden Wintern schlicht grün, und der Weißdorn wirft ab und steht kahl.",
+  viz:{kind:"leafyear", cap:"Wie die drei durch den Winter kommen", rows:[
+    {name:"Rotbuche (A)", states:["kupfer","kupfer","kupfer","gruen","gruen","gruen","gruen","gruen","gruen","kupfer","kupfer","kupfer"]},
+    {name:"Liguster (B)", states:["gruen","gruen","gruen","gruen","gruen","gruen","gruen","gruen","gruen","gruen","gruen","gruen"]},
+    {name:"Weißdorn (C)", states:["kahl","kahl","kahl","gruen","gruen","gruen","gruen","gruen","gruen","kahl","kahl","kahl"]}
   ]}
 },
 

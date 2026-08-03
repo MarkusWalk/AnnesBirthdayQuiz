@@ -158,11 +158,11 @@ mit Antwortzetteln ist das kein Problem, sollte aber gesagt sein.
 
 ## Fotos einfügen
 
-Zwölf Bilder gehören ins Quiz; **acht liegen bereits als echte Fotos im Repo**
-(vier Kirchen, Santiago-Kathedrale, zwei Lavendelarten, Baguette – bis auf Gimborn
-und Lindlar alle von Wikimedia Commons, Nachweise in `bilder/LIESMICH.md`). Es
-fehlen nur noch die vier Heckenfotos – Motive, die es nur als eigenes Foto gibt.
-Solange eines fehlt, zeigt die App einen Platzhalter mit dem erwarteten Dateinamen.
+Elf Bilder gehören ins Quiz, und **alle liegen als echte Fotos im Repo**: vier
+Kirchen, drei Hecken, Lavendel, Baguette und die Santiago-Kathedrale. Gimborn,
+Lindlar, der Lavendel und die drei Hecken sind eigene Aufnahmen, der Rest stammt
+von Wikimedia Commons – Nachweise in `bilder/LIESMICH.md`.
+Fehlt einmal eines, zeigt die App einen Platzhalter mit dem erwarteten Dateinamen.
 Lege die Bilder in den Ordner `bilder/` neben `index.html` – sie erscheinen dann
 automatisch, am besten im Querformat (die App schneidet auf 4:3 zu).
 
@@ -179,7 +179,9 @@ nichts verrät. Was auf welches Bild gehört, steht nur hier und in `bilder/LIES
 | `bilder/kirche-b.webp` | Kirche in Gimborn | liegt bei (eigenes Foto) |
 | `bilder/kirche-c.jpg` | Kirche in Lindlar, St. Severin | liegt bei (eigenes Foto) |
 | `bilder/kirche-d.jpg` | Kirche in Frielingsdorf | liegt bei (Wikimedia) |
-| `bilder/hecke-a.jpg` … `hecke-d.jpg` | die vier Hecken zur Auswahl | **fehlen** – eigene Fotos nötig |
+| `bilder/hecke-a.jpg` | Rotbuche – wächst auf dem Grundstück | liegt bei (eigenes Foto) |
+| `bilder/hecke-b.jpg` | Liguster – die gesuchte, **nicht** dort wachsende Hecke | liegt bei (eigenes Foto) |
+| `bilder/hecke-c.jpg` | Weißdorn – wächst auf dem Grundstück | liegt bei (eigenes Foto) |
 | `bilder/baguette.jpg` | Baguette auf einem Tisch | liegt bei (Wikimedia) |
 | `bilder/lavendel.jpg` | sechs Blütenstiele: links Lavandin, rechts echter Lavendel | liegt bei (eigenes Foto) |
 | `bilder/bauwerk.jpg` | Kathedrale von Santiago de Compostela | liegt bei (Wikimedia) |
@@ -260,9 +262,11 @@ Auflösung. Verfügbare Arten:
 Bei Schätzfragen erscheint die Grafik erst, nachdem die Zahl hochgezählt hat –
 sonst stünde die Lösung schon vorher da.
 
-> **Zur Heckenfrage:** Welche Hecke wirklich auf Walks Grundstück wächst, weiß nur die
-> Familie. Hinterlegt ist derzeit Hecke C (`correct: 2`, `correctImg: 2`). Zum Ändern
-> beide Werte auf denselben Index setzen – A ist 0, D ist 3.
+> **Zur Heckenfrage:** Von den drei Fotos zeigen zwei Hecken vom Grundstück –
+> Rotbuche (A) und Weißdorn (C). Gesucht ist die dritte: der Liguster auf Bild B,
+> hinterlegt als `correct: 1`, `correctImg: 1`. Ändert sich die Zuordnung der
+> Fotos, gehören beide Werte auf denselben Index – A ist 0, C ist 2 – und der
+> Auflösungstext samt Laubkalender mit angepasst.
 
 > **Zur Jakobsweg-Frage:** Als wahre Aussage ist die Hundert-Kilometer-Regel für die
 > Compostela hinterlegt; sie ist über das Pilgerbüro in Santiago belegt. Die früher

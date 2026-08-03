@@ -14,16 +14,15 @@ nur die Bildmitte übrig.
 | `kirche-b` | Kirche in **Gimborn** (Marienheide) | **Foto vorhanden** (eigenes Foto, als `kirche-b.webp`) |
 | `kirche-c` | Kirche in **Lindlar**, St. Severin | **Foto vorhanden** (eigenes Foto) |
 | `kirche-d` | Kirche in **Frielingsdorf** (Lindlar) | **Foto vorhanden** (Wikimedia) |
-| `hecke-a` | Hecke A auf Walks Grundstück | fehlt – nur als eigenes Foto möglich |
-| `hecke-b` | Hecke B | fehlt – nur als eigenes Foto möglich |
-| `hecke-c` | Hecke C – **das ist die richtige Antwort** (Rotbuche) | fehlt – nur als eigenes Foto möglich |
-| `hecke-d` | Hecke D | fehlt – nur als eigenes Foto möglich |
+| `hecke-a` | **Rotbuche** – wächst auf Walks Grundstück | **Foto vorhanden** (eigenes Foto) |
+| `hecke-b` | **Liguster** – **das ist die gesuchte Hecke**, die einzige, die *nicht* dort wächst | **Foto vorhanden** (eigenes Foto) |
+| `hecke-c` | **Weißdorn** – wächst auf Walks Grundstück | **Foto vorhanden** (eigenes Foto) |
 | `baguette` | Baguette auf einem Tisch | **Foto vorhanden** (Wikimedia) |
 | `lavendel` | sechs Blütenstiele nebeneinander: links Lavandin, rechts echter Lavendel | **Foto vorhanden** (eigenes Foto) |
 | `bauwerk` | Kathedrale von Santiago de Compostela | **Foto vorhanden** (Wikimedia) |
 
-Gimborn, Lindlar und der Lavendel sind durch eigene Fotos ersetzt. Es fehlen
-nur noch die vier Heckenfotos.
+Alle Bilder liegen bei. Gimborn, Lindlar, der Lavendel und die drei Hecken sind
+eigene Fotos, der Rest stammt von Wikimedia Commons.
 
 ## Bildnachweise (Wikimedia Commons)
 

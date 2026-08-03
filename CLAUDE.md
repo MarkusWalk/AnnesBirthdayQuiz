@@ -127,9 +127,14 @@ with a German explanation, and the projector keeps working offline.
 
 ### Photos
 
-Only real photographs — no AI-generated or hand-drawn SVG substitutes. Eight are in the repo
-from Wikimedia Commons with attributions in `bilder/LIESMICH.md`; the four hedge photos and
-the Stadtwerke Bensberg building still need family originals.
+Only real photographs — no AI-generated or hand-drawn SVG substitutes. All eleven are in the
+repo: five from Wikimedia Commons with attributions in `bilder/LIESMICH.md`, the other six
+(Gimborn, Lindlar, lavender, three hedges) are family originals.
+
+Filenames stay neutral (`kirche-a`, `hecke-b`, `bauwerk`) because the placeholder for a
+missing image shows the expected filename on the projector, and the `src` is visible in the
+page source either way. A file arriving as `Hecke_Falsch.jpeg` gets renamed before it is
+wired in — the name must never carry the answer.
 
 `.vercelignore` keeps `README.md`, `build-artifact.py`, `bilder/LIESMICH.md`, and the
 unrelated `bilder/autos/` + `tiguan-vs-starray.html` out of the deployment.
