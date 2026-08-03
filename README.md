@@ -202,8 +202,9 @@ Die Herkunfts- und Lizenzangaben zu den acht Wikimedia-Fotos stehen in
 | V | Schätzen und Knobeln | 5 |
 | VI | Der 12. August 1966 | 1 |
 
-20 Fragen insgesamt. Jede Frage hat mindestens 60 Sekunden Zeit; die
-Vier-Kirchen-Frage 120, die Reihenfolge-Frage 75.
+20 Fragen insgesamt, jede mit 60 Sekunden. Reicht die Zeit bei einer Frage
+einmal nicht, hilft „Auffüllen“ am Beamer – der Knopf setzt die Uhr zurück
+auf die vollen 60.
 
 Der `lead` einer Runde – der Zweizeiler im `ROUNDS`-Array – steht **nicht** auf
 der Rundentafel. Die Mitleser am Handy bekommen ihn ohnehin nicht zu sehen; er
